@@ -1,38 +1,32 @@
 # ClankerScape
 
-ClankerScape plans a RuneScape 3 **Leagues II: Equilibrium** route to the 48,000-point Dragon trophy.
+ClankerScape is a read-only RuneScape 3 **Leagues II: Equilibrium** route to the 48,000-point Dragon trophy.
 
-The checked-in task file currently has **533 Easy and Medium tasks worth 11,110 points**. Hard, Elite, and Master are still missing from the task page, so the site does not claim a finished Dragon route.
+The public page shows one working route rather than asking the player to build one:
 
-## Run it
+- regions: **Desert → Asgarnia → Anachronia**;
+- relics: **Golden Touch → Animal Wrangler → Voidwalker → Crystal Grace → Production Master → Rejuvenated (+ Devout) → Infernal Fire**;
+- combat: **Necromancy first**, with Magic added after Crystal Grace;
+- blessings: **Big Boned → Abyssal Cinders → Avernic Rampage → Demon's Mark → True Equilibrium → Lord of Light → Tempered Heart → Genesis Essence**.
 
-```bash
-npm run verify
-npm run serve
-```
+The checked-in task snapshot currently contains **533 Easy and Medium tasks worth 11,110 points**. Hard, Elite, and Master rows are still missing, so exact task-by-task ordering remains provisional even though the public strategy is fixed.
 
-Open `http://localhost:4173`.
+## Public site
 
-The site is plain HTML, CSS, and JavaScript. No install step, account, analytics, cookies, or remote database.
+GitHub Pages publishes only `index.html`, `styles.css`, and `favicon.svg`. There are no public progress controls, save state, forms, calculators, import/export, accounts, analytics, cookies, or remote database.
 
-## What it tracks
+## Route research
 
-- task completion, when to do it, and an optional time estimate;
-- separate skilling and PvM queues;
-- region picks, quests, and optional time estimates;
-- all relic choices;
-- Perkfection versus Rejuvenated;
-- Blessing picks and three resets;
-- local progress import and export.
+The repository still keeps the source-locked task snapshot and route/relic/Blessing domain code for research and verification. Those tools are not product UI.
 
-## Refresh tasks
+Refresh task data with:
 
 ```bash
 npm run sync:tasks
 npm run validate
 ```
 
-The importer only reads numeric rows from `Equilibrium League/Tasks`. It will not mix in Catalyst tasks. The full file must reconcile to **1,152 tasks and 109,380 points** before the route can be treated as complete.
+The importer only reads numeric rows from `Equilibrium League/Tasks`; it will not mix in Catalyst tasks. A fully frozen row-by-row route still requires **1,152 tasks and 109,380 points** to reconcile.
 
 ## Checks
 
@@ -40,6 +34,6 @@ The importer only reads numeric rows from `Equilibrium League/Tasks`. It will no
 npm run verify
 ```
 
-This runs syntax checks, data checks, parser tests, route tests, Blessing tests, Tier 6 tests, and UI-copy guards.
+This runs syntax, source/data, parser, route, Blessing, Tier 6, and read-only UI regression checks.
 
-RuneScape Wiki task text keeps its source licence and attribution. See [NOTICE.md](NOTICE.md). RuneScape and Jagex are trademarks of Jagex Limited; this is an unofficial fan tool.
+RuneScape Wiki task text keeps its source licence and attribution. See [NOTICE.md](NOTICE.md). RuneScape and Jagex are trademarks of Jagex Limited; this is an unofficial fan project.
