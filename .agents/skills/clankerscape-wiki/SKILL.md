@@ -11,19 +11,25 @@ Every actionable route row must be able to open current source context without l
 
 Use the anonymous MediaWiki Action API with `origin=*`. Do not use a login, credential, proxy, iframe, bypass, or hidden scraping service.
 
-Recommended request:
+Recommended canonical task-page request:
 
 ```text
 https://runescape.wiki/api.php
 ?action=parse
-&page=<encoded title>
+&page=Equilibrium_League/Tasks
 &prop=text|revid|displaytitle
 &format=json
 &formatversion=2
 &origin=*
 ```
 
-Use `AbortController`, a finite timeout, and runtime response validation.
+Task records carry the numeric Wiki task ID. Fetch the canonical task page once per revision, parse it in an inert document, select exactly one `tr[data-taskid="…"]`, and sanitize only that row for rendering. Do not assume the task title is itself a Wiki page. Related articles belong in separate context references.
+
+Use `AbortController`, a finite timeout, a conservative response-size ceiling, and runtime response validation.
+
+## Prove browser access first
+
+Before implementation is considered viable on GitHub Pages, test the request from a real browser at the eventual Pages origin. Document whether anonymous CORS succeeds. If CORS or Cloudflare blocks it, retain the local snapshot fallback and return the static-only versus dynamic-content architecture conflict to owner review. Do not quietly add a proxy, worker, login, JSONP path, or relay.
 
 ## Separate snapshot from live context
 
@@ -52,7 +58,7 @@ Remove:
 
 Strip or tightly restrict images in version 1. Rewrite relative Wiki links. External links use `noopener noreferrer`.
 
-Isolate the only sanitized HTML render boundary in a small component with hostile fixtures.
+Reject missing or duplicate task-row matches. Isolate the only sanitized HTML render boundary in a small component with hostile fixtures.
 
 ## Dialog interaction
 
@@ -89,8 +95,10 @@ The complete task list is imported by a manual/build-time script and committed a
 
 Cover:
 
-- encoded titles and anchors;
-- CORS query construction;
+- canonical task-page request construction;
+- real-origin CORS capability gate;
+- task-row extraction by numeric `data-taskid`;
+- missing and duplicate row matches;
 - abort and timeout;
 - malformed JSON;
 - missing parse fields;
