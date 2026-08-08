@@ -20,8 +20,23 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - run: npm run verify
+      - name: Build checksumed source archive
+        shell: bash
+        run: |
+          archive="ClankerScape-${GITHUB_SHA}.zip"
+          git archive --format=zip --output="$archive" HEAD
+          sha256sum "$archive" > "$archive.sha256"
+      - name: Upload source archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: clankerscape-source-${{ github.sha }}
+          path: |
+            ClankerScape-${{ github.sha }}.zip
+            ClankerScape-${{ github.sha }}.zip.sha256
+          if-no-files-found: error
+          retention-days: 30
