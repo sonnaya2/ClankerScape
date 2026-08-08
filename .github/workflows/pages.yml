@@ -38,8 +38,7 @@ jobs:
       - name: Assemble static site
         run: |
           mkdir _site
-          cp index.html styles.css community-palette.css favicon.svg plan.md NOTICE.md _site/
-          cp -R src data _site/
+          cp index.html styles.css favicon.svg _site/
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
