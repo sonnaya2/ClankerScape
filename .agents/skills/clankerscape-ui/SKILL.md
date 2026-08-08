@@ -1,45 +1,60 @@
 ---
 name: clankerscape-ui
-description: Design and review ClankerScape as a RuneScape route tool with EverSense-style neo-brutalist print structure and no generated-dashboard habits.
+description: Design and review ClankerScape as a fixed RuneScape Dragon route with EverSense-style neo-brutalist structure and no generated-dashboard habits.
 ---
 
 # ClankerScape UI
 
-ClankerScape is a **tool workbench**, not a landing page, SaaS dashboard, audit console, or spreadsheet reskin. The first viewport must let the player read tasks and make route decisions.
+ClankerScape is the route itself. It is **not** a route builder, SaaS dashboard, audit console, spreadsheet, or editable planner.
 
-## Structure
+## Public structure
 
-Use only four primary pages: Route, Relics, Regions, and Blessings.
+The public page is read-only and opinionated:
 
-- Route shows Dragon progress, missing task coverage, region/relic gates, spare points, filters, and the task list.
-- A task row shows only completion, task, area, points, and plan. Time and requirements belong in task details.
-- Relics are grouped by tier. Effects stay collapsed. Tier 6 comparison stays below tiers 1–5 and opens only when the player asks to compare it.
-- Regions show official counts first. Quest lists and time estimates stay collapsed. Phones use region rows/cards, never a clipped desktop table.
-- Blessings use the three real paths. Desktop uses a three-column path board; phones stack the three choices under each tier.
+- Route — the ordered start-to-Dragon phases and the skilling/PvM switches.
+- Regions — the chosen unlock order, not a region picker.
+- Relics — the chosen relic line, not a comparison form.
+- Blessings — the chosen Blessing line, with only genuinely unresolved mechanics marked for recheck.
 
-Do not expose internal model language as normal UI. Never ship `state`, `source`, `unclassified`, `bank`, `park`, `provenance`, `audit result`, `switchboard`, or database terms as player-facing labels. Use plain actions such as `Not planned`, `Skill now`, `PvM now`, `Spare`, `Skip`, `Estimate`, and `Effects`.
+No progress checkboxes, plan dropdowns, time inputs, sliders, local save state, import/export, user estimates, source controls, or configuration UI belong on the public page. Research calculators and source data may remain in the repository without becoming product chrome.
+
+Do not expose internal model language as UI. Never ship `state`, `source`, `unclassified`, `bank`, `park`, `provenance`, `audit result`, `switchboard`, or database terms as player-facing labels.
 
 ## Visual language
 
-Combine EverSense print structure with RuneScape material:
+Use the current RuneScape web palette as the direction rather than parchment-heavy fantasy UI:
 
-- worn parchment working surfaces;
-- near-black ink frame and masthead;
-- gold for active chrome and Dragon progression;
-- Order blue, Balance green, and Chaos red only where those paths are data;
-- 2–3px hard borders, offset shadows, square geometry, condensed headings, tabular numbers;
-- restrained paper grain or halftone, not a decorative backdrop competing with data.
+- blue-black / green-black page and masthead;
+- dark teal working surfaces;
+- warm brass/gold for progression and active route decisions;
+- warm off-white text and desaturated grey-green secondary text;
+- teal as a small functional accent;
+- 1–3px hard borders, square geometry, offset hard shadows, serif RuneScape-flavoured headings and tabular numbers;
+- no large beige/cream surfaces.
 
-No gradients, glass, blur, glow, auroras, generic dark navy, radius soup, floating cards, KPI gardens, marketing heroes, decorative badges, hover scaling, or generated fantasy art.
+Keep the EverSense influence in the **structure**, not by copying its colours: strong rule lines, print-like hierarchy, asymmetric emphasis, and dense useful information.
+
+No gradients, glass, blur, glow, auroras, generic navy dashboard chrome, radius soup, floating cards, KPI gardens, marketing heroes, decorative badges, hover scaling, fake icons, or generated fantasy art.
 
 ## Density and copy
 
-Dense does not mean every field is always visible. Keep the default reading order clean and move expert inputs into details, popovers, or the task sheet where they are used.
+The first viewport should communicate the route immediately: Dragon target, region order, and the first phases. Copy is short and operational.
 
-Use short factual copy. Do not add slogans, explanatory subtitles that repeat the heading, title-case micro-labels, or warnings without a next action. A count appears once unless the second occurrence supports a different decision.
+Do not add slogans, explanatory subtitles that restate headings, repeated totals, source metadata in primary chrome, or warnings without a consequence. A caveat belongs next to the exact route choice it affects.
+
+## Anti-slop review
+
+After substantial UI work, run `clankerscape-bot-audit` against the rendered page and source.
+
+Block approval for:
+
+- any editable planner control on the public page;
+- any BUSTED finding;
+- three TELLs on one screen;
+- meaningful WASHED finding;
+- cream/parchment taking over the page;
+- the route being less visible than framework, source, or status UI.
 
 ## Render checks
 
-Verify 1600×900, 1280×800, and 390×844 with real partial task data. Check all four pages, task planning/completion, selected relics, expanded Tier 6 comparison, region estimates, selected Blessings, reset history, save menu, storage failure, keyboard focus, document overflow, console, and network.
-
-Run `clankerscape-bot-audit` after substantial UI work. Any BUSTED finding or three TELLs on one screen block approval.
+Verify 1600×900, 1280×800, and 390×844. Check anchors, responsive phase rows, region/relic/blessing sequences, document overflow, keyboard focus, console/network errors, and that the deployed page contains no forms or client-side state.
