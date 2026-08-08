@@ -205,7 +205,7 @@ Nominal density is useful only after task time, prerequisites, crowding, and pow
 - Necromancy and the City of Um are part of Misthalin; Kili's Knowledge progression tasks are skipped.
 - A Construction workbench is available in Lumbridge.
 - Clues, tetracompasses, Slayer tasks, and Reaper tasks respect unlocked regions.
-- Daemonheim itself is Wilderness-locked, but Dungeoneering remains trainable through Elite Dungeons and Sinkholes, and the reward shop is available outside the wall.
+- Daemonheim itself is Wilderness-locked, but Dungeoneering remains trainable through Elite Dungeons, and the reward shop is available outside the wall.
 - Shops use simplified infinite stock.
 - Bosses use accelerated spawn settings.
 - The 30,000 damage cap and normal life-point cap are removed.
@@ -258,7 +258,7 @@ The prior Catalyst route work provides process lessons, not task data to copy.
 - Do not perform expensive production training immediately before the Production Master threshold.
 - Preserve hard region boundaries through every prerequisite, shop, teleport, quest step, and item source.
 - Mark uncertain transitions `VERIFY`; do not bury them in prose.
-- The successful Catalyst opener used dense Lumbridge/Misthalin tasks to break an early power threshold before turning the first Karamja trip into a larger power spike.
+- Prior Catalyst planning centred the opener on dense Lumbridge/Misthalin work before a clustered Karamja trip. Preserve the clustering principle, not an exact inherited order.
 - Fire Cape/Jad-style clusters are valuable when one trip produces points, equipment, combat progression, and follow-on tasks. The Equilibrium task list must prove the exact cluster before it is routed.
 
 ### Do not preserve blindly
@@ -363,7 +363,7 @@ This remains provisional because regional task-tier distribution and live travel
 
 ### Why Desert second
 
-The Desert has the largest elective task count and the highest elective total points. Its auto-completed quest set removes substantial normal-game setup. It is the best current candidate for the 300-to-450 task-count push while also beginning the higher-point conversion phase.
+The Desert has the largest elective task count and the highest elective total points. Its auto-completed quest set removes substantial normal-game setup. It is the working candidate for the 300-to-450 task-count push while also beginning the higher-point conversion phase; the full task-time model still decides whether it remains there.
 
 ### Why Anachronia third
 
@@ -381,7 +381,7 @@ The default order is not sacred. Replace a pick when the full task model shows o
 
 ### Primary alternatives
 
-- **Morytania for Asgarnia:** strongest alternative when Araxxor, Barrows, Slayer Tower, Araxyte Hive, or other combat/Blessing tasks dominate the route.
+- **Morytania for Asgarnia:** primary alternative when Araxxor, Barrows, Slayer Tower, Araxyte Hive, or other combat/Blessing tasks dominate the route.
 - **Wilderness for Asgarnia or Anachronia:** only when actual task and Blessing value beats the alternatives. Do not pick it merely for Daemonheim or the reward shop.
 - **Tirannwn for Anachronia:** high nominal density, but likely to carry higher combat and access requirements. Choose only after task-time validation.
 - **Kandarin:** broad skilling and dig-site utility, but its lower nominal density and many spread-out areas demand a concrete cluster advantage.
@@ -400,7 +400,7 @@ The default order is not sacred. Replace a pick when the full task model shows o
 | 3 | **Voidwalker** | Remove transport friction and supply useful random resources while region count expands | Medium-high |
 | 4 | **Crystal Grace** | Unlock all magic, rune access, rune output, Necromancy ritual speed and ingredient relief, Prayer XP | High |
 | 5 | **Production Master** | Process production batches at once and avoid wasting training before the threshold | High |
-| 6 | **Rejuvenated → Assassin's Insight** | Add the strongest late-route Slayer/combat throughput option without giving up Voidwalker | Medium |
+| 6 | **Rejuvenated → Assassin's Insight** | Add a late-route Slayer/combat throughput option without giving up Voidwalker | Medium |
 | 7 | **Infernal Fire** | Death Mark execute and universal combat bonus for the final point conversion | Medium-high, mechanic-gated |
 
 ### Why these picks
@@ -499,7 +499,7 @@ Together they produce an Order majority in the second path block and therefore G
 
 ### Blessing alternatives
 
-- **Unholy Critual** can beat Lord of Light in a single-target, high-crit Inferno build. It must also be evaluated for the path consequence: paired with Havoc and Tempered, it may produce the wrong God Tier II.
+- **Unholy Critual** may beat Lord of Light in a single-target, high-crit Inferno build. It must also be evaluated for the path consequence: paired with Havoc and Tempered, it may produce the wrong God Tier II.
 - **Tearing Thorns** becomes attractive when long damage-over-time abilities and large targets dominate the final route.
 - **Envenomed** is a poison-specific alternative when live boss poison rules and Herblore levels support it.
 - **Sacred Fervor** requires a different early path and may outperform Demon's Mark only when accuracy is already solved and cooldown compression wins actual kill time.
@@ -673,7 +673,9 @@ export interface TaskRecord {
   skills: Array<{ skill: string; level: number; boostable?: boolean }>;
   blessingTask: boolean;
   autoCompleted?: boolean;
-  wiki: WikiPageRef;
+  wikiTaskId: number;
+  wikiSource: WikiPageRef;
+  contextWikiRefs: WikiPageRef[];
   sourceRevision: number;
   verifiedAt: string;
   status: "verified" | "provisional" | "conflict";
@@ -763,12 +765,12 @@ This applies to route rows, not every prose line in this Markdown file.
 
 ### Fetch contract
 
-Use the anonymous MediaWiki Action API from the browser:
+Use the anonymous MediaWiki Action API from the browser. The canonical task dialog should fetch the League task page once per revision and select the matching row by its numeric `data-taskid`; do not assume a task title is itself a Wiki article. Related mechanic, item, boss, or location pages may be listed separately in `contextWikiRefs`.
 
 ```text
 https://runescape.wiki/api.php
   ?action=parse
-  &page=<encoded title>
+  &page=Equilibrium_League/Tasks
   &prop=text|revid|displaytitle
   &format=json
   &formatversion=2
@@ -782,8 +784,21 @@ https://runescape.wiki/api.php
 - No user credentials.
 - Use `AbortController` and cancel a previous request when a different row opens.
 - Apply a finite timeout.
-- Cache successful results by `title + revision` for the session.
+- Enforce a conservative response-size ceiling before parsing.
+- Parse the response in an inert document, locate exactly one `tr[data-taskid="…"]`, then sanitize only that extracted fragment for rendering.
+- Cache the parsed canonical page by `title + revision` for the session so opening each row does not refetch the full task table.
 - Do not silently replace the route's pinned revision with live content.
+
+### Browser feasibility gate
+
+Before the static architecture is treated as proven, run a real browser spike from the eventual GitHub Pages origin and confirm that the RuneScape Wiki returns readable anonymous CORS responses for the parse request. This environment could verify the documented MediaWiki contract but could not complete that origin-specific browser test.
+
+If the spike fails because of CORS, Cloudflare, or a site policy:
+
+1. keep the dialog and local snapshot fallback working;
+2. label live Wiki retrieval unavailable;
+3. do not add a proxy, worker, login, JSONP path, or third-party relay without owner approval;
+4. return the architecture decision to review because fully dynamic content and static-only hosting would then conflict.
 
 ### Rendering contract
 
@@ -926,6 +941,7 @@ Each row shows:
 - route ordinal;
 - completion checkbox;
 - exact task title;
+- numeric Wiki task ID in data, not necessarily on-screen;
 - points and tier;
 - region/locality;
 - expected time or `—`;
@@ -1079,7 +1095,7 @@ plan.md
 ### Boundaries
 
 - `src/route/` owns route legality, ordering, cumulative gates, alternatives, and explanation data.
-- `src/wiki/` owns fetch, sanitization, caching, and dialog content transformation.
+- `src/wiki/` owns CORS capability detection, fetch, inert parsing, task-row extraction, sanitization, caching, and dialog content transformation.
 - React components render route results; they do not calculate source legality inline.
 - Generated task data is never edited in a component.
 - The UI does not import from the private EverSense repository.
@@ -1155,6 +1171,8 @@ Minimum focused tests:
 - Wiki URL construction;
 - MediaWiki response validation;
 - sanitizer allowlist and hostile fixture removal;
+- canonical task-row extraction by `data-taskid`;
+- duplicate or missing task-row failure;
 - relative-link rewriting;
 - source-revision mismatch behavior.
 
@@ -1164,7 +1182,7 @@ Minimum focused tests:
 - completing a task advances progress without opening the Wiki dialog;
 - clicking a task title opens the correct Wiki dialog;
 - closing returns focus and preserves scroll;
-- live Wiki success, timeout, malformed response, and offline fallback;
+- live Wiki success, CORS-unavailable, timeout, oversized response, missing/duplicate task row, malformed response, and offline fallback;
 - desktop, laptop, and phone widths;
 - keyboard route traversal;
 - visible focus;
@@ -1322,7 +1340,7 @@ These are treated as private review guidance. No private product code, CSS, art,
 
 These files are original summaries adapted to Clankerscape's needs. They do not reproduce private skill text. **Files copied verbatim into the public repository: none.**
 
-No separate skill named `claude-frontend`, `frontend-design`, or an equivalent was present in the permitted current repositories. The closest authorized UI system is the private human-grade/no-slop/audit set listed above. Its written rules and visual-reference captions were inspected; its private application assets and binary reference images are not included here.
+No separate skill named `claude-frontend`, `frontend-design`, or an equivalent was present in the permitted current repositories. The closest authorized UI system is the private human-grade/no-slop/audit set listed above. Its written rules and visual-reference captions were inspected. The connector could not render the private binary reference images, so this plan does not claim their pixels were reviewed; no private application assets or binary references are included here.
 
 ---
 
@@ -1375,7 +1393,9 @@ Gate: official totals reconcile or conflicts are documented.
 
 Deliverables:
 
+- real-origin CORS capability spike;
 - API client;
+- task-row extraction by `data-taskid`;
 - strict sanitizer;
 - accessible dialog;
 - revision mismatch and offline fallback;
