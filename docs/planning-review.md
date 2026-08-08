@@ -1,194 +1,286 @@
-# Adversarial planning review — draft PR #2
+# Adversarial planning review — draft PR #2, revision 2
 
 Review target: `planning/dragon-route-foundation`  
-Review scope: route correctness, information architecture, source integrity, and implementation readiness
+Scope: route strategy, opportunity cost, information architecture, source integrity and implementation readiness
 
 ## Verdict
 
-**READY FOR USER APPROVAL. NOT READY FOR MERGE OR FULL IMPLEMENTATION.**
+**REVISED PACKAGE IS READY FOR OWNER REVIEW. NOT READY FOR MERGE OR PRODUCTION IMPLEMENTATION.**
 
-The PR succeeds at its current job: it defines a coherent first-to-Dragon thesis, a non-SaaS route-workbench structure, project-specific skills, source boundaries, and a fresh-context handoff. It deliberately does not prove the final row-by-row route or the rendered UI.
+The first planning verdict is withdrawn. It approved a narrow relic/region thesis that treated Perkfection as a strong mixed-route default. That conclusion failed basic opportunity-cost analysis.
 
-No application code should be added until the seven decisions in `plan.md` section 17 are approved.
+The revised plan now:
 
-## Blockers
+- explicitly retracts Perkfection as the Tier 6 default;
+- treats Tier 5 and Tier 6 as one paired decision;
+- defaults to Rejuvenated while comparing every missed Tier 1–5 relic;
+- removes Invention synergy as a reason to force Asgarnia;
+- replaces one ranked queue with five point banks and two always-visible next actions;
+- treats Blessings as reset-triggered combat epochs;
+- benchmarks all three Tier 7 relics against the remaining encounter portfolio;
+- separates completion and Wiki actions in the UI contract;
+- incorporates the rendered Grok comparison without copying its code or invalid route assumptions.
 
-### 1. The final Equilibrium task corpus is not available to this review
+The strategy is now materially better, but the exact row-by-row route remains blocked by the incomplete task corpus.
 
-**Consequence:** the exact ordering, point curve, time estimates, final-region comparison, and relic sensitivity tests cannot be validated.
+## Blockers before production route implementation
 
-The Equilibrium repository task layer still exposes a Catalyst stand-in contract rather than a current sourced Equilibrium corpus. The current Wiki task page could not be read in this environment. The plan correctly stops at a macro route instead of filling the gap with remembered or plausible tasks.
+### 1. Full Equilibrium task corpus is unavailable to this review
 
-Required before a row-level route exists:
+Consequence:
 
-- ingest the current task table;
-- retain task IDs, tiers, points, regions, requirements, sources, and verification dates;
-- verify totals against the current official table;
-- reject any row whose tier or point value is not sourced;
-- regenerate the route from the sourced corpus.
+- exact task ordering cannot be validated;
+- task-time estimates cannot be calibrated;
+- region gates cannot be resolved;
+- Tier 2/Tier 4 sensitivity cannot be resolved;
+- Rejuvenated's best extra relic cannot be chosen;
+- Tier 7/Blessing encounter weighting cannot be final.
 
-### 2. The irreversible choices are awaiting owner approval
+Required:
 
-**Consequence:** implementation now would harden disputed assumptions into UI and data contracts before the route is accepted.
+- import canonical tasks with numeric IDs, tiers, points, regions, requirements, Blessing flags and source revision;
+- reconcile official totals;
+- reject Catalyst production rows;
+- create separate source facts and route assumptions;
+- regenerate decisions from the sourced corpus.
 
-Pending decisions:
+### 2. Irreversible decision system awaits owner review
 
-- Desert → Asgarnia → default Anachronia;
-- Golden Touch → Superheated → Assassin's Insight → Crystal Grace → Production Master → Perkfection → Infernal Fire;
-- Big Boned → Abyssal Cinders → Avernic Rampage → Demon's Mark;
-- the two late-Blessing benchmark branches;
-- the single-screen ledger composition;
-- Vite/React static architecture;
-- the plain-text Wiki modal.
+Pending approval is now the system in `plan.md` section 21, not the old fixed seven-item route.
 
-## High-risk assumptions that remain provisional
+Core decisions:
 
-### Final region
+- five point banks plus two executable next actions;
+- live region gates rather than forced Asgarnia/Anachronia;
+- no frozen Tier 2 favourite before task import;
+- Rejuvenated-first Tier 6 with a Perkfection burden of proof;
+- portfolio-weighted Tier 7 selection;
+- reset-triggered Blessing epochs;
+- corrected row/control and mobile information architecture.
 
-Anachronia is a credible default because its official pool has high point density and a useful mix of skilling and PvM. That is not enough to make it automatic.
+## Correction review
 
-The implementation must compare account-reachable rows at task 450. When projected values overlap within the estimate uncertainty, show the close result rather than inventing a hidden margin or silently forcing Anachronia.
+### Perkfection
 
-### Tier 6 relic
+Previous claim:
 
-Perkfection is a strong mixed-route default with Asgarnia because it supports Invention tasks, machines, materials, additional gizmos, and late PvM. Rejuvenated can still win if a second earlier relic produces a larger reachable task or point bank.
+> Perkfection is a strong mixed-route default with Asgarnia.
 
-This choice requires a task-corpus benchmark. Card text alone is not enough.
+Revised finding:
 
-### Tier 7 relic
+> Unsupported and likely wrong.
 
-Infernal Fire is the speed default, not a universal safety choice. Icyenic Faith or Naragi Edict can be faster in practice if the offensive pick causes repeated deaths, supply rebuilding, or failed high-value encounters.
+Perkfection competes with one complete additional Tier 1–5 relic. The comparison must include the best missed relic, not a weak generic alternative. Production Master + Devout alone is a broad pairing that attacks substantially more of the remaining route than Invention-only acceleration.
 
-The UI should present this as a risk branch rather than a simplistic damage ranking.
+Perkfection now requires:
 
-### Late Blessings
+- sourced remaining Invention/perk/machine gains;
+- comparison against every missed earlier relic;
+- at least 8% P50 improvement after uncertainty;
+- P90 win after setup, RNG, failure and supply costs.
 
-The crit/Inferno path and the Envenomed/Power Archive path need different targets and infrastructure. Neither is final from card text alone.
+This correction is correctly recorded in the plan, route skill and review skill.
 
-Benchmark inputs must include:
+### Asgarnia
 
-- poison immunity;
-- target size and multi-target value;
-- available perks and stored gizmos;
-- critical-strike profile;
+Previous route partially used Asgarnia to support Perkfection.
+
+Revised finding:
+
+- Invention itself is globally accessible under the League rules;
+- Asgarnia is still useful for its Guild/machines, workshops, GWD/Nex/AoD/Vorago/ED1 and other content;
+- it must win the 300-task portfolio comparison on reachable tasks, queue balance and total route time;
+- it is no longer automatic.
+
+### Tier 5–6 pairing
+
+The revised Production Master/Devout hypothesis is a stronger starting comparison because it supports both route queues:
+
+- Production Master converts stored materials into tasks, XP and equipment;
+- Devout removes banking friction and adds familiar utility/combat power.
+
+This is still a hypothesis, not a frozen pair. Rejuvenated must compare all missed earlier relics at 12,000 points.
+
+### Tier 2
+
+The old plan underestimated Animal Wrangler by treating it as a narrow fishing/Hunter option. Its official effect spans Fishing, Hunter, Farming, Big Game Hunter, charms, seeds/herbs, beans and banking.
+
+The revised plan correctly keeps Animal Wrangler, Superheated and Divine Druid unresolved until the task corpus can compare their whole-route value.
+
+### Tier 7
+
+Infernal Fire is no longer called the automatic speed pick.
+
+Required comparison now includes:
+
+- Death Mark eligibility/phase behaviour;
+- Prayer bonus and Icyenic scaling;
+- Naragi burst/first-clear value;
 - kill duration;
-- useful equipment set effects;
-- gear quality and failure rate.
+- death/failure rate;
+- food, familiar and banking time;
+- remaining skilling points that reduce required boss volume.
 
-The Order/Genesis Essence route is a recovery branch for weak gear, not evidence that the default route failed.
+This is the correct objective: remaining Dragon time, not dummy damage.
 
-### True Equilibrium
+## Blessing review
 
-The plan correctly requires canonical relic alignment data. Do not infer alignment from card position, icon colour, route prose, or apparent variety.
+The revised epoch model is stronger than a static path.
 
-Until the alignment field is sourced, any displayed True Equilibrium total is unverified.
+### Early candidate
+
+- Big Boned
+- Abyssal Cinders
+- Avernic Rampage
+- Demon's Mark
+
+This is coherent for low gear and accuracy.
+
+### Mixed candidate
+
+- Big Boned
+- Striking Light
+- Avernic Rampage
+- Splash Zone
+
+This creates one path of each alignment and provides a broad generalist state after accuracy is solved.
+
+### Late packages
+
+- Order/Genesis: True Equilibrium + Lord of Light + Tempered Heart;
+- Chaos/Chaotic Insight: Havoc/True benchmark + Unholy Critual + Perfidious;
+- Balance/Power Archive: True Equilibrium + Tearing Thorns + Envenomed;
+- Higher Power basic engine: Higher Power + Lord of Light + Tempered Heart.
+
+The official reveal places Lord of Light and Tempered Heart in Order. The revised review skill now guards this path assignment.
+
+Remaining uncertainty:
+
+- True Equilibrium's published wording says `relic alignment`; the current Equilibrium implementation models distinct Blessing paths. The source conflict must be resolved or shown as provisional before displaying a multiplier.
+- Combat interactions still require representative benchmarks.
+
+## Route-portfolio review
+
+The five-bank model fixes a major weakness in the original plan.
+
+Required banks:
+
+1. immediate skilling;
+2. deep skilling;
+3. immediate PvM;
+4. deep PvM;
+5. reserve.
+
+The visible `guaranteed next 2,000 points` and 4,000-point reserve-corpus goals are useful anti-fragility requirements. They must reconcile with actual route rows rather than become decorative metrics.
+
+The plan correctly distinguishes pre-450 task-count optimisation from post-450 deterministic/reliable point conversion.
 
 ## Data-model review
 
-The plan understands the important boundary: source facts and route estimates are different things. The illustrative `RouteTask` interface currently nests estimates and synergy beside sourced fields. That is acceptable as documentation but must not become one mutable persistence record.
+The revised plan now explicitly separates:
 
-Implementation should separate:
+- `TaskFact`;
+- `RouteAssumption`;
+- `PlayerTaskState`;
+- `DecisionGate`;
+- `RoutePortfolio`.
 
-```ts
-interface TaskFact {
-  // sourced and versioned fields only
-}
+This is the correct boundary. A scoring run cannot rewrite source facts, and imported progress cannot mutate route data.
 
-interface RouteAssumption {
-  taskId: string;
-  // time, RNG, failure risk, synergy and confidence
-}
+## Grok comparison review
 
-interface PlayerTaskState {
-  taskId: string;
-  // completed, blocked, queued, skipped and local notes
-}
-```
+The supplied mock was rendered at desktop, laptop and phone widths and with its source modal open.
 
-Join these at the route-engine boundary. A scoring pass must not rewrite source facts, and imported player state must not modify the route corpus.
+Useful:
+
+- compact header;
+- ledger/switchboard split;
+- two next actions;
+- concise phone metadata;
+- restrained dark palette.
+
+Blocking defects:
+
+- mobile metadata leaks into the desktop grid and makes rows excessively tall;
+- desktop fails the eight-rows-above-fold contract;
+- each row is a monolithic button;
+- phone puts too much status before the route;
+- desktop text is too small;
+- fixture data looks too real;
+- Perkfection/Asgarnia assumptions are invalid;
+- task-title-as-article source model is wrong.
+
+The revised design contract addresses each defect. The implementation must be original; Grok code and screenshots remain local review artifacts.
 
 ## UI review
 
-### Structural result: pass for planning
+### Structural result
 
-The proposed composition is appropriate:
+Pass for planning:
 
-- the route ledger owns the page;
-- progress is compact;
-- skilling and PvM actions remain simultaneously available;
-- region, relic, and Blessing decisions stay adjacent to the route;
-- the Wiki wrapper separates route commentary from live source text;
-- there is no hero, CTA strip, fake metric garden, glass stack, or ambient animation plan.
+- route ledger owns the page;
+- progress/source header is compact;
+- skilling and PvM actions remain visible;
+- route portfolios and decision gates are adjacent to the ledger;
+- completion/source actions are independent;
+- mobile route precedes deep status;
+- no hero, KPI garden, glass, glow or ambient animation is planned.
 
-### Rendered result: blocked
+### Rendered result
 
-There is no application, browser route, CSS, responsive state, console output, network trace, screenshot, or keyboard interaction to inspect. A source-only plan cannot pass rendered QA.
+Blocked. There is still no ClankerScape application to inspect.
 
-The first implementation review must verify:
+The Grok mock is comparison evidence, not evidence that ClankerScape passes rendered QA.
 
-- eight real rows above the fold at the target desktop width;
-- the side rail does not become a vertical card garden;
-- the ledger remains readable at laptop width;
-- mobile does not hide queue switching or the next irreversible choice;
-- the modal traps and restores focus;
-- source loading, missing, stale, and error states are legible;
-- reduced motion removes nonessential transitions;
-- no decorative gradient, glow, or blur residue appears.
+First implementation review must verify:
 
-### Main visual failure risk
-
-The likely failure is not insufficient decoration. It is turning every useful switchboard section into a bordered card until the page becomes the dashboard the plan rejects.
-
-Begin with one ledger surface and one rail surface. Add an inner boundary only when it clarifies a real interaction or state group.
+- laptop/desktop/phone;
+- at least eight real desktop rows above fold;
+- readable desktop type;
+- correct mobile/desktop metadata visibility;
+- independent completion/Wiki interactions;
+- focus/scroll restoration;
+- queue switching;
+- loading/CORS/offline/conflict/source states;
+- reduced motion;
+- console/network.
 
 ## Wiki-wrapper review
 
-The plain-text, on-demand MediaWiki approach is the right default for a static Pages app.
+The revised task-ID model is more accurate than the previous title-only model.
 
-Required implementation checks:
+Required:
 
-- test cross-origin requests from the deployed Pages origin;
-- use a declared page title from the task record;
-- deduplicate concurrent requests;
-- cap cached text and storage age;
-- label cached data as cached;
-- render source text as text rather than source markup;
-- preserve a direct article link when the API fails;
-- treat redirects and missing pages explicitly;
-- do not prefetch the corpus.
+- canonical task page cached by revision;
+- numeric `data-taskid` lookup;
+- missing/duplicate match failure;
+- inert parse and sanitised/structured output;
+- related article links separately;
+- real Pages-origin CORS test;
+- useful local snapshot fallback;
+- no iframe, login, proxy or silent relay.
 
-## Security and provenance review
+## Security and provenance
 
-**PASS for the planning PR.** The complete result is recorded in `docs/security-review.md`.
+Planning content remains low risk, but the secret review must be re-run after this revision because the changed-file count and plan contents changed.
 
-The public/private boundary is appropriately conservative: the PR records which private skills informed the project, but publishes rewritten ClankerScape rules rather than private code or screenshots.
+No executable application, workflow, dependency, generated asset or deployment configuration should enter this approval PR.
 
-## Copy review
+## Scope
 
-The user-facing examples are direct and task-oriented. The planning files avoid sales claims and generic product slogans.
+The proposed stack remains intentionally small:
 
-Implementation warning: do not turn scoring reasons into polished pseudo-intelligence such as `ClankerScape recommends this optimal action`. Show the actual reason, such as `3 nearby tasks share the same bar batch` or `opens Desert at 175`.
+- Vite;
+- React;
+- TypeScript;
+- plain CSS/CSS Modules;
+- focused tests and Playwright;
+- static Pages deployment.
 
-## Scope review
-
-The proposed stack is intentionally small. That is correct.
-
-Do not add:
-
-- Next.js merely because Equilibrium uses it;
-- a backend;
-- authentication;
-- analytics;
-- a component library;
-- a state framework;
-- an animation package;
-- Three.js;
-- a second route before the main route screen works.
-
-The first useful release is one sourced route screen, local progress, two queues, decision gates, and a reliable Wiki modal.
+Do not add Next.js, backend, auth, analytics, component library, state framework, animation framework or Three.js merely because another repository uses it.
 
 ## Approval recommendation
 
-Approve the package only if the seven decisions in `plan.md` section 17 match the intended race strategy.
+The revised package is suitable for owner review because it no longer pretends the static relic/region line is solved.
 
-After approval, the correct next unit is the smallest static scaffold plus schemas and validators. It is not a polished mock dashboard and it is not a hand-written list of unsourced tasks.
+After approval, the correct next unit remains a minimal static shell with clearly labelled fixture data and the corrected control/layout contracts. The production route still waits for the sourced task corpus.
