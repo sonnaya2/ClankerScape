@@ -5,12 +5,13 @@
   "type": "module",
   "description": "Read-only RS3 Equilibrium League Dragon route with source-locked research tooling.",
   "scripts": {
-    "check": "node --check src/domain/perkfection.js && node --check src/domain/blessings.js && node --check src/domain/route.js && node --check scripts/sync-equilibrium-tasks.mjs && node --check scripts/validate-data.mjs",
+    "check": "node --check scripts/build-route-site.mjs && node --check src/domain/perkfection.js && node --check src/domain/blessings.js && node --check src/domain/route.js && node --check scripts/sync-equilibrium-tasks.mjs && node --check scripts/validate-data.mjs",
     "validate": "node scripts/validate-data.mjs",
     "test": "node --test tests/*.test.mjs",
-    "verify": "npm run check && npm run validate && npm test",
+    "verify": "npm run build:site && npm run check && npm run validate && npm test",
     "sync:tasks": "node scripts/sync-equilibrium-tasks.mjs",
-    "serve": "python3 -m http.server 4173"
+    "serve": "npm run build:site && python3 -m http.server 4173 --directory _site",
+    "build:site": "node scripts/build-route-site.mjs"
   },
   "engines": {
     "node": ">=22"

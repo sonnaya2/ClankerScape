@@ -9,9 +9,9 @@ ClankerScape is the route itself. It is **not** a route builder, SaaS dashboard,
 
 ## Public structure
 
-The public page is read-only and opinionated:
+The public page is read-only and opinionated. It is a **micro-route**, not a phase summary: task-by-task execution must include NPCs, concrete travel, purchases/costs when verified, bank/loadout preparation, what to keep, and explicit stop thresholds.
 
-- Route — the ordered start-to-Dragon phases and the skilling/PvM switches.
+- Route — the ordered start-to-Dragon execution sheet and the skilling/PvM switches.
 - Regions — the chosen unlock order, not a region picker.
 - Relics — the chosen relic line, not a comparison form.
 - Blessings — the chosen Blessing line, with only genuinely unresolved mechanics marked for recheck.
@@ -38,7 +38,9 @@ No gradients, glass, blur, glow, auroras, generic navy dashboard chrome, radius 
 
 ## Density and copy
 
-The first viewport should communicate the route immediately: Dragon target, region order, and the first phases. Copy is short and operational.
+The first viewport should communicate the route immediately: Dragon target, region order, and the first executable steps. Phase prose alone is insufficient; the route sheet must carry literal actions such as who to talk to, what to buy, where to travel, what to bank/keep, and when to stop when those details are source-backed.
+
+Use short operational copy inside each step. Detailed is good when it prevents a wrong trip or missed prerequisite; verbose scene-setting is not.
 
 Do not add slogans, explanatory subtitles that restate headings, repeated totals, source metadata in primary chrome, or warnings without a consequence. A caveat belongs next to the exact route choice it affects.
 
@@ -49,6 +51,7 @@ After substantial UI work, run `clankerscape-bot-audit` against the rendered pag
 Block approval for:
 
 - any editable planner control on the public page;
+- replacing the literal execution sheet with broad phase summaries;
 - any BUSTED finding;
 - three TELLs on one screen;
 - meaningful WASHED finding;
@@ -57,4 +60,4 @@ Block approval for:
 
 ## Render checks
 
-Verify 1600×900, 1280×800, and 390×844. Check anchors, responsive phase rows, region/relic/blessing sequences, document overflow, keyboard focus, console/network errors, and that the deployed page contains no forms or client-side state.
+Verify 1600×900, 1280×800, and 390×844. Check anchors, dense numbered task rows, prep/bank/travel rows, region/relic/blessing milestones, responsive layout, document overflow, keyboard focus, console/network errors, and that the deployed page contains no forms or client-side state.
