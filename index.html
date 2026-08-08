@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#11110f">
+  <meta name="description" content="ClankerScape is a source-locked RuneScape 3 Equilibrium League Dragon route workbench.">
+  <title>ClankerScape — Dragon route workbench</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header id="topbar-state" class="topbar" aria-label="League progress and local controls">
+    <div class="loading-line">Loading verified League facts…</div>
+  </header>
+
+  <main id="app" class="app-shell" tabindex="-1">
+    <p class="loading-state">Opening route workbench…</p>
+  </main>
+
+  <input id="import-progress" type="file" accept="application/json,.json" hidden>
+
+  <dialog id="task-dialog" class="task-dialog" aria-labelledby="task-dialog-title">
+    <div class="dialog-shell">
+      <div class="dialog-toolbar">
+        <span>Source context</span>
+        <button type="button" class="quiet-button" data-dialog-close aria-label="Close task source">Close</button>
+      </div>
+      <div id="task-dialog-body" class="dialog-body"></div>
+    </div>
+  </dialog>
+
+  <noscript>
+    <div class="noscript">ClankerScape needs JavaScript for local progress, task filtering, and decision comparisons.</div>
+  </noscript>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
