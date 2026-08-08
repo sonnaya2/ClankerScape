@@ -15,6 +15,7 @@ Planning additions:
 - `docs/design-direction.md`
 - `docs/skills-audit.md`
 - `docs/grok-heavy-ui-prompt.md`
+- `docs/planning-review.md`
 - this review
 - three project-specific skill files under `.agents/skills/`
 
@@ -93,7 +94,7 @@ The files do not contain:
 
 ## Final PR diff scan
 
-Draft PR #2 was reviewed across all eight changed files after it was opened.
+Draft PR #2 was reviewed across all nine changed files after the planning review was added.
 
 Checks performed:
 
