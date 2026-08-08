@@ -161,6 +161,22 @@ Benchmark Infernal Fire, Icyenic Faith and Naragi Edict against the remaining en
 
 Track three reset charges and the exact history each reset would erase.
 
+### True Equilibrium source blocker
+
+The official Tier IV card says True Equilibrium scales **for each relic alignment selected**.
+
+The current Equilibrium engine instead calls `uniqueBlessingPathCount` and scales the effect from distinct Blessing paths. That is an upstream source/implementation conflict.
+
+Until it is fixed:
+
+- do not assume one Order, one Balance and one Chaos Blessing produces three True Equilibrium stacks;
+- do not use current True Equilibrium engine results in any route decision;
+- do not infer relic alignment from icon colour or chart position without verified source data;
+- treat every package containing True Equilibrium as blocked or run an explicitly labelled comparison with the effect excluded;
+- require relic-alignment provenance and a corrected Equilibrium commit before importing a result.
+
+See `docs/true-equilibrium-source-conflict.md`.
+
 ### Early accuracy candidate
 
 - Big Boned
@@ -175,11 +191,15 @@ Track three reset charges and the exact history each reset would erase.
 - Avernic Rampage
 - Splash Zone
 
+This candidate does not imply any True Equilibrium stack count. Its value must stand on Big Boned, Light, Avernic and Splash Zone until relic alignment is sourced.
+
 ### Late packages
+
+The following are candidates only. Any package containing True Equilibrium remains blocked by the source conflict.
 
 Order/Genesis:
 
-- True Equilibrium
+- True Equilibrium **or a sourced Tier IV alternative**
 - Lord of Light
 - Tempered Heart
 - Genesis Essence
@@ -205,7 +225,7 @@ Higher Power basic engine:
 - Tempered Heart
 - Genesis Essence
 
-Recommend a reset only when it removes a real blocker or lowers P50 remaining route by at least 8% and still wins at P90 after setup/death/supply costs.
+Recommend a reset only when it removes a real blocker or lowers P50 remaining route by at least 8% and still wins at P90 after setup/death/supply costs. A result using the known-bad True Equilibrium resolver cannot satisfy this gate.
 
 ## Task records
 
@@ -242,6 +262,7 @@ A candidate route requires:
 - no Catalyst production rows;
 - legal dependencies and cumulative gates;
 - sourced region/relic/Blessing decisions;
+- no decision depending on the known-bad True Equilibrium resolver;
 - 48,000-point finish plus reserve corpus;
 - two meaningful queues where source data permits;
 - second review of every step over five minutes;
