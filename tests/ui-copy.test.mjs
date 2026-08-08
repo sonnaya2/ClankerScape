@@ -22,6 +22,9 @@ const retired = [
   'Unsorted',
 ];
 
+const equilibriumArtRoot =
+  'https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/';
+
 test('the public site is the fixed route, not a planner', () => {
   assert.match(index, /Desert <i>→<\/i> Asgarnia <i>→<\/i> Anachronia/);
   assert.match(index, /Golden Touch/);
@@ -62,4 +65,12 @@ test('RuneScape palette stays dark with restrained brass and teal', () => {
   assert.match(css, /--gold:\s*#c8a963/);
   assert.match(css, /--teal:\s*#4c928a/);
   assert.doesNotMatch(css, /--paper|#dfcda3|#f1e4c4/i);
+});
+
+test('public imagery is real RuneScape art from a pinned Equilibrium revision', () => {
+  const images = [...index.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/gi)].map((match) => match[1]);
+  assert.ok(images.length >= 20, 'expected the route to use the shared RuneScape art library');
+  for (const src of images) {
+    assert.ok(src.startsWith(equilibriumArtRoot), `unapproved public image source: ${src}`);
+  }
 });
