@@ -1,144 +1,248 @@
 ---
 name: clankerscape-route
-description: Research, score, and maintain the ClankerScape first-to-Dragon route using sourced Equilibrium tasks, phase-aware task-count and point optimisation, and separate skilling/PvM queues.
+description: Research, score, and maintain the ClankerScape first-to-Dragon route using sourced Equilibrium tasks, five point banks, phase-aware ranking, region/relic decision gates, and reset-triggered Blessing epochs.
 ---
 
 # ClankerScape route planning
 
-Use this skill for task ingestion, route ordering, region choices, relic choices, Blessing paths, and route commentary.
+Use this skill for task ingestion, route order, point banks, regions, relics, Blessings, estimates, alternatives, and route commentary.
 
 ## Objective
 
-Reach 48,000 Equilibrium League Points quickly without turning the route into one uninterrupted grind. Keep a viable skilling queue and PvM queue so the player can switch when blocked, tired, undergeared, or waiting on RNG.
+Reach 48,000 League Points quickly and reliably while preserving a strong skilling route and a strong PvM route. Stop at Dragon.
 
-Stop optimising at Dragon. Do not silently convert the project into a max-points guide.
+Do not reduce the race to one brittle queue or one permanent build thesis.
 
 ## Source hierarchy
 
 1. Current official Jagex League rules and reveals.
-2. Current RuneScape Wiki Equilibrium task/mechanic pages.
+2. Current canonical RuneScape Wiki Equilibrium tasks and mechanics.
 3. Provenanced canonical data in `sonnaya2/Equilibrium`.
-4. PvME or RS Analysis only for mechanics the Wiki does not cover.
+4. PvME or RS Analysis only for unresolved mechanics, never route ordering.
 
 Never use:
 
-- another player's route ordering;
-- public user guide pages as route templates;
+- another player's route order or commentary;
+- public Wiki user-guide pages as templates;
 - Reddit, YouTube comments, Facebook, or Twitter/X;
-- `RS3-Dev/TheRSGuide.com` or its code/content;
-- Catalyst rows as if they were Equilibrium tasks;
-- invented placeholders.
+- `RS3-Dev/TheRSGuide.com`;
+- Catalyst rows as Equilibrium truth;
+- remembered or plausible placeholder tasks.
 
-A blocked source remains blocked. Mark uncertainty instead of filling the gap.
+Unknown stays unknown.
 
-## Two optimisation modes
+## Hard feasibility
 
-### Before 450 completed tasks
+Exclude a task when:
 
-Region unlocks are task-count milestones. Prefer tasks per active minute, locality batching, prerequisite overlap, passive XP, and Blessing progress. A low-point task may be correct when it opens the next region sooner.
+- its region or dependency chain is unavailable;
+- a required quest, item, shop, transport, level or activity is unavailable;
+- its source is missing/conflicted;
+- the required Relic/Blessing is not active;
+- it is Catalyst test data;
+- the player has marked it blocked/deferred.
 
-### After 450 completed tasks
+Show the exact exclusion reason. Do not give illegal tasks a low score.
 
-All region picks are available. Prefer reliable points per active minute, clustered rewards, gear progression, Blessing progress, and tasks already near completion. Penalise setup, failure risk, time gates, and rare-drop tails.
+## Five point banks
 
-Do not use one static score across both modes.
+Always maintain:
 
-## Default macro route
+1. immediate skilling;
+2. deep skilling;
+3. immediate PvM;
+4. deep PvM;
+5. reserve RNG/time-gated/crowded tasks.
 
-- Start: Misthalin + Havenhythe.
-- 50 tasks: automatic Karamja.
-- 175 tasks: Kharidian Desert.
-- 300 tasks: Asgarnia.
-- 450 tasks: default Anachronia after a live comparison; Tirannwn then Wilderness are fallbacks.
+After 450 tasks, try to expose a guaranteed-next-2,000-point list with meaningful contributions from both skilling and PvM. Keep at least 4,000 feasible reserve points beyond the 48,000 finish corpus.
 
-Desert is the count accelerator. Asgarnia is the mixed task/infrastructure bridge. Anachronia is the default point-density finisher.
+## Before 450 tasks
 
-Re-run the comparison when the full task list changes. Total regional points alone do not decide the final pick.
+Optimise lexicographically:
 
-## Default relic route
+1. time to next 50/175/300/450 task gate;
+2. profitable Blessing breakpoint;
+3. profitable Relic breakpoint;
+4. transport, skill, gear and prerequisite unlocks;
+5. locality batching;
+6. tasks per active minute;
+7. points per active minute;
+8. lower RNG, crowding, failure and uncertainty.
 
-1. Golden Touch
-2. Superheated
-3. Assassin's Insight
-4. Crystal Grace
-5. Production Master
-6. Perkfection
-7. Infernal Fire
+A fast low-point task may correctly beat a slow high-point task.
 
-For every irreversible pick, retain a runner-up and list the sourced task clusters each option accelerates.
+## After 450 tasks
 
-Do not claim normal relics can be reset. Confirmed reset charges apply to Blessing progression. Rejuvenated grants an additional earlier relic; it does not rewrite prior selections.
+Optimise lexicographically:
 
-## Default Blessing route
+1. deterministic points available now;
+2. reliable points per active minute;
+3. profitable remaining Relic/Blessing breakpoints;
+4. cluster value;
+5. optionality and queue balance;
+6. lower P90 time, failure, crowding and supply rebuilding;
+7. raw expected points per minute.
 
-Early low-gear path:
+Do not let high-EV rare tails displace a deterministic floor.
+
+## Optionality and switch cost
+
+Reward a step only when it names the additional tasks, supplies, travel or queue alternatives it opens.
+
+Track switching costs: banking/loadout, travel, aura/prayer/familiar changes, instance setup, warm-up/failure and attention. Switch queues when the alternative gain exceeds those costs.
+
+## Region gates
+
+Do not freeze a region solely from total points or to justify a relic.
+
+Working seed:
+
+- 175: Desert is provisional favourite;
+- 300: Asgarnia/Morytania/Kandarin/Wilderness complement gate;
+- 450: Anachronia/Tirannwn/Wilderness/Morytania reachable-portfolio gate.
+
+At every gate compare:
+
+- verified fast tasks;
+- reachable-now and reachable-next-window tasks;
+- deterministic floor;
+- skilling/PvM split;
+- Blessing tasks;
+- setup/travel/crowding;
+- dependency overlap;
+- supplies and gear;
+- P50/P90 completion.
+
+When projections overlap inside uncertainty, show a close result rather than inventing a margin.
+
+## Relic gates
+
+Ordinary relics are permanent unless a current source says otherwise. Blessing progression has the confirmed resets.
+
+### Tier 1
+
+Working favourite: Golden Touch. Compare Survivalist and Endless Harvest against the actual early 50/175-task route.
+
+### Tier 2
+
+No frozen default before task import. Compare Animal Wrangler, Superheated and Divine Druid across pre-450 task count, supplies, later PvM and remaining Dragon time. Do not undercount Animal Wrangler's Fishing/Hunter/Farming/BGH/charm/seed scope.
+
+### Tier 3
+
+Working favourite: Voidwalker for route-wide travel. Assassin's Insight wins when Slayer/Blessing/PvM banks dominate. Nature's Network wins when Farming/patch travel and Animal Wrangler synergy dominate.
+
+### Tier 4
+
+Working favourite: Crystal Grace. Antiquarian wins on a sufficiently large Archaeology corpus. Transmutation wins when it removes region-resource blockers or converts a stored bank into faster tasks/gear.
+
+### Tier 5–6 paired gate
+
+Test Production Master + Devout first.
+
+At 6,000:
+
+- Production Master first when a banked production burst rapidly reaches 12,000;
+- Devout first when portable banking/familiar power immediately wins;
+- Clue Connoisseur only when sourced clue tasks provide a reliable point bank.
+
+At 12,000:
+
+- Rejuvenated is the working default;
+- compare every missed Tier 1–5 relic;
+- choose the one that removes the most remaining Dragon time.
+
+Perkfection is not default. It wins only when sourced remaining Invention/perk/machine gains beat the best missed earlier relic by at least 8% after uncertainty and P90 penalties.
+
+### Tier 7
+
+Benchmark Infernal Fire, Icyenic Faith and Naragi Edict against the remaining encounter portfolio. Include Death Mark eligibility, Prayer bonus, Blessing package, kill duration, deaths, supplies, first clears and remaining skilling points. Choose lowest remaining route time, not dummy DPS.
+
+## Blessing epochs
+
+Track three reset charges and the exact history each reset would erase.
+
+### Early accuracy candidate
 
 - Big Boned
 - Abyssal Cinders
 - Avernic Rampage
 - Demon's Mark
 
-Mid/late default candidates:
+### Mixed generalist candidate after accuracy is solved
+
+- Big Boned
+- Striking Light
+- Avernic Rampage
+- Splash Zone
+
+### Late packages
+
+Order/Genesis:
 
 - True Equilibrium
+- Lord of Light
+- Tempered Heart
+- Genesis Essence
+
+Chaos/Chaotic Insight:
+
+- Havoc Born or True Equilibrium benchmark
 - Unholy Critual
-- Perfidious for the crit/Inferno speed branch, or Envenomed for the Perkfection/Power Archive infrastructure branch
+- Perfidious
+- Chaotic Insight when the segment has Chaos majority
 
-Keep three confirmed Blessing reset charges in a visible ledger. Bank resets until a current path materially blocks progress. Maintain an Order/Genesis Essence recovery branch for weak gear and a Balance/Power Archive branch for developed poison/perk infrastructure.
+Balance/Power Archive:
 
-Do not call a final path without benchmarking representative targets in the Equilibrium combat engine.
+- True Equilibrium
+- Tearing Thorns
+- Envenomed
+- Power Archive
 
-## Task record discipline
+Higher Power basic engine:
 
-Sourced facts and route estimates are different data.
+- Higher Power
+- Lord of Light
+- Tempered Heart
+- Genesis Essence
 
-A task fact includes its name, region, tier, points, requirements, Wiki page, source URL, and verification date. A route estimate includes setup time, active time, RNG range, failure risk, synergy, and confidence.
+Recommend a reset only when it removes a real blocker or lowers P50 remaining route by at least 8% and still wins at P90 after setup/death/supply costs.
 
-Never overwrite a sourced field with an estimate. Never give an estimate the visual treatment of a confirmed rule.
+## Task records
 
-## Queue discipline
+Keep separate:
 
-Every phase must expose:
+- sourced `TaskFact`;
+- route `RouteAssumption`;
+- local `PlayerTaskState`;
+- region/relic/Blessing `DecisionGate`;
+- five-bank `RoutePortfolio`.
 
-- one executable skilling action;
-- one executable PvM action;
-- the reason each is currently valuable;
-- a trigger for switching.
+A scoring pass never rewrites source facts. Player state never mutates the task corpus.
 
-Switch queues when:
+## Estimates
 
-- the next row is blocked by a level/item;
-- expected RNG exceeds the player's tolerance;
-- a boss repeatedly fails;
-- a new relic/Blessing/region changes the ranking;
-- a production batch or stored-resource threshold is ready;
-- the current activity becomes mentally stale.
+Store setup, travel, active, waiting, P50 RNG, P90 RNG and retry time separately. Unknown is `null`, not zero. Record confidence and sample count. Re-rank when live observations change an estimate by at least 20%.
 
-The route may recommend, but the player can mark rows do-now, queued, blocked, deferred, completed, or skipped for Dragon. Recalculate future recommendations without rewriting completed history.
+## Route explanations
 
-## Final-region comparison
+Name the actual reason:
 
-At task 450 calculate, for each candidate:
+- `Completes the 175-task gate without another bank trip.`
+- `Held for Production Master; current processing wastes 11 minutes.`
+- `Opens three Desert tasks and the next Blessing kill.`
+- `Parked: high crowding; use the two deterministic alternatives first.`
 
-- tasks reachable now with less than 15 minutes of setup;
-- tasks reachable in the next four active hours;
-- reliable points after excluding severe time gates and extreme RNG;
-- Blessing-task access;
-- synergy with current levels, relics, gear, and queued prerequisites.
+Never use `efficient progression`, `good value`, `optimal synergy`, or an unexplained score.
 
-Show the decisive rows and assumptions. Do not output an unexplained score badge.
+## Route freeze
 
-## Validation
+A candidate route requires:
 
-Before publishing a route update:
-
-- compare task/point totals to the official table;
-- reject duplicate task IDs;
-- reject rows missing a Wiki title/source exception;
-- reject tiers or point values absent from source data;
-- verify region availability and unlock thresholds;
-- verify relic/Blessing names and reset accounting;
-- scan commentary for copied route prose;
-- identify assumptions with confidence and date.
-
-When data is incomplete, publish the macro route and blocked decisions—not fake detail.
+- full task import and total reconciliation;
+- no Catalyst production rows;
+- legal dependencies and cumulative gates;
+- sourced region/relic/Blessing decisions;
+- 48,000-point finish plus reserve corpus;
+- two meaningful queues where source data permits;
+- second review of every step over five minutes;
+- owner approval of irreversible decisions.
