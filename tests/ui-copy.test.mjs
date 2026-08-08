@@ -4,6 +4,8 @@ import test from 'node:test';
 
 const index = await readFile(new URL('../_site/index.html', import.meta.url), 'utf8');
 const css = await readFile(new URL('../styles.css', import.meta.url), 'utf8');
+const routeCss = await readFile(new URL('../route-sheet.css', import.meta.url), 'utf8');
+const equilibriumArtRoot = 'https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/';
 
 test('public page is a literal read-only route sheet', () => {
   assert.match(index, /Do this\. In this order\./);
@@ -20,14 +22,28 @@ test('public page is a literal read-only route sheet', () => {
   assert.doesNotMatch(index, /<script\b|localStorage|sessionStorage|contenteditable/i);
 });
 
+test('first viewport carries the fixed route board', () => {
+  for (const value of [
+    'Dragon route', '48,000', 'preview-phase', 'overview-regions', 'overview-relics',
+    'overview-blessings', 'Desert', 'Asgarnia', 'Anachronia', 'Necromancy first',
+    'Magic after Crystal Grace', 'Jump to exact route',
+  ]) assert.ok(index.includes(value), `missing overview contract: ${value}`);
+});
+
 test('working route choices remain explicit', () => {
   for (const value of [
     'Desert → Asgarnia → Anachronia',
     'Golden Touch', 'Animal Wrangler', 'Voidwalker', 'Crystal Grace',
-    'Production Master', 'Rejuvenated + Devout', 'Infernal Fire',
+    'Production Master', 'Rejuvenated', '+ Devout', 'Infernal Fire',
     'Big Boned', 'Abyssal Cinders', 'Avernic Rampage', "Demon’s Mark",
     'True Equilibrium', 'Lord of Light', 'Tempered Heart', 'Genesis Essence',
   ]) assert.ok(index.includes(value), `missing route choice: ${value}`);
+});
+
+test('overview imagery is real RuneScape material from the pinned Equilibrium art library', () => {
+  const images = [...index.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/gi)].map(match => match[1]);
+  assert.ok(images.length >= 20, `expected at least 20 real game-art images, got ${images.length}`);
+  for (const src of images) assert.ok(src.startsWith(equilibriumArtRoot), `unexpected public image source: ${src}`);
 });
 
 test('Catalyst-only route mechanics never leak into Equilibrium walkthrough', () => {
@@ -38,5 +54,6 @@ test('Catalyst-only route mechanics never leak into Equilibrium walkthrough', ()
 
 test('generic AI dashboard chrome stays absent', () => {
   assert.doesNotMatch(css, /gradient|glow|backdrop-filter|border-radius/i);
+  assert.doesNotMatch(routeCss, /gradient|glow|backdrop-filter|border-radius/i);
   assert.doesNotMatch(index, /dashboard|workspace|KPI|optimi[sz]e your|unlock your potential|State \/ source|>Park</i);
 });
