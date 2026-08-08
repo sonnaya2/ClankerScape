@@ -1,0 +1,1356 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-08-07",
+  "sources": {
+    "official-reveal": {
+      "name": "Jagex Leagues: EQUILIBRIUM reveals",
+      "url": "https://secure.runescape.com/m=news/leagues-equilibrium-reveals---releasing-august-10th",
+      "authority": "primary"
+    },
+    "wiki-tasks": {
+      "name": "RuneScape Wiki Equilibrium task list",
+      "url": "https://runescape.wiki/w/Equilibrium_League/Tasks",
+      "authority": "canonical-community"
+    }
+  },
+  "target": {
+    "name": "Dragon Trophy",
+    "points": 48000
+  },
+  "officialTotals": {
+    "tasks": 1152,
+    "points": 109380
+  },
+  "startingRegions": [
+    "misthalin",
+    "havenhythe"
+  ],
+  "automaticRegion": {
+    "id": "karamja",
+    "taskCount": 50
+  },
+  "electiveRegionMilestones": [
+    175,
+    300,
+    450
+  ],
+  "electiveRegionsAllowed": 3,
+  "regionRule": "All published region sets can reach Dragon; totals alone do not prove the fastest route.",
+  "regions": [
+    {
+      "id": "global",
+      "name": "Global",
+      "points": 34950,
+      "tasks": 392,
+      "blessingTasks": 0,
+      "unlock": "always",
+      "autoCompletedQuests": []
+    },
+    {
+      "id": "anachronia",
+      "name": "Anachronia",
+      "points": 8210,
+      "tasks": 57,
+      "blessingTasks": 5,
+      "unlock": "elective",
+      "autoCompletedQuests": [
+        "Desperate Measures",
+        "Sins of the Father",
+        "Extinction",
+        "Raksha, the Shadow Colossus",
+        "Osseous Rex",
+        "Desperate Times"
+      ]
+    },
+    {
+      "id": "asgarnia",
+      "name": "Asgarnia",
+      "points": 6760,
+      "tasks": 65,
+      "blessingTasks": 5,
+      "unlock": "elective",
+      "autoCompletedQuests": [
+        "Impressing the Locals",
+        "Troll Stronghold",
+        "Fishing Contest",
+        "My Arm's Big Adventure",
+        "Heroes' Quest",
+        "Dwarf Cannon",
+        "Wanted!",
+        "Recruitment Drive",
+        "The Knight's Sword"
+      ]
+    },
+    {
+      "id": "desert",
+      "name": "Kharidian Desert",
+      "points": 8360,
+      "tasks": 73,
+      "blessingTasks": 5,
+      "unlock": "elective",
+      "autoCompletedQuests": [
+        "Stolen Hearts",
+        "Diamond in the Rough",
+        "The Jack of Spades",
+        "Desert Treasure",
+        "Icthlarin's Little Helper",
+        "Eclipse of the Heart",
+        "Beneath Scabaras' Sands",
+        "The Feud",
+        "Spirits of the Elid",
+        "Missing My Mummy",
+        "Dealing with Scabaras",
+        "Enakhra's Lament",
+        "Contact!"
+      ]
+    },
+    {
+      "id": "fremennik",
+      "name": "Fremennik Province",
+      "points": 4800,
+      "tasks": 61,
+      "blessingTasks": 5,
+      "unlock": "elective",
+      "autoCompletedQuests": [
+        "The Fremennik Trials",
+        "The Fremennik Isles",
+        "Lunar Diplomacy",
+        "Dream Mentor",
+        "Horror from the Deep",
+        "The Tale of the Muspah",
+        "Between a Rock...",
+        "The Giant Dwarf",
+        "Forgettable Tale of a Drunken Dwarf",
+        "Forgiveness of a Chaos Dwarf",
+        "King of the Dwarves",
+        "Birthright of the Dwarves",
+        "The Curse of Arrav",
+        "Cold War",
+        "Royal Trouble",
+        "Blood Runs Deep"
+      ]
+    },
+    {
+      "id": "havenhythe",
+      "name": "Havenhythe",
+      "points": 2060,
+      "tasks": 50,
+      "blessingTasks": 5,
+      "unlock": "starting",
+      "autoCompletedQuests": [
+        "Visions of Havenhythe",
+        "Hearts of Sanguine",
+        "Secrets of Amberfell"
+      ]
+    },
+    {
+      "id": "kandarin",
+      "name": "Kandarin",
+      "points": 5940,
+      "tasks": 63,
+      "blessingTasks": 5,
+      "unlock": "elective",
+      "autoCompletedQuests": [
+        "Legends' Quest",
+        "Watchtower",
+        "As a First Resort",
+        "Plague City",
+        "Biohazard",
+        "Tree Gnome Village",
+        "The Grand Tree",
+        "Monkey Madness",
+        "The Eyes of Glouphrie",
+        "The Path of Glouphrie",
+        "The Prisoner of Glouphrie",
+        "Merlin's Crystal",
+        "Holy Grail",
+        "King's Ransom",
+        "Swan Song",
+        "The World Wakes",
+        "Big Chompy Bird Hunting",
+        "Tower of Life",
+        "Monk's Friend",
+        "Kennith's Concerns",
+        "The Hand in the Sand",
+        "Meeting History",
+        "Sea Slug",
+        "Murder Mystery",
+        "Scorpion Catcher",
+        "Stellar Born"
+      ]
+    },
+    {
+      "id": "karamja",
+      "name": "Karamja",
+      "points": 3870,
+      "tasks": 57,
+      "blessingTasks": 5,
+      "unlock": "automatic-50-tasks",
+      "autoCompletedQuests": [
+        "Legends' Quest",
+        "TokTz-Ket-Dill",
+        "The Elder Kiln",
+        "The Brink of Extinction",
+        "Shilo Village",
+        "Tai Bwo Wannai Trio",
+        "Back to my Roots",
+        "Dragon Slayer",
+        "Hero's Welcome",
+        "Jungle Potion"
+      ]
+    },
+    {
+      "id": "misthalin",
+      "name": "Misthalin",
+      "points": 13430,
+      "tasks": 141,
+      "blessingTasks": 5,
+      "unlock": "starting",
+      "autoCompletedQuests": [
+        "The Lost Tribe",
+        "Death to the Dorgeshuun",
+        "Lost City",
+        "A Fairy Tale I - Growing Pains",
+        "A Fairy Tale II - Cure a Queen",
+        "Tears of Guthix",
+        "All Fired Up",
+        "While Guthix Sleeps",
+        "Ritual of the Mahjarrat",
+        "Soul Searching",
+        "Ode of the Devourer",
+        "Kili Row",
+        "Rune Mythos",
+        "Vessel of the Harbinger",
+        "The Spirit of War",
+        "Tomes of the Warlock",
+        "Remains of the Necrolord",
+        "Alpha vs Omega",
+        "One Small Favour",
+        "Battle of Forinthry",
+        "Ancient Awakening",
+        "Requiem for a Dragon",
+        "Smoking Kills",
+        "The Temple at Senntisten",
+        "There's No Place Like Home...",
+        "Housing of Parliament",
+        "What Lies Below",
+        "Rat Catchers",
+        "Garden of Tranquillity",
+        "A Soul's Bane",
+        "Nomad's Requiem",
+        "Gertrude's Cat",
+        "Family Crest",
+        "Bar Crawl (miniquest)",
+        "Enlightened Journey",
+        "The Dig Site",
+        "Buyers and Cellars",
+        "From Tiny Acorns (miniquest)",
+        "Lost Her Marbles (miniquest)",
+        "A Guild of Our Own (miniquest)"
+      ]
+    },
+    {
+      "id": "morytania",
+      "name": "Morytania",
+      "points": 6760,
+      "tasks": 64,
+      "blessingTasks": 5,
+      "unlock": "elective",
+      "autoCompletedQuests": [
+        "Priest in Peril",
+        "Nature Spirit",
+        "In Search of the Myreque",
+        "In Aid of the Myreque",
+        "The Darkness of Hallowvale",
+        "Legacy of Seergaze",
+        "The Branches of Darkmeyer",
+        "The Lord of Vampyrium",
+        "River of Blood",
+        "Rum Deal",
+        "Cabin Fever",
+        "The Great Brain Robbery",
+        "Rocking Out",
+        "A Clockwork Syringe",
+        "Pieces of Hate",
+        "One of a Kind",
+        "Shades of Mort'ton",
+        "Kindred Spirits",
+        "Ghosts Ahoy",
+        "Haunted Mine",
+        "Creature of Fenkenstrain"
+      ]
+    },
+    {
+      "id": "tirannwn",
+      "name": "Tirannwn",
+      "points": 7340,
+      "tasks": 64,
+      "blessingTasks": 5,
+      "unlock": "elective",
+      "autoCompletedQuests": [
+        "Underground Pass",
+        "Regicide",
+        "Roving Elves",
+        "Mourning's End Part I",
+        "Mourning's End Part II",
+        "Catapult Construction",
+        "Within the Light",
+        "Plague's End",
+        "The Path of Glouphrie"
+      ]
+    },
+    {
+      "id": "wilderness",
+      "name": "Wilderness",
+      "points": 6900,
+      "tasks": 65,
+      "blessingTasks": 5,
+      "unlock": "elective",
+      "autoCompletedQuests": [
+        "Spirit of Summer",
+        "Summer's End",
+        "Enter the Abyss (miniquest)",
+        "Legacy of Seergaze",
+        "Salt in the Wound"
+      ]
+    }
+  ],
+  "relicThresholds": [
+    {
+      "tier": 1,
+      "points": 10
+    },
+    {
+      "tier": 2,
+      "points": 750
+    },
+    {
+      "tier": 3,
+      "points": 1750
+    },
+    {
+      "tier": 4,
+      "points": 3500
+    },
+    {
+      "tier": 5,
+      "points": 6000
+    },
+    {
+      "tier": 6,
+      "points": 12000
+    },
+    {
+      "tier": 7,
+      "points": 20000
+    }
+  ],
+  "blessingThresholds": [
+    {
+      "progressionSlot": 1,
+      "label": "Tier 1",
+      "tasks": 1
+    },
+    {
+      "progressionSlot": 2,
+      "label": "Tier 2",
+      "tasks": 3
+    },
+    {
+      "progressionSlot": 3,
+      "label": "Tier 3",
+      "tasks": 5
+    },
+    {
+      "progressionSlot": 4,
+      "label": "God Tier 1",
+      "tasks": 9
+    },
+    {
+      "progressionSlot": 5,
+      "label": "Tier 4",
+      "tasks": 12
+    },
+    {
+      "progressionSlot": 6,
+      "label": "Tier 5",
+      "tasks": 16
+    },
+    {
+      "progressionSlot": 7,
+      "label": "Tier 6",
+      "tasks": 20
+    },
+    {
+      "progressionSlot": 8,
+      "label": "God Tier 2",
+      "tasks": 26
+    }
+  ],
+  "blessingTasksPerRegion": 5,
+  "blessingResets": {
+    "total": 3,
+    "awardedAt": [
+      "Tier 1 passive",
+      "God Tier 1 passive",
+      "God Tier 2 passive"
+    ],
+    "scope": "Blessing progression only"
+  },
+  "relicReset": {
+    "available": false,
+    "status": "no-published-mechanic",
+    "note": "Ordinary relics are one permanent choice per tier. Rejuvenated adds one earlier-tier relic; it does not reset or replace existing picks."
+  },
+  "relics": [
+    {
+      "id": "endless-harvest",
+      "tier": 1,
+      "name": "Endless Harvest",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Banking and persistence for core gathering skills.",
+      "details": [
+        "Automatically sends Archaeology, Farming, Fishing, Mining and Woodcutting resources to the relevant storage.",
+        "Fishing, Mining and Woodcutting have a 10% chance to upgrade a resource by one tier.",
+        "Standard trees remain available when you are the one chopping; moved fishing spots are followed; felled trees are resumed after regrowth.",
+        "Mining stamina remains at 100%.",
+        "Archaeology time sprites stay in place and follow the player."
+      ],
+      "impactChannels": [
+        "gathering",
+        "banking",
+        "travel-friction",
+        "archaeology"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "survivalist",
+      "tier": 1,
+      "name": "Survivalist",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Best-tier gathering tools, doubled resources and Archaeology acceleration.",
+      "details": [
+        "The Survivalist's bag stores logs, fish and ore and supplies highest-tier Mining, Woodcutting and Fishing tools.",
+        "Fishing, Mining, Woodcutting and Archaeology excavation resources are doubled; the extra resources do not award extra XP.",
+        "Rockertunities and critical swings deal double damage; rockertunities immediately award an ore.",
+        "Archaeology sprite focus gain is doubled and discovery immediately reaches 100% focus.",
+        "Discovered artefacts have a 50% chance to restore immediately and award restoration XP."
+      ],
+      "impactChannels": [
+        "gathering",
+        "equipment-access",
+        "archaeology",
+        "resource-volume"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "golden-touch",
+      "tier": 1,
+      "name": "Golden Touch",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Agility, Thieving, coins, Prayer XP and supply generation.",
+      "details": [
+        "Goldenhawk boots periodically grant Agility XP while running, skilling or using ultimate abilities.",
+        "Agility or Thieving XP can produce feathers worth 50,000 coins or Prayer XP.",
+        "Agility laps award 10,000 coins per Agility level and double lap XP; course failures are removed.",
+        "Thieving cannot fail, loot is noted and tripled, stalls and chests do not deplete, and safes have no cooldown.",
+        "Pickpocket and stall non-coin loot is tripled; Thieving coins are multiplied by 100.",
+        "Chests and safes can send herb or potion-ingredient bundles to the bank."
+      ],
+      "impactChannels": [
+        "agility",
+        "thieving",
+        "coins",
+        "prayer",
+        "supplies"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "animal-wrangler",
+      "tier": 2,
+      "name": "Animal Wrangler",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "A broad Fishing, Hunter, Farming and BGH engine—not a narrow fishing pick.",
+      "details": [
+        "Fishing and Hunter loot can be automatically banked.",
+        "Fishing or Hunter catches can produce farm animals, with an Anachronia dinosaur alternative.",
+        "Fishing, Hunter and farm-animal harvests can bank herbs or seeds.",
+        "Farm animals have perfect stats, need no food and sell for maximum beans.",
+        "Hunter catches cannot fail; Hunter loot and marks are multiplied by five and traps attract faster.",
+        "Fishing needs no bait and always catches an additional fish.",
+        "Anachronia and Havenhythe BGH need no bait and creatures take twice as long to catch you.",
+        "Spirit moths give ten times the charms; farm animals are twenty times more common."
+      ],
+      "impactChannels": [
+        "fishing",
+        "hunter",
+        "farming",
+        "big-game-hunter",
+        "charms",
+        "seeds",
+        "banking"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "superheated",
+      "tier": 2,
+      "name": "Superheated",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Combines Firemaking, Cooking, Mining/Smithing and material production.",
+      "details": [
+        "Woodcutting can auto-burn logs and Fishing can auto-cook catches without level requirements.",
+        "Bonfires consume a log every 0.6 seconds; one incense stick grants maximum potency for 60 minutes.",
+        "Blessed fire spirits replace ordinary spirits, occur more often and can also spawn from Smithing.",
+        "Smelting always makes double bars, with a 3% chance for 50 extra bars, and can process up to 60 bars.",
+        "In-progress Smithing grants Invention materials as if the item were disassembled.",
+        "Smithing stays at maximum heat and gains triple base progress.",
+        "Ceremonial swords grant five times Smithing XP and 50 bars; burial-set XP is tripled."
+      ],
+      "impactChannels": [
+        "firemaking",
+        "cooking",
+        "smithing",
+        "mining",
+        "invention-materials",
+        "batching"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "divine-druid",
+      "tier": 2,
+      "name": "Divine Druid",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Herblore, Summoning and Divination supply compression.",
+      "details": [
+        "Thera's pouch stores grimy herbs and charms and supplies infinite spirit shards and Summoning pouches.",
+        "Grimy herbs can become unfinished potions and herbs can be cleaned all at once.",
+        "Gathering can frequently produce herbs and charms; enemy charm drops are multiplied by five.",
+        "Pouch creation can bank an extra pouch and ten matching scrolls; familiar skill boosts are tripled.",
+        "Potion making has a 75% ingredient-save chance.",
+        "Only enriched memories are gathered and conversion uses half the energy.",
+        "Memory conversion can bank a porter or divine charge; memory strands are multiplied by ten and chronicle XP is doubled.",
+        "Divine-energy crafting uses half the energy and all Meilyr potion recipes are unlocked."
+      ],
+      "impactChannels": [
+        "herblore",
+        "summoning",
+        "divination",
+        "charms",
+        "potions",
+        "porters",
+        "supplies"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "natures-network",
+      "tier": 3,
+      "name": "Nature's Network",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Instant Farming plus direct teleports to nature transport and patches.",
+      "details": [
+        "The fairy mushroom teleports to fairy rings, spirit trees and farming patches.",
+        "Patches harvest instantly and produce is noted.",
+        "Planted seeds grow immediately.",
+        "All patches act as ultracomposted.",
+        "Planting has a 25% seed-save chance.",
+        "Herb patches plant the maximum seed count while consuming only the base amount."
+      ],
+      "impactChannels": [
+        "farming",
+        "teleports",
+        "seeds",
+        "banking"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "assassins-insight",
+      "tier": 3,
+      "name": "Assassin's Insight",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Slayer routing, task control, elite spawns and guaranteed ushabti capture.",
+      "details": [
+        "The skull teleports to Slayer masters and a range of Slayer dungeons and monsters.",
+        "Assignments offer two choices and can be requested at minimum or maximum size.",
+        "Prefer and block changes are free.",
+        "Corrupted slayer mask effects are always active.",
+        "Elite Slayer monsters are five times more common and award five times Slayer XP before League multipliers.",
+        "Ushabti capture succeeds every time."
+      ],
+      "impactChannels": [
+        "slayer",
+        "teleports",
+        "task-control",
+        "elite-monsters",
+        "slayer-dungeon"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "voidwalker",
+      "tier": 3,
+      "name": "Voidwalker",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Very broad jewellery teleports plus mixed supply drops.",
+      "details": [
+        "The abyssal conduit provides unlimited teleports from major glory, bracelet, necklace, pendant and ring teleport sets.",
+        "Void shards can award a clue and supplies including Summoning pouches, divine energy/charges, Invention materials, dragon equipment, feathers, geodes, blessed fire spirits or crystal essence."
+      ],
+      "impactChannels": [
+        "teleports",
+        "clues",
+        "supplies",
+        "invention-materials",
+        "summoning",
+        "divination"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "crystal-grace",
+      "tier": 4,
+      "name": "Crystal Grace",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Runecrafting, Necromancy rituals, Prayer and spell access.",
+      "details": [
+        "Seren's crystal tiara is an omni-tiara, teleports to unlocked Runecrafting altars and acts as a demonhorn necklace.",
+        "All Magic spells are unlocked.",
+        "Any XP gain has a 5% chance to produce stackable crystal essence that substitutes for pure or impure essence.",
+        "Rune output is tripled and level-based rune multipliers are always at their maximum.",
+        "Necromancy rituals act with 200% multiplicity, attraction and protection and the maximum 50% speed increase.",
+        "Light sources and glyphs require no ingredients.",
+        "Burying or offering a bone adds Dragon-bone-equivalent Prayer XP."
+      ],
+      "impactChannels": [
+        "runecrafting",
+        "necromancy",
+        "prayer",
+        "magic-unlocks",
+        "teleports"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "transmutation",
+      "tier": 4,
+      "name": "Transmutation",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Converts resource tiers and can automate noted stacks.",
+      "details": [
+        "The Deities' Transmuter enables toggleable transmutation through alchemy spells.",
+        "Divine Convergence downgrades up to ten resources; Divine Divergence upgrades up to ten.",
+        "Outputs are banked when noted.",
+        "The spells have no level requirement and award 10 Magic XP per item before League multipliers.",
+        "Noted stacks can be automatically recast while they remain in the same inventory slot."
+      ],
+      "impactChannels": [
+        "resource-conversion",
+        "magic",
+        "batching",
+        "banking",
+        "supply-routing"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "antiquarian",
+      "tier": 4,
+      "name": "Antiquarian",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "The complete Archaeology acceleration package.",
+      "details": [
+        "All Archaeology relics are available after the tutorial.",
+        "Materials go to storage or bank; the monolith has 1,000 energy and the journal is a free soil screener.",
+        "Fixate is immediate and unlimited.",
+        "Lore pages are 20% more common in addition to the passive.",
+        "Collections award ten times chronotes, replacing the passive five-times multiplier.",
+        "Artefact restoration uses half the materials; collections award ancient caskets.",
+        "Artefact or lore-page discovery immediately reaches 100% focus.",
+        "Divine geodes from excavation contain Archaeology materials."
+      ],
+      "impactChannels": [
+        "archaeology",
+        "chronotes",
+        "relic-access",
+        "materials",
+        "collections"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "clue-connoisseur",
+      "tier": 5,
+      "name": "Clue Connoisseur",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Maximum clue speed, access and reward volume.",
+      "details": [
+        "Uri's briefcase stores clues and caskets and teleports to unlocked-region hidey-holes.",
+        "The Globetrotter outfit is unlocked and all hidey-holes count as filled.",
+        "Treasure Trail points are tripled and each clue gives an extra casket.",
+        "Clues start at the minimum step count and caskets award the maximum loot-roll count.",
+        "Sealed clues are twice as common and have no carrying cap."
+      ],
+      "impactChannels": [
+        "clues",
+        "teleports",
+        "rewards",
+        "collection-logs"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "production-master",
+      "tier": 5,
+      "name": "Production Master",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Mass-processes production and compresses the largest late skilling batches.",
+      "details": [
+        "The Brooch of the Spirits is granted.",
+        "Many production activities process their entire batch at once.",
+        "Food never burns.",
+        "The brooch can spawn Seren spirits, divine blessings, catalysts of alteration and manifested knowledge.",
+        "Infinite exquisite urns and portable-station benefits are available everywhere.",
+        "Applicable masterwork items complete in one action.",
+        "Construction, Cooking, Crafting, Herblore, Fletching and Smithing receive a +6 boost."
+      ],
+      "impactChannels": [
+        "production",
+        "batching",
+        "crafting",
+        "herblore",
+        "smithing",
+        "cooking",
+        "masterwork"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "devout",
+      "tier": 5,
+      "name": "Devout",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "A mobile bank and heavily scaled familiar package.",
+      "details": [
+        "The Devout yak has 32 inventory slots, remote bank access and note/un-note controls.",
+        "The repeat-un-note scroll is infinite and costs no Summoning points.",
+        "Skill-boosting familiars award 10 base XP in their boosted skill up to every six seconds.",
+        "Summoning scrolls are not consumed and familiar spell-point costs fall to 10%.",
+        "Familiar damage scales with Summoning level up to +500% at level 99."
+      ],
+      "impactChannels": [
+        "banking",
+        "inventory",
+        "summoning",
+        "familiar-damage",
+        "skilling-familiars",
+        "travel-friction"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "perkfection",
+      "tier": 6,
+      "name": "Perkfection",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "A large Invention package whose value depends on the remaining route—not a flat DPS multiplier.",
+      "details": [
+        "The toolbox is an XP capacitor with ten times storage and ten times charging speed.",
+        "Two freely swappable gizmo slots apply in addition to equipped perks while an augmented item is active.",
+        "The toolbox teleports to Invention workbenches in unlocked areas.",
+        "Junk chance can be reduced to zero.",
+        "Machines are available from level 1, run ten times faster and have ten times capacity.",
+        "Disassembly gives ten times Invention materials.",
+        "Augmented items and machines consume no charge.",
+        "Helpful perks trigger 20% more often, without stacking with the item-level-20 benefit.",
+        "All Dwarven and Goblin technology blueprints are unlocked."
+      ],
+      "impactChannels": [
+        "invention-setup",
+        "invention-materials",
+        "machines",
+        "charge",
+        "xp-capacitor",
+        "combat-perks",
+        "workbench-travel"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "rejuvenated",
+      "tier": 6,
+      "name": "Rejuvenated",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Adds one complete relic from Tiers 1–5; it does not reset or replace a relic.",
+      "details": [
+        "Choose one additional relic from a previous tier."
+      ],
+      "impactChannels": [
+        "extra-relic",
+        "optionality"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "infernal-fire",
+      "tier": 7,
+      "name": "Infernal Fire",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Universal Death Mark and a 20% execute with a small pocket stat package.",
+      "details": [
+        "All four combat styles apply Death Mark every time while the Avernic star is carried or worn.",
+        "Death Mark kills a marked target at 20% life and grants 5% adrenaline on the kill.",
+        "Pocket stats: +18.7 damage bonus for every style and +15 Prayer bonus."
+      ],
+      "impactChannels": [
+        "combat-speed",
+        "execute",
+        "adrenaline",
+        "pocket-stats"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "naragi-edict",
+      "tier": 7,
+      "name": "Naragi Edict",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Burst stats, healing and one death save for first clears and dangerous encounters.",
+      "details": [
+        "The Sliver of Edicts activates for 16.8 seconds on a 1.5-minute cooldown.",
+        "During the active it heals 10,000 life points four times at 4.2-second intervals, boosts combat stats to 255 and revives the player on death.",
+        "Pocket stats: +300 Armour, +14 all-style damage, +1,500 life points and +15 Prayer."
+      ],
+      "impactChannels": [
+        "first-clears",
+        "survival",
+        "combat-burst",
+        "pocket-stats"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "icyenic-faith",
+      "tier": 7,
+      "name": "Icyenic Faith",
+      "alignment": null,
+      "alignmentStatus": "unverified",
+      "summary": "Prayer-scaled damage/crit plus major protection and sustain.",
+      "details": [
+        "The Tome of the Icyene provides +50 Prayer bonus when worn.",
+        "Each Prayer-bonus point grants 0.2% critical chance and 0.2% base ability damage.",
+        "Protection prayers and deflect curses block an additional 50% damage and also act as Soul Split."
+      ],
+      "impactChannels": [
+        "combat-speed",
+        "crit",
+        "prayer-scaling",
+        "survival",
+        "sustain"
+      ],
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    }
+  ],
+  "blessings": [
+    {
+      "id": "adrenaline-junkie",
+      "progressionSlot": 1,
+      "tier": 1,
+      "godTier": null,
+      "path": "Chaos",
+      "name": "Adrenaline Junkie",
+      "summary": "Raises adrenaline capacity and generation.",
+      "details": [
+        "Maximum adrenaline +50%.",
+        "Adrenaline generation +50%."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "big-boned",
+      "progressionSlot": 1,
+      "tier": 1,
+      "godTier": null,
+      "path": "Balance",
+      "name": "Big Boned",
+      "summary": "Large life increase plus a per-damage-instance life-scaled rider.",
+      "details": [
+        "Maximum life points +50%.",
+        "Player-sourced damage gains bonus damage equal to 5% of maximum life points."
+      ],
+      "support": "partially-modeled",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "teragards-aegis",
+      "progressionSlot": 1,
+      "tier": 1,
+      "godTier": null,
+      "path": "Order",
+      "name": "Teragard's Aegis",
+      "summary": "Armour adds base ability damage and regeneration.",
+      "details": [
+        "Base ability damage gains 25% of total Armour, doubled with a defender and tripled with a shield.",
+        "Base health regeneration gains 2.5% of maximum life with the same multipliers."
+      ],
+      "support": "partially-modeled",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "abyssal-cinders",
+      "progressionSlot": 2,
+      "tier": 2,
+      "godTier": null,
+      "path": "Chaos",
+      "name": "Abyssal Cinders",
+      "summary": "Per-hit bonus damage and an Inferno proc.",
+      "details": [
+        "On hit, attacks add 15% ability damage.",
+        "On hit, attacks have a 5% chance to trigger a 100–200% single-target Inferno of Zamorak."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "barkscales",
+      "progressionSlot": 2,
+      "tier": 2,
+      "godTier": null,
+      "path": "Balance",
+      "name": "Barkscales",
+      "summary": "Armour-based damage reduction that charges Grasp of Guthix.",
+      "details": [
+        "Incoming damage is reduced by 10% of Armour value.",
+        "After five reductions, Grasp of Guthix deals 80–120% ability damage as poison in a 3×3 area at the attacker."
+      ],
+      "support": "scenario-dependent",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "striking-light",
+      "progressionSlot": 2,
+      "tier": 2,
+      "godTier": null,
+      "path": "Order",
+      "name": "Striking Light",
+      "summary": "Basic-attack damage plus an armour-scaled Light hit.",
+      "details": [
+        "Basic-attack damage +40%.",
+        "Basic attacks trigger Light of Saradomin on a 9-second cooldown for 40–60% ability damage plus 250% Armour value."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "avernic-rampage",
+      "progressionSlot": 3,
+      "tier": 3,
+      "godTier": null,
+      "path": "Chaos",
+      "name": "Avernic Rampage",
+      "summary": "A state-changing free-adrenaline-cost window.",
+      "details": [
+        "On attack, 5% chance to activate for 7.2 seconds.",
+        "During the window, abilities and special attacks cost 0% adrenaline."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "eternal-sustenance",
+      "progressionSlot": 3,
+      "tier": 3,
+      "godTier": null,
+      "path": "Balance",
+      "name": "Eternal Sustenance",
+      "summary": "Food becomes free and no longer drains adrenaline.",
+      "details": [
+        "Food is not consumed when eaten.",
+        "Eating no longer loses adrenaline."
+      ],
+      "support": "scenario-dependent",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "steadfast-will",
+      "progressionSlot": 3,
+      "tier": 3,
+      "godTier": null,
+      "path": "Order",
+      "name": "Steadfast Will",
+      "summary": "Empowers Bash, Preparation, Reflect and Revenge.",
+      "details": [
+        "Bash adds damage equal to 350–450% of Armour value.",
+        "Preparation reduces all ability cooldowns by 12 seconds on activation.",
+        "Reflect returns 100% incoming damage plus 10–15% Armour value and can hit eight nearby targets.",
+        "Revenge duration and cooldown double and its maximum stacks rise to 20."
+      ],
+      "support": "scenario-dependent",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "demons-mark",
+      "progressionSlot": 4,
+      "tier": null,
+      "godTier": 1,
+      "path": "Chaos",
+      "name": "Demon's Mark",
+      "summary": "Accuracy always uses the target's weakness.",
+      "details": [
+        "Accuracy is calculated using the target's weakness."
+      ],
+      "support": "modeled",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "splash-zone",
+      "progressionSlot": 4,
+      "tier": null,
+      "godTier": 1,
+      "path": "Balance",
+      "name": "Splash Zone",
+      "summary": "Boosts multi-target damage and scales AoE with target footprint.",
+      "details": [
+        "Area-of-effect and multi-target attacks deal 30% more damage.",
+        "AoE abilities deal 5% more damage per tile occupied by the target."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "sacred-fervor",
+      "progressionSlot": 4,
+      "tier": null,
+      "godTier": 1,
+      "path": "Order",
+      "name": "Sacred Fervor",
+      "summary": "Reduces ability and special-attack cooldowns for every style.",
+      "details": [
+        "Melee, Magic, Ranged and Necromancy ability and special-attack cooldowns are reduced by 30%."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "havoc-born",
+      "progressionSlot": 5,
+      "tier": 4,
+      "godTier": null,
+      "path": "Chaos",
+      "name": "Havoc Born",
+      "summary": "A direct damage increase with large defensive penalties.",
+      "details": [
+        "Damage +20%.",
+        "Maximum life points −25%.",
+        "Armour value −25%."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "true-equilibrium",
+      "progressionSlot": 5,
+      "tier": 4,
+      "godTier": null,
+      "path": "Balance",
+      "name": "True Equilibrium",
+      "summary": "Adds a stat package once per distinct relic alignment.",
+      "details": [
+        "Per relic alignment: +75 base ability damage, +50 Armour, +500 life points, +5% critical chance, +7.5% critical damage and +5 Prayer bonus."
+      ],
+      "support": "blocked",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07",
+      "blocker": "Relic alignment data is not published in a machine-verifiable source; the current Equilibrium engine incorrectly derives this from Blessing paths."
+    },
+    {
+      "id": "higher-power",
+      "progressionSlot": 5,
+      "tier": 4,
+      "godTier": null,
+      "path": "Order",
+      "name": "Higher Power",
+      "summary": "Raises base ability damage but removes style ultimates.",
+      "details": [
+        "Base ability damage +30%.",
+        "Berserk, Death's Swiftness, Living Death and Sunshine become unavailable."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "unholy-critual",
+      "progressionSlot": 6,
+      "tier": 5,
+      "godTier": null,
+      "path": "Chaos",
+      "name": "Unholy Critual",
+      "summary": "Converts critical chance into critical damage and unleashes Inferno on critical strikes.",
+      "details": [
+        "Critical chance +15% and capped at 50%.",
+        "Excess critical chance converts to critical damage at 1:1.",
+        "Inferno of Zamorak gains +50% critical damage.",
+        "Critical strikes unleash a 100–200% single-target Inferno."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "tearing-thorns",
+      "progressionSlot": 6,
+      "tier": 5,
+      "godTier": null,
+      "path": "Balance",
+      "name": "Tearing Thorns",
+      "summary": "Doubles DoT duration and makes every fifth DoT hit trigger Grasp.",
+      "details": [
+        "Damage-over-time abilities last 100% longer.",
+        "Every fifth DoT-ability hit triggers Grasp of Guthix.",
+        "Grasp adds 10–20.30% of maximum life points and deals 80–120% ability damage as poison in a 3×3 area."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "lord-of-light",
+      "progressionSlot": 6,
+      "tier": 5,
+      "godTier": null,
+      "path": "Order",
+      "name": "Lord of Light",
+      "summary": "Basic attacks trigger five armour- and Prayer-scaled Light hits.",
+      "details": [
+        "Basic attacks trigger five Light of Saradomin effects on random nearby tiles, each hitting up to eight targets within one tile; 14.4-second cooldown.",
+        "Light deals 2% more damage per Prayer-bonus point and heals 5% of damage dealt.",
+        "Each Light deals 40–60% ability damage plus 250% Armour value."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "perfidious",
+      "progressionSlot": 7,
+      "tier": 6,
+      "godTier": null,
+      "path": "Chaos",
+      "name": "Perfidious",
+      "summary": "Empowers all three God-proc effects.",
+      "details": [
+        "Inferno of Zamorak activation chance is multiplied by five.",
+        "Grasp of Guthix requires two reductions to activate.",
+        "Light of Saradomin cooldown becomes 4.8 seconds."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "envenomed",
+      "progressionSlot": 7,
+      "tier": 6,
+      "godTier": null,
+      "path": "Balance",
+      "name": "Envenomed",
+      "summary": "Greatly scales poison and removes immunity after damage.",
+      "details": [
+        "Poison damage +50%, plus 2% per Herblore level.",
+        "Damaging an enemy disables its poison immunity for 30 seconds."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "tempered-heart",
+      "progressionSlot": 7,
+      "tier": 6,
+      "godTier": null,
+      "path": "Order",
+      "name": "Tempered Heart",
+      "summary": "Provides continuous adrenaline.",
+      "details": [
+        "Generate 6% adrenaline every 1.2 seconds."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "chaotic-insight",
+      "progressionSlot": 8,
+      "tier": null,
+      "godTier": 2,
+      "path": "Chaos",
+      "name": "Chaotic Insight",
+      "summary": "Every combat item counts as three pieces toward set effects.",
+      "details": [
+        "Each combat equipment item counts as two additional pieces toward its set effect."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "power-archive",
+      "progressionSlot": 8,
+      "tier": null,
+      "godTier": 2,
+      "path": "Balance",
+      "name": "Power Archive",
+      "summary": "Stores extra gizmos and doubles eligible combat-perk ranks.",
+      "details": [
+        "The Automaton Control Bot stores up to 20 weapon or armour gizmos and grants their effects while augmented gear is worn.",
+        "Eligible combat perks in stored gizmos have doubled rank."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    },
+    {
+      "id": "genesis-essence",
+      "progressionSlot": 8,
+      "tier": null,
+      "godTier": 2,
+      "path": "Order",
+      "name": "Genesis Essence",
+      "summary": "Treats equipped weapons as tier 120.",
+      "details": [
+        "Equipped weapons are treated as tier 120."
+      ],
+      "support": "mechanics-unverified",
+      "source": "official-reveal",
+      "verifiedAt": "2026-08-07"
+    }
+  ],
+  "verifiedMechanics": [
+    {
+      "id": "invention-global",
+      "status": "verified",
+      "summary": "The Invention tutorial is auto-completed and Invention can be trained without Asgarnia; the Invention Guild and machines still require Asgarnia."
+    },
+    {
+      "id": "big-boned-scope",
+      "status": "verified-intent",
+      "summary": "Big Boned applies to almost all player-sourced damage, including Conjures, but not familiars or dreadnips."
+    },
+    {
+      "id": "splash-zone-size",
+      "status": "verified-intent",
+      "summary": "Splash Zone uses NPC config size: a size-5 target occupies 25 tiles and receives the corresponding per-tile bonus."
+    },
+    {
+      "id": "caps-removed",
+      "status": "verified",
+      "summary": "The 30,000 damage cap and life-point cap are removed for this League."
+    },
+    {
+      "id": "cross-region-area-tasks",
+      "status": "verified",
+      "summary": "Area tasks requiring multiple regions are auto-skipped/auto-completed on region unlock."
+    },
+    {
+      "id": "shops",
+      "status": "verified",
+      "summary": "Shops use simplified infinite stock."
+    },
+    {
+      "id": "wikisync",
+      "status": "verified",
+      "summary": "WikiSync is available for task progress."
+    },
+    {
+      "id": "region-safe-assignments",
+      "status": "verified",
+      "summary": "Clues, tetracompasses, Slayer tasks and Reaper tasks respect unlocked regions."
+    },
+    {
+      "id": "survivalist-xp",
+      "status": "verified",
+      "summary": "Survivalist's doubled resources do not award doubled XP."
+    },
+    {
+      "id": "necromancy",
+      "status": "verified",
+      "summary": "Necromancy and the City of Um are in Misthalin; Kili's Knowledge tasks are skipped."
+    },
+    {
+      "id": "daemonheim",
+      "status": "source-conflict",
+      "summary": "The official FAQ says Bryll's reward shop is available outside the Wilderness wall, but later also calls Daemonheim/the shop Wilderness-locked. Do not score shop access until this is clarified."
+    }
+  ],
+  "sourceConflicts": [
+    {
+      "id": "true-equilibrium-alignment",
+      "severity": "blocking",
+      "summary": "The official Blessing uses relic alignment, while the current Equilibrium engine counts Blessing paths. Benchmarks using the current resolver are rejected."
+    },
+    {
+      "id": "daemonheim-shop",
+      "severity": "route-impacting",
+      "summary": "Two statements in the official FAQ conflict on reward-shop access without Wilderness."
+    }
+  ]
+}
