@@ -36,6 +36,8 @@
 | save menu | export, import, and clear remain behind one menu |
 | console/network | zero errors after favicon and final asset pass |
 
+Repository verification passes all **24 tests**, including the UI-copy regression guards.
+
 ## Bot audit
 
 ```text
