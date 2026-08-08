@@ -38,7 +38,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm run build:site
+      - run: |
+          npm run build:site
+          cp _site/index.html _site/route.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
