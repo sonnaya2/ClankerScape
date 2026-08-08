@@ -91,7 +91,30 @@ The files do not contain:
 - hidden connector IDs;
 - copied private source code.
 
-A final diff-level scan will be recorded after the draft PR is opened.
+## Final PR diff scan
+
+Draft PR #2 was reviewed across all eight changed files after it was opened.
+
+Checks performed:
+
+- verified that the changed-file list contains only planning, design, review, provenance, and project-skill Markdown files;
+- searched the complete patch for connector/session metadata and common private-account email domains;
+- searched for private-key delimiters and common token prefixes/encodings;
+- reviewed expected matches inside this document's secret-pattern checklist separately from real assignments or high-entropy values;
+- checked that no application configuration, dependency file, workflow, generated asset, browser state, or executable source entered the planning PR;
+- checked that the private EverSense contribution is described as rewritten project rules rather than copied code or visual assets.
+
+Result:
+
+- no credential-shaped value or assignment;
+- no email address;
+- no connector or session identifier;
+- no private key material;
+- no cookie or auth state;
+- no hidden outbound service configuration;
+- no copied private image or implementation file.
+
+This scan covers the planning PR only. It does not cover future dependencies, GitHub Actions secrets, runtime requests, import/export code, or deployed build output.
 
 ## Runtime threat model for implementation
 
@@ -229,6 +252,6 @@ Pages has not been enabled in this planning phase. There is no boilerplate to de
 
 ## Current verdict
 
-**PASS for planning content, pending final PR diff scan.**
+**PASS for the complete planning PR diff.**
 
 No shared secret or private account data has been identified. The implementation phase must repeat this review after dependencies, workflows, runtime source requests, and import/export code exist.
