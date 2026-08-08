@@ -25,100 +25,165 @@
   </header>
 
   <main>
-    <section class="route-head" id="route" aria-labelledby="route-title">
-      <div class="route-kicker">Current route</div>
-      <h1 id="route-title">Desert <i>→</i> Asgarnia <i>→</i> Anachronia</h1>
-      <p>Necromancy first. Magic comes online after Crystal Grace. Keep skilling and PvM moving together instead of camping one lane.</p>
-    </section>
-
-    <section class="phase-sheet" aria-label="Dragon route phases">
-      <article class="phase">
-        <div class="phase-index"><b>A</b><span>0–50</span></div>
-        <div class="phase-copy">
-          <div class="phase-title"><h2>Misthalin + Havenhythe</h2><span>bootstrap</span></div>
-          <p>Sweep dense low-requirement tasks. Push broad early skills, City of Um and cheap first-kill combat; stop long grinds before the next relic or XP multiplier.</p>
-          <div class="route-line"><strong>Skill</strong> Thieving · Woodcutting · Firemaking · Fletching · Fishing · Cooking · Mining · Smithing</div>
-          <div class="route-line"><strong>Fight</strong> early Necromancy · low-risk first kills · useful Slayer progress</div>
+    <section class="route-overview" id="route" aria-labelledby="route-title">
+      <header class="route-lead">
+        <div>
+          <span class="eyebrow">Dragon route</span>
+          <h1 id="route-title">Desert <i>→</i> Asgarnia <i>→</i> Anachronia</h1>
         </div>
-      </article>
+        <p>Necromancy first. Magic comes online after Crystal Grace. Keep skilling and PvM moving together instead of camping one lane.</p>
+      </header>
 
-      <article class="phase">
-        <div class="phase-index"><b>B</b><span>50–175</span></div>
-        <div class="phase-copy">
-          <div class="phase-title"><h2>Karamja</h2><span>one sweep</span></div>
-          <p>Karamja opens automatically at 50 tasks. Clear the cheap local cluster in one pass, then take the Fight Cave when the setup is already good enough.</p>
-          <div class="route-line"><strong>Sweep</strong> seaweed → pineapple → banana crate → karambwanji → Brimhaven dungeon → stepping stones → arena ticket → snake → TzHaar → 25 lobsters</div>
-          <div class="route-line"><strong>Power</strong> Jad + equip Fire cape when the first clear is reliable</div>
+      <div class="route-layout">
+        <div class="route-main">
+          <section class="region-board" id="regions" aria-labelledby="regions-title">
+            <header class="board-head">
+              <span>01</span>
+              <h2 id="regions-title">Regions</h2>
+              <p>Fixed unlock order</p>
+            </header>
+
+            <div class="region-track">
+              <article class="region-card start-card">
+                <div class="region-card-head"><b>A</b><small>Start</small></div>
+                <div class="region-art region-art-pair" aria-hidden="true">
+                  <img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/regions/misthalin.webp" alt="">
+                  <img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/regions/havenhythe.webp" alt="">
+                </div>
+                <h3>Misthalin + Havenhythe</h3>
+                <p>0–50 tasks</p>
+              </article>
+
+              <article class="region-card">
+                <div class="region-card-head"><b>B</b><small>50 tasks</small></div>
+                <div class="region-art" aria-hidden="true"><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/regions/karamja.webp" alt=""></div>
+                <h3>Karamja</h3>
+                <p>One local sweep</p>
+              </article>
+
+              <article class="region-card chosen-card">
+                <div class="region-card-head"><b>C</b><small>175 tasks</small></div>
+                <div class="region-art" aria-hidden="true"><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/regions/desert.webp" alt=""></div>
+                <h3>Desert</h3>
+                <p>First elective</p>
+              </article>
+
+              <article class="region-card chosen-card">
+                <div class="region-card-head"><b>D</b><small>300 tasks</small></div>
+                <div class="region-art" aria-hidden="true"><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/regions/asgarnia.webp" alt=""></div>
+                <h3>Asgarnia</h3>
+                <p>Infrastructure</p>
+              </article>
+
+              <article class="region-card chosen-card final-card">
+                <div class="region-card-head"><b>E</b><small>450 tasks</small></div>
+                <div class="region-art" aria-hidden="true"><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/regions/anachronia.webp" alt=""></div>
+                <h3>Anachronia</h3>
+                <p>Point push</p>
+              </article>
+            </div>
+
+            <div class="route-spine" aria-hidden="true">
+              <span></span><i></i><span></span><i></i><span></span><i></i><span></span><i></i><span></span>
+            </div>
+          </section>
+
+          <section class="phase-sheet" aria-label="Dragon route phases">
+            <article class="phase">
+              <div class="phase-index"><b>A</b><span>0–50</span></div>
+              <div class="phase-copy">
+                <div class="phase-title"><h2>Misthalin + Havenhythe</h2><span>bootstrap</span></div>
+                <p>Sweep dense low-requirement tasks. Push broad early skills, City of Um and cheap first-kill combat; stop long grinds before the next relic or XP multiplier.</p>
+                <div class="route-line"><strong>Skill</strong><span>Thieving · Woodcutting · Firemaking · Fletching · Fishing · Cooking · Mining · Smithing</span></div>
+                <div class="route-line"><strong>Fight</strong><span>early Necromancy · low-risk first kills · useful Slayer progress</span></div>
+              </div>
+            </article>
+
+            <article class="phase">
+              <div class="phase-index"><b>B</b><span>50–175</span></div>
+              <div class="phase-copy">
+                <div class="phase-title"><h2>Karamja</h2><span>one sweep</span></div>
+                <p>Karamja opens automatically at 50 tasks. Clear the cheap local cluster in one pass, then take the Fight Cave when the setup is already good enough.</p>
+                <div class="route-line"><strong>Sweep</strong><span>seaweed → pineapple → banana crate → karambwanji → Brimhaven dungeon → stepping stones → arena ticket → snake → TzHaar → 25 lobsters</span></div>
+                <div class="route-line"><strong>Power</strong><span>Jad + equip Fire cape when the first clear is reliable</span></div>
+              </div>
+            </article>
+
+            <article class="phase phase-emphasis">
+              <div class="phase-index"><b>C</b><span>175–300</span></div>
+              <div class="phase-copy">
+                <div class="phase-title"><h2>Desert</h2><span>first elective</span></div>
+                <p>Take Desert at 175. Clear short Desert/global clusters and use Menaphos, production and combat unlocks to raise account capability without getting trapped in isolated grinds.</p>
+                <div class="route-line"><strong>Skill</strong><span>batch nearby thresholds and production tasks while travel is local</span></div>
+                <div class="route-line"><strong>Fight</strong><span>Necromancy remains the default route style; take first kills before repeat-kill milestones</span></div>
+              </div>
+            </article>
+
+            <article class="phase">
+              <div class="phase-index"><b>D</b><span>300–450</span></div>
+              <div class="phase-copy">
+                <div class="phase-title"><h2>Asgarnia</h2><span>infrastructure</span></div>
+                <p>Take Asgarnia at 300. Turn on Invention and Smithing infrastructure, then alternate short production batches with God Wars and mastery clusters.</p>
+                <div class="route-line"><strong>Skill</strong><span>Smithing batches · Invention levels/items · process production stacks · Desert leftovers during downtime</span></div>
+                <div class="route-line"><strong>Fight</strong><span>Graardor first → easy mastery cluster → Nex only when Defence and gear already make it cheap</span></div>
+              </div>
+            </article>
+
+            <article class="phase final-phase">
+              <div class="phase-index"><b>E</b><span>450–48K</span></div>
+              <div class="phase-copy">
+                <div class="phase-title"><h2>Anachronia</h2><span>point push</span></div>
+                <p>Take Anachronia at 450. Task-count speed no longer matters: finish on the best short 80/200-point clusters across Desert, Asgarnia and Anachronia.</p>
+                <div class="route-line"><strong>Prefer</strong><span>first kills · short mastery steps · BGH/Slayer overlap · production batches · high-value skilling thresholds</span></div>
+                <div class="route-line"><strong>Hold</strong><span>about 4,000 easy reserve points until the Dragon finish is locked</span></div>
+              </div>
+            </article>
+          </section>
         </div>
-      </article>
 
-      <article class="phase">
-        <div class="phase-index"><b>C</b><span>175–300</span></div>
-        <div class="phase-copy">
-          <div class="phase-title"><h2>Desert</h2><span>first elective</span></div>
-          <p>Take Desert at 175. Clear short Desert/global clusters and use Menaphos, production and combat unlocks to raise account capability without getting trapped in isolated grinds.</p>
-          <div class="route-line"><strong>Skill</strong> batch nearby thresholds and production tasks while travel is local</div>
-          <div class="route-line"><strong>Fight</strong> Necromancy remains the default route style; take first kills before repeat-kill milestones</div>
-        </div>
-      </article>
-
-      <article class="phase">
-        <div class="phase-index"><b>D</b><span>300–450</span></div>
-        <div class="phase-copy">
-          <div class="phase-title"><h2>Asgarnia</h2><span>infrastructure</span></div>
-          <p>Take Asgarnia at 300. Turn on Invention and Smithing infrastructure, then alternate short production batches with God Wars and mastery clusters.</p>
-          <div class="route-line"><strong>Skill</strong> Smithing batches · Invention levels/items · process production stacks · Desert leftovers during downtime</div>
-          <div class="route-line"><strong>Fight</strong> Graardor first → easy mastery cluster → Nex only when Defence and gear already make it cheap</div>
-        </div>
-      </article>
-
-      <article class="phase final-phase">
-        <div class="phase-index"><b>E</b><span>450–48K</span></div>
-        <div class="phase-copy">
-          <div class="phase-title"><h2>Anachronia</h2><span>point push</span></div>
-          <p>Take Anachronia at 450. Task-count speed no longer matters: finish on the best short 80/200-point clusters across Desert, Asgarnia and Anachronia.</p>
-          <div class="route-line"><strong>Prefer</strong> first kills · short mastery steps · BGH/Slayer overlap · production batches · high-value skilling thresholds</div>
-          <div class="route-line"><strong>Hold</strong> about 4,000 easy reserve points until the Dragon finish is locked</div>
-        </div>
-      </article>
-    </section>
-
-    <section class="route-block" id="regions" aria-labelledby="regions-title">
-      <header class="section-head"><span>01</span><h2 id="regions-title">Regions</h2></header>
-      <div class="unlock-track">
-        <div><small>Start</small><strong>Misthalin<br>Havenhythe</strong></div>
-        <div><small>50 tasks</small><strong>Karamja</strong></div>
-        <div class="chosen"><small>175</small><strong>Desert</strong></div>
-        <div class="chosen"><small>300</small><strong>Asgarnia</strong></div>
-        <div class="chosen"><small>450</small><strong>Anachronia</strong></div>
+        <aside class="route-rail" aria-label="Route summary">
+          <div class="rail-head"><span>Target</span><strong>Dragon</strong><b>48,000</b></div>
+          <dl>
+            <div><dt>Electives</dt><dd>Desert → Asgarnia → Anachronia</dd></div>
+            <div><dt>Combat</dt><dd>Necromancy first</dd></div>
+            <div><dt>Second style</dt><dd>Magic after Crystal Grace</dd></div>
+            <div><dt>Kill order</dt><dd>First kills before repeats</dd></div>
+            <div><dt>Finish</dt><dd>Mixed skilling + PvM</dd></div>
+            <div><dt>Reserve</dt><dd>~4,000 easy points</dd></div>
+          </dl>
+          <figure class="league-art">
+            <img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/leagues/equilibrium/official/road-ahead.webp" alt="RuneScape Equilibrium League official art">
+            <figcaption>Official Equilibrium League art</figcaption>
+          </figure>
+        </aside>
       </div>
     </section>
 
     <section class="route-block" id="relics" aria-labelledby="relics-title">
-      <header class="section-head"><span>02</span><h2 id="relics-title">Relics</h2></header>
-      <div class="tier-grid">
-        <div><small>T1</small><strong>Golden Touch</strong></div>
-        <div><small>T2</small><strong>Animal Wrangler</strong></div>
-        <div><small>T3</small><strong>Voidwalker</strong></div>
-        <div><small>T4</small><strong>Crystal Grace</strong></div>
-        <div><small>T5</small><strong>Production Master</strong></div>
-        <div class="tier-six"><small>T6</small><strong>Rejuvenated</strong><em>+ Devout</em></div>
-        <div><small>T7</small><strong>Infernal Fire</strong></div>
+      <header class="section-head"><span>02</span><h2 id="relics-title">Relics</h2><p>Fixed route line</p></header>
+      <div class="relic-grid">
+        <article class="relic-card"><small>T1</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/relics/golden-touch.webp" alt="" loading="lazy"><strong>Golden Touch</strong></article>
+        <article class="relic-card"><small>T2</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/relics/animal-wrangler.webp" alt="" loading="lazy"><strong>Animal Wrangler</strong></article>
+        <article class="relic-card"><small>T3</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/leagues/catalyst/relics/t3-voidwalker.webp" alt="" loading="lazy"><strong>Voidwalker</strong></article>
+        <article class="relic-card"><small>T4</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/relics/crystal-grace.webp" alt="" loading="lazy"><strong>Crystal Grace</strong></article>
+        <article class="relic-card"><small>T5</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/relics/production-master.webp" alt="" loading="lazy"><strong>Production Master</strong></article>
+        <article class="relic-card route-pick"><small>T6</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/leagues/catalyst/relics/t4-rejuvenated.webp" alt="" loading="lazy"><strong>Rejuvenated</strong><em>+ Devout</em></article>
+        <article class="relic-card"><small>T7</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/relics/infernal-fire.webp" alt="" loading="lazy"><strong>Infernal Fire</strong></article>
       </div>
       <p class="section-note">Rejuvenated is the route pick because the extra complete relic is worth more across the mixed skilling/PvM finish than Perkfection's narrower Invention compression.</p>
     </section>
 
     <section class="route-block" id="blessings" aria-labelledby="blessings-title">
-      <header class="section-head"><span>03</span><h2 id="blessings-title">Blessings</h2></header>
-      <ol class="blessing-line">
-        <li><span>1</span><strong>Big Boned</strong></li>
-        <li><span>2</span><strong>Abyssal Cinders</strong></li>
-        <li><span>3</span><strong>Avernic Rampage</strong></li>
-        <li><span>4</span><strong>Demon's Mark</strong></li>
-        <li class="provisional"><span>5</span><strong>True Equilibrium</strong><small>recheck</small></li>
-        <li><span>6</span><strong>Lord of Light</strong></li>
-        <li><span>7</span><strong>Tempered Heart</strong></li>
-        <li><span>8</span><strong>Genesis Essence</strong></li>
+      <header class="section-head"><span>03</span><h2 id="blessings-title">Blessings</h2><p>Route order</p></header>
+      <ol class="blessing-grid">
+        <li><small>T1</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/blessings/big-boned.webp" alt="" loading="lazy"><span>1</span><strong>Big Boned</strong></li>
+        <li><small>T2</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/blessings/abyssal-cinders.webp" alt="" loading="lazy"><span>2</span><strong>Abyssal Cinders</strong></li>
+        <li><small>T3</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/blessings/avernic-rampage.webp" alt="" loading="lazy"><span>3</span><strong>Avernic Rampage</strong></li>
+        <li><small>T4</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/blessings/demons-mark.webp" alt="" loading="lazy"><span>4</span><strong>Demon's Mark</strong></li>
+        <li class="provisional"><small>T5</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/blessings/true-equilibrium.webp" alt="" loading="lazy"><span>5</span><strong>True Equilibrium</strong><em>recheck</em></li>
+        <li><small>T6</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/blessings/lord-of-light.webp" alt="" loading="lazy"><span>6</span><strong>Lord of Light</strong></li>
+        <li><small>T7</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/blessings/tempered-heart.webp" alt="" loading="lazy"><span>7</span><strong>Tempered Heart</strong></li>
+        <li><small>T8</small><img src="https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/blessings/genesis-essence.webp" alt="" loading="lazy"><span>8</span><strong>Genesis Essence</strong></li>
       </ol>
       <p class="section-note">True Equilibrium stays on the route, but its combat value is provisional until the relic-alignment implementation matches the official wording.</p>
     </section>
@@ -126,6 +191,7 @@
     <footer>
       <p><strong>Current limitation:</strong> the canonical task page still exposes only the early task corpus in the checked-in snapshot. The route above is fixed; exact row-by-row ordering tightens when Hard, Elite and Master tasks are published.</p>
       <div><a href="https://secure.runescape.com/m=news/leagues-equilibrium-reveals---releasing-august-10th">Official League reveal ↗</a><a href="https://runescape.wiki/w/Equilibrium_League/Tasks">Wiki task list ↗</a></div>
+      <small>RuneScape art and icons are referenced from the pinned Equilibrium game-art catalogue; see NOTICE.md for attribution.</small>
     </footer>
   </main>
 </body>

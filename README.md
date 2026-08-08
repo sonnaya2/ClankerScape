@@ -13,7 +13,9 @@ The checked-in task snapshot currently contains **533 Easy and Medium tasks wort
 
 ## Public site
 
-GitHub Pages publishes only `index.html`, `styles.css`, and `favicon.svg`. There are no public progress controls, save state, forms, calculators, import/export, accounts, analytics, cookies, or remote database.
+GitHub Pages publishes the static route page. There are no public progress controls, save state, forms, calculators, import/export, accounts, analytics, cookies, or remote database.
+
+The visual system is intentionally shared with the companion Equilibrium project: compact near-black RuneScape tool surfaces, restrained gold and teal, serif display type, hard rules, and real RuneScape region/relic/Blessing art. ClankerScape does **not** use generated art. Public image references are pinned to a specific Equilibrium repository revision so the route cannot silently change underneath a deployment; see [NOTICE.md](NOTICE.md) for attribution.
 
 ## Route research
 
@@ -36,4 +38,4 @@ npm run verify
 
 This runs syntax, source/data, parser, route, Blessing, Tier 6, and read-only UI regression checks.
 
-RuneScape Wiki task text keeps its source licence and attribution. See [NOTICE.md](NOTICE.md). RuneScape and Jagex are trademarks of Jagex Limited; this is an unofficial fan project.
+RuneScape Wiki task text and referenced game art keep their source licences and attribution. See [NOTICE.md](NOTICE.md). RuneScape and Jagex are trademarks of Jagex Limited; this is an unofficial fan project.
