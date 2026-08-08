@@ -1,60 +1,148 @@
 ---
 name: clankerscape-review
-description: Perform a hostile-to-defects review of ClankerScape route data, UI, copy, security, and implementation without turning criticism into personal abuse.
+description: Perform a hostile-to-defects review of ClankerScape route data, decision gates, UI, copy, Wiki sourcing, security and implementation. Critique the work, not the person.
 ---
 
 # ClankerScape review
 
-Use this after every substantial implementation unit and before a PR is marked ready.
+Use this after substantial work and before a PR is marked ready. This is a read-only audit pass.
 
-Be severe about defects and conservative about claims. Critique the work, not the person.
+Be severe about defects and conservative about claims. Do not repair findings during the audit.
 
 ## Severity
 
-- **BLOCKER** — fabricated or stale route fact, secret exposure, broken build, inaccessible core action, data loss, copied prohibited content, or a decision that can permanently damage the route.
-- **HIGH** — wrong scoring objective, bad region/relic/Blessing recommendation, Wiki source confusion, unusable responsive layout, or major AI-slop structure.
-- **MEDIUM** — unclear hierarchy, hidden blocker, duplicated information, weak error state, fake precision, or avoidable performance cost.
-- **LOW** — polish issue that does not change route correctness or core usability.
+- **BLOCKER** — fabricated/stale route fact, illegal dependency, leaked secret/private material, broken build, inaccessible core action, data loss, copied prohibited content, or an unsupported irreversible decision.
+- **HIGH** — wrong objective, narrow opportunity-cost analysis, bad region/relic/Blessing recommendation, Wiki-source confusion, unusable responsive layout, or major AI/SaaS structure.
+- **MEDIUM** — hidden blocker, fake precision, weak queue balance, duplicated information, unclear hierarchy, weak error state, or avoidable performance cost.
+- **LOW** — polish defect with no route-correctness or core-usability effect.
 
-Do not dilute a BLOCKER with a long list of cosmetic notes.
+Do not bury a blocker under cosmetic findings.
 
-## Route/data audit
+## Establish scope
+
+1. inspect branch, status, PR and complete diff;
+2. identify changed source claims, decisions, route states, components and viewports;
+3. name the evidence required;
+4. return `BLOCKED` when evidence cannot be observed.
+
+## Source and task audit
 
 Check:
 
-- official 48,000-point target and 50/175/300/450 task thresholds;
-- regional counts and points against current sources;
-- distinction between Equilibrium facts and Catalyst stand-ins;
-- source URL, verification date, and confidence for every route row;
-- task tier and points values come from data rather than assumptions;
-- no copied route ordering or commentary;
-- phase-aware scoring changes at 450 tasks;
-- final-region recommendation explains reachable rows;
-- irreversible relic decisions have runner-ups and sensitivity notes;
-- ordinary relics are not presented as resettable without proof;
-- exactly three confirmed Blessing resets are accounted for unless current official data changes;
-- completed history remains stable when future recommendations change.
+- 48,000-point target and 50/175/300/450 task gates;
+- current task/point/region/Blessing totals;
+- Equilibrium facts are separate from Catalyst stand-ins;
+- every production task has numeric Wiki task ID, source revision and verification state;
+- task tier, points, region and requirements come from source data;
+- no copied public route order/commentary;
+- no blacklisted source use;
+- source facts, route assumptions, player state and decision records are separate;
+- unknown time/mechanics are not displayed as zero or confirmed;
+- route source revision conflicts are visible.
+
+## Route-portfolio audit
+
+Check:
+
+- hard feasibility excludes illegal tasks before ranking;
+- pre-450 ranking prioritises task gates;
+- post-450 ranking prioritises deterministic/reliable points;
+- immediate/deep skilling, immediate/deep PvM and reserve banks exist;
+- both next actions are actually executable;
+- guaranteed-next-points and reserve claims reconcile with real rows;
+- switching cost is considered;
+- P50/P90, failure, crowding and supply-rebuild risk are not hidden;
+- completed history remains stable when future recommendations change;
+- candidate corpus reaches 48,000 with meaningful reserve slack.
+
+Fail any route that depends on one boss, one rare drop or one activity family while deterministic alternatives exist.
+
+## Region audit
+
+Check:
+
+- no region is chosen to justify a relic;
+- total regional points are not used as the decision by themselves;
+- the 175/300/450 gates compare reachable rows, setup, queue split, Blessing access and P50/P90 time;
+- Asgarnia is not treated as mandatory merely for Invention;
+- final-region recommendation shows decisive rows and uncertainty;
+- close projections are labelled close.
+
+## Relic audit
+
+Check every irreversible pick for opportunity cost.
+
+Mandatory checks:
+
+- Tier 2 compares Animal Wrangler, Superheated and Divine Druid across the complete route, not one favourite skill;
+- Tier 3 compares route-wide travel, Slayer/PvM and Farming/patch value;
+- Tier 4 compares Crystal Grace, Antiquarian and Transmutation against actual task banks;
+- Tier 5 and Tier 6 are treated as a paired decision;
+- Rejuvenated compares every missed Tier 1–5 relic;
+- Perkfection is not default or described as broadly optimal without passing its 8% P50/P90 burden-of-proof gate against the best missed earlier relic;
+- Tier 7 compares Infernal Fire, Icyenic Faith and Naragi Edict over the remaining encounter portfolio, not dummy DPS;
+- ordinary relics are not shown as resettable without a current source.
+
+A neat synergy is not evidence. Name the tasks and minutes it changes.
+
+## Blessing audit
+
+Check:
+
+- exactly three confirmed resets unless current official data changes;
+- reset history and remaining charges are visible;
+- a reset shows every path choice/God Blessing it erases;
+- early, mixed and late packages are treated as candidate epochs;
+- Lord of Light and Tempered Heart are Order choices in the official reveal;
+- God Tier derivation uses the correct three-choice segment;
+- True Equilibrium uses the current sourced alignment/path interpretation and labels any source conflict;
+- reset recommendation meets the route-time threshold after setup/death/supply costs;
+- unsupported combat interactions are benchmarked or visibly provisional.
 
 ## UI audit
 
 Fail the design when:
 
 - route rows are not visible immediately;
-- a hero, decorative header, KPI strip, or marketing copy precedes the work;
-- the route is fragmented into a card garden;
-- glass, glow, blur, gradients, or giant rounded panels replace hierarchy;
-- the next skilling or PvM action is hard to find;
-- blocked rows lack blocker text;
-- the page repeats the same progress fact in several panels;
-- mobile hides queue switching or irreversible decisions;
-- the modal confuses route commentary with live Wiki text;
-- important information appears only on hover or through colour.
+- a hero, decorative header, KPI strip or marketing copy precedes the work;
+- the ledger is fragmented into a card garden;
+- glass, glow, blur, gradients or giant rounded panels replace hierarchy;
+- skilling/PvM next actions are hard to find;
+- blocked rows do not name blockers;
+- progress facts repeat across panels;
+- mobile places the complete status rail before the active route;
+- the modal confuses route commentary with Wiki text;
+- decision-critical data is hover- or colour-only;
+- desktop rows accidentally render mobile metadata as extra grid cells;
+- fewer than eight usable route rows appear above fold at the target desktop width.
 
-Inspect the rendered page at desktop and phone widths. Source review alone is insufficient.
+### Route-row controls
+
+Reject a row implemented as one monolithic button.
+
+Verify:
+
+- completion changes local state only;
+- task title/Wiki action opens source content only;
+- row selection does not complete the task;
+- focus order and labels distinguish all actions;
+- closing the wrapper restores focus and scroll.
+
+Inspect rendered laptop, desktop and phone states. Source review alone cannot pass UI work.
+
+## Wiki/source-wrapper audit
+
+- Canonical League tasks are found by numeric task ID, not assumed article titles.
+- The canonical task page is cached by revision rather than fetched per row.
+- Related boss/item/mechanic pages are separate links.
+- Live failures and source-revision changes are visible.
+- Remote content is parsed inertly and sanitised/structured before rendering.
+- Missing/duplicate task rows fail closed.
+- No iframe, login, proxy, credential or silent relay.
+- CORS capability is tested from the real Pages origin.
+- Offline snapshot fallback remains useful.
 
 ## Copy audit
-
-Search for vague product language and replace it with facts or actions.
 
 Flag:
 
@@ -65,54 +153,65 @@ Flag:
 - ultimate companion;
 - intelligent route;
 - game-changing experience;
+- efficient progression;
+- optimal synergy;
 - friendly filler that delays the action.
 
-Also flag unnatural clipped fragments, repetitive labels, and explanations that merely restate the heading.
+Replace vague claims with the actual task, blocker, threshold, source state or reason.
 
-## Source/Wiki audit
+## Security/provenance audit
 
-- Every route row declares a Wiki title or explicit source exception.
-- Live fetch failures are visible.
-- Plain text is rendered; unsanitised source HTML is not injected.
-- The resolved source title and fetch time are shown.
-- Cached text is labelled with age.
-- Route commentary and Wiki text use different labels.
-- No iframe embeds the full Wiki.
-- Runtime requests are limited to approved domains.
+Reject:
 
-## Security audit
+- `.env` or auth-state files;
+- tokens, API keys, passwords, private keys, cookies or client secrets;
+- private account email/connector metadata;
+- copied private code, CSS, fonts, screenshots, assets or settings;
+- arbitrary outbound domains;
+- unsafe imported JSON;
+- unsanitised remote HTML;
+- workflows with unnecessary permissions.
 
-Reject commits containing:
-
-- `.env` files;
-- auth state, cookies, or browser profiles;
-- access tokens, API keys, passwords, private keys, or client secrets;
-- private account email addresses or connector metadata;
-- copied local settings;
-- unreviewed outbound domains;
-- unsafe imported JSON handling;
-- unsanitised HTML injection.
-
-Search at minimum for `AKIA`, `ghp_`, `github_pat_`, `Bearer `, `BEGIN PRIVATE KEY`, `client_secret`, `password=`, and token-like assignments.
+Review secret-pattern matches as evidence, not by blindly suppressing documentation hits.
 
 ## Performance audit
 
-- Do not fetch Wiki pages for every row at startup.
-- Deduplicate in-flight and cached source requests.
-- Avoid rendering the full corpus when the current phase needs a bounded ledger window.
-- Do not introduce heavy state, UI, animation, or Three.js dependencies.
-- Keep scoring pure and testable.
-- Avoid repeated parsing or sorting on every keystroke.
+- Do not fetch source content for every row at startup.
+- Deduplicate in-flight/cached requests.
+- Avoid mounting the complete corpus when a bounded working window is enough.
+- Keep scoring and decisions pure/testable.
+- Avoid repeated parsing/sorting on every render or keystroke.
+- Do not add a UI kit, animation framework, backend or Three.js without measured need.
 
-## Review output
+## Result format
 
-Report findings in this order:
+```text
+CLANKERSCAPE REVIEW — <target>
+Status: READY | READY WITH FOLLOW-UP | NOT READY | BLOCKED
 
-1. BLOCKER/HIGH issues with file and exact consequence.
-2. Route/data correctness concerns.
-3. UI and accessibility defects.
-4. Security and provenance status.
-5. Tests/build status.
-6. A direct verdict: `READY`, `READY WITH FOLLOW-UP`, or `NOT READY`.
+Blocker/high findings:
+- file/route/state — defect — consequence
 
-When no issue is found in a category, say what was actually checked. Do not write “looks good” without evidence.
+Route/source findings:
+- ...
+
+Decision findings:
+- ...
+
+Rendered UI findings:
+- ...
+
+Wiki/security findings:
+- ...
+
+Commands and evidence:
+- ...
+
+Coverage not verified:
+- ...
+
+Required repair:
+- exact next action
+```
+
+Do not write `looks good`. State what was checked.
