@@ -1,10 +1,10 @@
 # ClankerScape
 
-ClankerScape is a local-first RuneScape 3 **Leagues II: Equilibrium** route workbench for reaching the 48,000-point Dragon trophy. It tracks a source-locked task ledger, explicit unclassified intake, separate skilling/PvM point banks, region opportunity cost, all 20 relic choices, Blessing epochs/resets, and a break-even comparison for Perkfection versus Rejuvenated.
+ClankerScape plans a RuneScape 3 **Leagues II: Equilibrium** route to the 48,000-point Dragon trophy.
 
-The application deliberately does **not** publish a fake final route while the canonical Equilibrium task page is incomplete. Newly synced rows remain unclassified until reviewed. The checked-in snapshot starts fail-closed and may be refreshed to the current partial corpus by source sync; the route screen shows unresolved decisions instead of silently substituting Catalyst tasks or guessed Hard/Elite/Master rows.
+The checked-in task file currently has **533 Easy and Medium tasks worth 11,110 points**. Hard, Elite, and Master are still missing from the task page, so the site does not claim a finished Dragon route.
 
-## Run locally
+## Run it
 
 ```bash
 npm run verify
@@ -13,29 +13,33 @@ npm run serve
 
 Open `http://localhost:4173`.
 
-No install step is required. The production application is dependency-free HTML, CSS, and ES modules. A manual-only Pages workflow is included but is not run automatically.
+The site is plain HTML, CSS, and JavaScript. No install step, account, analytics, cookies, or remote database.
 
-## Source sync
+## What it tracks
+
+- task completion, when to do it, and an optional time estimate;
+- separate skilling and PvM queues;
+- region picks, quests, and optional time estimates;
+- all relic choices;
+- Perkfection versus Rejuvenated;
+- Blessing picks and three resets;
+- local progress import and export.
+
+## Refresh tasks
 
 ```bash
 npm run sync:tasks
 npm run validate
 ```
 
-`scripts/sync-equilibrium-tasks.mjs` reads numeric task rows from the canonical RuneScape Wiki page. A snapshot is marked `full` only when it contains exactly **1,152 tasks** worth **109,380 points**. Anything else remains `partial` and blocks route freezing.
+The importer only reads numeric rows from `Equilibrium League/Tasks`. It will not mix in Catalyst tasks. The full file must reconcile to **1,152 tasks and 109,380 points** before the route can be treated as complete.
 
-The six-hourly/manual GitHub Action in `.github/workflows/source-sync.yml` performs the same fail-closed import and creates no commit when the source revision and parsed rows are unchanged. It never accepts Catalyst rows as Equilibrium truth.
+## Checks
 
-## Verification
+```bash
+npm run verify
+```
 
-`npm run verify` runs syntax checks, data invariants, parser tests, route-domain tests, Blessing reset/derivation tests, and the Perkfection model tests.
+This runs syntax checks, data checks, parser tests, route tests, Blessing tests, Tier 6 tests, and UI-copy guards.
 
-Current audited facts and remaining blockers are in [plan.md](plan.md) and [docs/final-audit.md](docs/final-audit.md).
-
-## Data and privacy
-
-Progress, estimates, region selections, relic choices, and Blessing epochs remain in browser local storage unless explicitly exported. ClankerScape has no account system, analytics, cookies, remote database, or player-name collection.
-
-Original project code/docs use the repository CC0 licence; imported RuneScape Wiki task text retains its source licence and attribution. See [NOTICE.md](NOTICE.md).
-
-RuneScape and Jagex are trademarks of Jagex Limited. ClankerScape is an unofficial fan tool and is not endorsed by Jagex.
+RuneScape Wiki task text keeps its source licence and attribution. See [NOTICE.md](NOTICE.md). RuneScape and Jagex are trademarks of Jagex Limited; this is an unofficial fan tool.

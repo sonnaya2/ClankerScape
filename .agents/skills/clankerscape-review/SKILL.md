@@ -23,7 +23,9 @@ Blessing review verifies both three-pick God segments, three epoch resets, erase
 
 ## UI/runtime
 
-Render blocked, partial/populated, completed, parked, reserve, error, and conflict states at laptop, desktop, and phone widths. Require eight usable rows above fold on desktop, separate completion/source/park controls, visible skilling/PvM actions, source revision/conflict state, no document overflow, keyboard focus restoration, reduced motion, and no console/page errors. Reject hero/KPI/card-garden/glass/glow/generic-AI structure.
+Render partial/populated, completed, planned, spare, skipped, error, and conflict states at laptop, desktop, and phone widths. Check all four pages, the task details sheet, selected relics, expanded Tier 6 comparison, region estimates, selected Blessings, reset history, save menu, and storage failure.
+
+Require the player task to dominate the first viewport; no document overflow; readable mobile-native layouts; keyboard focus restoration; reduced motion; and no console or page errors. Reject heroes, KPI gardens, switchboards, status rails, glass/glow/gradient chrome, internal model labels, repeated source controls, clipped desktop tables on phones, and other generic generated-dashboard structure. Run `clankerscape-bot-audit` before approval.
 
 ## Security/licensing/workflows
 

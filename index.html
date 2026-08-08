@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#11110f">
-  <meta name="description" content="ClankerScape is a source-locked RuneScape 3 Equilibrium League Dragon route workbench.">
-  <title>ClankerScape — Dragon route workbench</title>
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#e9dfcf">
+  <meta name="description" content="ClankerScape is a RuneScape 3 Equilibrium League route planner for reaching Dragon.">
+  <title>ClankerScape — Dragon route</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <header id="topbar-state" class="topbar" aria-label="League progress and local controls">
-    <div class="loading-line">Loading verified League facts…</div>
+  <header id="topbar-state" class="topbar" aria-label="ClankerScape navigation and progress">
+    <div class="loading-line">Loading League data…</div>
   </header>
 
   <main id="app" class="app-shell" tabindex="-1">
-    <p class="loading-state">Opening route workbench…</p>
+    <p class="loading-state">Loading tasks…</p>
   </main>
 
   <input id="import-progress" type="file" accept="application/json,.json" hidden>
@@ -23,15 +24,15 @@
   <dialog id="task-dialog" class="task-dialog" aria-labelledby="task-dialog-title">
     <div class="dialog-shell">
       <div class="dialog-toolbar">
-        <span>Source context</span>
-        <button type="button" class="quiet-button" data-dialog-close aria-label="Close task source">Close</button>
+        <span>Task details</span>
+        <button type="button" class="icon-button" data-dialog-close aria-label="Close task details">×</button>
       </div>
       <div id="task-dialog-body" class="dialog-body"></div>
     </div>
   </dialog>
 
   <noscript>
-    <div class="noscript">ClankerScape needs JavaScript for local progress, task filtering, and decision comparisons.</div>
+    <div class="noscript">JavaScript is required to track progress and plan tasks.</div>
   </noscript>
 
   <script type="module" src="./src/app.js"></script>

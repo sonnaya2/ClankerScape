@@ -90,21 +90,29 @@ The only reset strategy implemented is for Blessing progression:
 
 ## UI/render audit
 
-Observed render checks:
+The rejected dark dashboard shell was replaced rather than repainted. The current interface uses a RuneScape parchment/ink/gold material system with EverSense-style neo-brutalist print structure.
 
-| Viewport | Result |
+Observed checks:
+
+| Viewport/state | Result |
 |---|---|
-| 1600×900 | 8/8 route rows fully above fold; no document overflow; no console/page errors |
-| 1280×800 | 8/8 route rows fully above fold; no document overflow; no console/page errors |
-| 390×844 | route and both next-action queues visible before deep status; no document overflow; no console/page errors |
+| 1600×900 — Route, Relics, Regions, Blessings | no document overflow; no console/page/network errors |
+| 1280×800 — Route | no document overflow |
+| 390×844 — Route | native task rows; no clipped time/source columns; no document overflow |
+| 390×844 — Regions | native region cards; no desktop-table clipping |
+| 390×844 — Blessings | Order/Balance/Chaos stacked and labelled per tier; no horizontal board |
+| selected relics + Tier 6 open | selected states, extra-relic comparison and advanced inputs remain bounded |
+| selected region + estimate open | row expands to a bounded three-field estimate strip |
+| selected Blessings | path colours and derived God Blessing update correctly |
+| task details | plan and time save locally; focus returns to the task |
+| task completion | points and task count update; completed task leaves the active list |
+| save menu | export, import and clear remain behind one menu |
 
-A separate populated partial-snapshot pass exercised task classification, parking, completion accounting, source-dialog labeling/focus restoration, and row density. It retained 8/8 rows above fold at 1600×900 and 1280×800, with no document overflow or console/page errors at desktop, laptop, or 390×844.
+Removed from the default UI: the switchboard/status rail, `Park`, `State / source`, `Action / source`, per-row source revisions, per-row time inputs, per-relic Tier 6 fields, and always-visible region P50/P90 fields.
 
-All five tabs were rendered at desktop and phone widths. Keyboard Left/Right/Home/End navigation moves selection and focus through a real tablist; each active view is a labelled tabpanel, and Dragon progress exposes numeric progressbar semantics. The source dialog restores focus to its task action after closing. Wide region/Blessing tables scroll inside their own surfaces rather than widening the document.
+The primary navigation contains only Route, Relics, Regions and Blessings. Source coverage remains visible as one direct line because the missing task tiers materially limit the route; it is not repeated as badges or a separate audit page.
 
-A denied-storage pass also remained interactive instead of throwing: state continued in memory and the header visibly marked local progress as not persisted.
-
-The interface intentionally contains no hero, KPI card strip, generated fantasy art, translucent glass, ambient animation, or “AI insight” panel.
+The project UI skill and review skill now require the `clankerscape-bot-audit` anti-slop pass so future changes do not restore the rejected dashboard structure.
 
 ## Security/privacy audit
 
