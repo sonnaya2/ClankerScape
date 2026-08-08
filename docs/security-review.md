@@ -16,6 +16,7 @@ Draft PR #2 currently changes only Markdown planning/review files:
 - `docs/grok-heavy-ui-prompt.md`
 - `docs/grok-ui-audit.md`
 - `docs/combat-benchmark-plan.md`
+- `docs/true-equilibrium-source-conflict.md`
 - `docs/planning-review.md`
 - `docs/skills-audit.md`
 - this review
@@ -53,11 +54,11 @@ Documentation may name a pattern as part of a security checklist. A textual chec
 
 ## Revised final diff scan
 
-Draft PR #2 was re-scanned after the route correction, Grok audit and combat benchmark contract were added.
+Draft PR #2 was re-scanned after the route correction, Grok audit, combat benchmark contract and True Equilibrium source-conflict record were added.
 
 Changed-file inventory:
 
-- 11 Markdown files;
+- 12 Markdown files;
 - no executable code;
 - no package/lockfile;
 - no workflow;
@@ -76,7 +77,8 @@ Searches/checks performed:
 - credential-bearing assignments/URLs;
 - private implementation/assets copied from EverSense-Web;
 - blacklisted repository content;
-- owner-supplied Grok source/screenshots.
+- owner-supplied Grok source/screenshots;
+- raw connector responses or private account metadata copied into the new source-conflict report.
 
 Result:
 
@@ -89,7 +91,8 @@ Result:
 - no hidden outbound-service configuration;
 - no copied private source, CSS, font, image or screenshot;
 - no copied Grok code or asset;
-- no blacklisted repository material.
+- no blacklisted repository material;
+- no private connector payload in the True Equilibrium conflict report.
 
 This result applies to the planning PR only. It does not cover future dependencies, workflows, GitHub secrets, runtime requests, imported data or deployed output.
 
@@ -177,7 +180,8 @@ Risk:
 - stale/incompatible benchmark schema;
 - unsupported mechanics presented as complete;
 - engine result confused with route estimate;
-- untrusted metadata/text.
+- untrusted metadata/text;
+- known source/implementation conflicts imported as valid results.
 
 Controls:
 
@@ -185,7 +189,8 @@ Controls:
 - require opening state, target, metric denominator, support/exclusion and RNG metadata;
 - treat imported strings as data/text only;
 - reject incompatible or incomplete results;
-- keep route-level setup/failure/supply estimates separate from engine output.
+- keep route-level setup/failure/supply estimates separate from engine output;
+- reject True Equilibrium results derived from Blessing paths or lacking selected relic-alignment provenance.
 
 ### Dependencies and workflows
 
@@ -213,6 +218,8 @@ Primary:
 - current canonical RuneScape Wiki Equilibrium pages;
 - provenanced canonical data in `sonnaya2/Equilibrium`.
 
+Current official Jagex text/card art overrides an older repository interpretation when they conflict. Repository code or passing tests are not source authority.
+
 Conditional mechanics only:
 
 - PvME;
@@ -239,6 +246,7 @@ The public repository may contain:
 - rewritten project skills;
 - public source URLs;
 - clearly labelled route assumptions;
+- public source-conflict reports;
 - versioned benchmark metadata/results;
 - reviewed game icons later when licensing/provenance is documented;
 - generated build output only when the Pages workflow requires it.
@@ -260,6 +268,6 @@ After an approved workflow exists, the owner may need to select GitHub Actions a
 
 ## Verdict
 
-**PASS for the revised planning PR diff.**
+**PASS for the 12-file revised planning PR diff.**
 
 No shared secret or private account/source material was identified. Repeat the full review after application code, dependencies, workflows, runtime Wiki requests, import/export and build output exist.
