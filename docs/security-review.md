@@ -1,162 +1,159 @@
 # Security, privacy, and source review
 
-Status: pre-implementation planning branch.
+Status: revised pre-implementation planning branch.
 
-## Scope reviewed
+## Scope
 
-Base repository at the start of this pass:
+Base repository:
 
 - `README.md`
 - `LICENSE`
 
-Planning additions:
+Draft PR #2 currently changes only Markdown planning/review files:
 
 - `plan.md`
 - `docs/design-direction.md`
-- `docs/skills-audit.md`
 - `docs/grok-heavy-ui-prompt.md`
+- `docs/grok-ui-audit.md`
+- `docs/combat-benchmark-plan.md`
 - `docs/planning-review.md`
+- `docs/skills-audit.md`
 - this review
-- three project-specific skill files under `.agents/skills/`
+- three project-specific skills under `.agents/skills/`
 
-There is no application runtime, dependency manifest, workflow, build output, or deployed site in this branch yet.
+There is no application runtime, package manifest, workflow, generated build, executable script, copied asset or deployed site in this branch.
 
 ## Base repository result
 
-The original repository contained a CC0 license and a two-line README. No credential, token, environment value, private key, cookie, auth state, account identifier, or source secret was present.
+The initial repository contained a CC0 licence and short README. No credential, token, environment value, private key, cookie, auth state, account identifier or source secret was present.
 
-## Data intentionally excluded
+## Excluded data
 
-The following were not copied from Equilibrium or EverSense-Web:
+Nothing in this PR was copied from Equilibrium or EverSense-Web that could expose:
 
-- `.env` or `.env.example` files;
+- `.env` or example environment values;
 - local Claude/agent settings;
 - browser profiles or saved login state;
-- API keys, access tokens, cookies, or session IDs;
-- GitHub connector metadata;
+- API keys, access tokens, cookies or session IDs;
+- connector metadata;
 - account email addresses;
-- private screenshots or design-reference assets;
-- deployment configuration containing credentials;
+- private screenshots or visual-reference assets;
+- fonts;
+- deployment credentials/configuration;
 - unrelated private-repository code;
-- local paths or machine usernames.
+- local materialisation paths or machine usernames.
+
+The owner-supplied Grok HTML and local screenshots were reviewed but not committed.
 
 ## Secret-pattern gate
 
-Every PR diff must be checked for at least:
+Every PR diff must be reviewed for common access-key/token/private-key patterns, credential assignments, credential-bearing URLs, account emails and connector/session identifiers.
 
-```text
-AKIA
-ASIA
-ghp_
-gho_
-ghu_
-ghs_
-ghr_
-github_pat_
-Bearer 
-BEGIN PRIVATE KEY
-BEGIN RSA PRIVATE KEY
-BEGIN OPENSSH PRIVATE KEY
-client_secret
-clientSecret
-password=
-password:
-api_key
-apiKey
-access_token
-refresh_token
-sessionid
-cookie:
-```
+Documentation may name a pattern as part of a security checklist. A textual checklist hit is reviewed separately from an actual high-entropy value or assignment.
 
-A textual match is reviewed rather than blindly suppressed. Documentation may name a pattern as part of this checklist; that does not make it a credential. Actual high-entropy values or assignments are blockers.
+## Revised final diff scan
 
-## Current planning-content review
+Draft PR #2 was re-scanned after the route correction, Grok audit and combat benchmark contract were added.
 
-The authored planning content contains:
+Changed-file inventory:
 
-- public repository names already supplied by the owner;
-- public Jagex and RuneScape Wiki source concepts;
-- project-specific route/design rules;
-- names of private-repository skill files intentionally disclosed by the owner;
-- no secret values.
+- 11 Markdown files;
+- no executable code;
+- no package/lockfile;
+- no workflow;
+- no generated output;
+- no image/font/binary asset;
+- no browser state;
+- no environment/configuration file.
 
-The files do not contain:
+Searches/checks performed:
 
-- user email addresses;
-- passwords;
-- account login details;
-- tokens;
-- private keys;
-- cookies;
-- hidden connector IDs;
-- copied private source code.
-
-## Final PR diff scan
-
-Draft PR #2 was reviewed across all nine changed files after the planning review was added.
-
-Checks performed:
-
-- verified that the changed-file list contains only planning, design, review, provenance, and project-skill Markdown files;
-- searched the complete patch for connector/session metadata and common private-account email domains;
-- searched for private-key delimiters and common token prefixes/encodings;
-- reviewed expected matches inside this document's secret-pattern checklist separately from real assignments or high-entropy values;
-- checked that no application configuration, dependency file, workflow, generated asset, browser state, or executable source entered the planning PR;
-- checked that the private EverSense contribution is described as rewritten project rules rather than copied code or visual assets.
+- connector/session identifiers;
+- common private-account email domains;
+- private-key delimiters;
+- model/cloud/GitHub token prefixes and common encoded-token openings;
+- local sandbox/materialisation paths;
+- credential-bearing assignments/URLs;
+- private implementation/assets copied from EverSense-Web;
+- blacklisted repository content;
+- owner-supplied Grok source/screenshots.
 
 Result:
 
 - no credential-shaped value or assignment;
-- no email address;
+- no account email address;
 - no connector or session identifier;
-- no private key material;
-- no cookie or auth state;
-- no hidden outbound service configuration;
-- no copied private image or implementation file.
+- no private-key material;
+- no cookie/auth state;
+- no local path;
+- no hidden outbound-service configuration;
+- no copied private source, CSS, font, image or screenshot;
+- no copied Grok code or asset;
+- no blacklisted repository material.
 
-This scan covers the planning PR only. It does not cover future dependencies, GitHub Actions secrets, runtime requests, import/export code, or deployed build output.
+This result applies to the planning PR only. It does not cover future dependencies, workflows, GitHub secrets, runtime requests, imported data or deployed output.
 
-## Runtime threat model for implementation
+## Runtime threat model
 
-### Live Wiki content
+### Canonical Wiki task content
 
 Risk:
 
-- injecting untrusted or unexpectedly complex Wiki HTML;
-- source page changes;
-- CORS/network failure;
+- remote HTML/script/style/event-handler injection;
+- malformed or unexpectedly large task-page responses;
+- duplicate/missing numeric task rows;
+- source revision changes;
+- CORS/Cloudflare/network failure;
 - excessive requests.
 
 Controls:
 
-- use `action=query` with plain-text extracts;
-- never inject unsanitised HTML;
-- render route commentary separately from source text;
-- fetch only when a row is opened;
-- deduplicate in-flight requests;
-- cache successful extracts in session storage with timestamp;
-- display missing-page, stale-cache, and network-error states;
-- maintain an outbound-domain allowlist.
+- anonymous public MediaWiki API only;
+- no credentials, proxy, iframe, JSONP or hidden relay;
+- finite timeout and response-size ceiling;
+- parse in an inert document;
+- locate exactly one row by numeric `data-taskid`;
+- sanitise or convert only the extracted task fragment to structured/plain text;
+- strip scripts, styles, forms, iframes, event handlers and unsafe URLs;
+- cache the canonical page by source revision instead of fetching it per row;
+- validate response shape and fail closed;
+- show missing, duplicate, stale, CORS, offline and timeout states;
+- retain a local route snapshot and direct Wiki link;
+- test CORS from the real GitHub Pages origin before calling the architecture proven.
+
+### Related article links
+
+Risk:
+
+- arbitrary remote destinations or tab takeover.
+
+Controls:
+
+- build links from explicit reviewed source records;
+- allow only approved Jagex/Wiki/mechanic domains;
+- never trust links copied from unsanitised remote markup;
+- use `noopener noreferrer` for new tabs;
+- show destination/source labels.
 
 ### Imported progress JSON
 
 Risk:
 
-- oversized or malicious payloads;
+- oversized/malicious payload;
 - prototype pollution or invalid state;
-- route corruption.
+- route corruption;
+- imported text rendered as HTML.
 
 Controls:
 
-- cap file size;
+- strict file-size cap;
 - parse as data only;
-- validate every field against a versioned schema;
+- versioned schema validation;
 - ignore unknown keys;
-- normalise IDs against the current route corpus;
-- never render imported strings as HTML;
-- offer a preview before replacement;
-- preserve a rollback copy in local storage.
+- normalise task IDs against the current corpus;
+- preserve source facts/route definition as immutable;
+- preview replacement and retain a rollback copy;
+- render notes as text only.
 
 ### Local storage
 
@@ -164,56 +161,63 @@ Risk:
 
 - stale schema;
 - corrupt state;
-- accidental collection of personal data.
+- accidental personal-data collection.
 
 Controls:
 
-- store task IDs, route choices, and progress only;
-- no names, account IDs, WikiSync data, analytics, or device fingerprinting;
-- version and normalise state;
-- provide clear reset/export controls.
+- store task IDs, decisions, queue states, notes and optional local timestamps only;
+- no player name, WikiSync account data, analytics, cookies or device fingerprinting;
+- version/normalise state;
+- provide reset/export controls.
 
-### External links
+### Combat benchmark imports
 
 Risk:
 
-- unexpected domains or tab takeover.
+- stale/incompatible benchmark schema;
+- unsupported mechanics presented as complete;
+- engine result confused with route estimate;
+- untrusted metadata/text.
 
 Controls:
 
-- build links from explicit source records, not arbitrary fetched markup;
-- allow Jagex, RuneScape Wiki, and approved mechanic sources only;
-- use `rel="noopener noreferrer"` for new tabs;
-- show the destination label.
+- schema/version/engine-commit validation;
+- require opening state, target, metric denominator, support/exclusion and RNG metadata;
+- treat imported strings as data/text only;
+- reject incompatible or incomplete results;
+- keep route-level setup/failure/supply estimates separate from engine output.
 
-### Dependencies
+### Dependencies and workflows
 
 Risk:
 
-- unnecessary supply-chain surface.
+- unnecessary supply-chain surface;
+- malicious package scripts;
+- over-broad workflow permissions;
+- leaked source maps/build files.
 
 Controls:
 
-- keep the stack minimal;
-- no UI kit, analytics SDK, animation framework, or backend client;
-- pin lockfile versions;
-- review package scripts;
-- run audit tooling before merge;
-- avoid dependencies for functionality easily implemented safely in a few lines.
+- minimal stack;
+- no UI kit, analytics SDK, animation framework, backend client or Three.js without measured need;
+- pin/review lockfile and package scripts;
+- least-privilege Pages workflow;
+- inspect generated output/source maps before deployment;
+- run dependency/security tooling before merge.
 
 ## Source-integrity policy
 
-Allowed primary sources:
+Primary:
 
-- official Jagex League announcements and rules;
-- current RuneScape Wiki Equilibrium pages;
-- provenanced data in `sonnaya2/Equilibrium`.
+- current official Jagex League announcements/rules;
+- current canonical RuneScape Wiki Equilibrium pages;
+- provenanced canonical data in `sonnaya2/Equilibrium`.
 
-Conditional mechanic sources:
+Conditional mechanics only:
 
 - PvME;
 - RS Analysis;
-- official library/framework documentation during implementation.
+- official library/framework documentation.
 
 Forbidden route/code sources:
 
@@ -223,36 +227,39 @@ Forbidden route/code sources:
 - YouTube comments;
 - Facebook;
 - Twitter/X;
-- copied layouts or code from other RS3 tools;
+- copied layouts/code from other RS3 tools;
 - Catalyst stand-ins presented as Equilibrium truth.
 
-Archive.org may be used only as a clearly labelled last-resort historical snapshot. An archived value cannot silently override a newer official source.
+Archive.org may be used only as a labelled historical last resort and cannot silently override newer official data.
 
 ## Public/private boundary
 
-The public ClankerScape repository may contain:
+The public repository may contain:
 
-- rewritten project-specific skills;
+- rewritten project skills;
 - public source URLs;
-- route assumptions and benchmarks;
-- generated build output only if the chosen Pages workflow requires it;
-- game icons with reviewed provenance/licensing.
+- clearly labelled route assumptions;
+- versioned benchmark metadata/results;
+- reviewed game icons later when licensing/provenance is documented;
+- generated build output only when the Pages workflow requires it.
 
 It must not contain:
 
 - private repository material unrelated to ClankerScape;
-- private visual-reference screenshots;
-- login credentials or auth state;
+- private reference screenshots/fonts/assets;
+- Grok source/screenshots;
+- login credentials/auth state;
 - connector responses;
-- private issue attachments;
-- private account information.
+- private attachments/account details.
 
-## GitHub Pages status
+## GitHub Pages
 
-Pages has not been enabled in this planning phase. There is no boilerplate to deploy, and implementation is intentionally waiting for approval. If the GitHub connector cannot change the Pages source after a workflow exists, the user must enable GitHub Actions as the source in repository settings. Do not claim deployment before verifying the live URL.
+Pages remains unconfigured in this planning phase. There is no approved application to deploy.
 
-## Current verdict
+After an approved workflow exists, the owner may need to select GitHub Actions as the Pages source in repository settings. Do not claim a live deployment until the URL is verified.
 
-**PASS for the complete planning PR diff.**
+## Verdict
 
-No shared secret or private account data has been identified. The implementation phase must repeat this review after dependencies, workflows, runtime source requests, and import/export code exist.
+**PASS for the revised planning PR diff.**
+
+No shared secret or private account/source material was identified. Repeat the full review after application code, dependencies, workflows, runtime Wiki requests, import/export and build output exist.
