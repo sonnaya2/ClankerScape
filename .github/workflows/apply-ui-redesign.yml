@@ -1,0 +1,55 @@
+name: Apply verified UI redesign
+
+on:
+  push:
+    branches:
+      - planning/dragon-route-foundation
+    paths:
+      - .github/workflows/apply-ui-redesign.yml
+      - .ui-redesign/**
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apply-clankerscape-ui-redesign
+  cancel-in-progress: true
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: planning/dragon-route-foundation
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify and extract redesign
+        shell: bash
+        run: |
+          cat \
+            .ui-redesign/redesign.part-00.b64 \
+            .ui-redesign/redesign.part-01a0.b64 \
+            .ui-redesign/redesign.part-01a1.b64 \
+            .ui-redesign/redesign.part-01b.b64 \
+            .ui-redesign/redesign.part-02.b64 \
+            | base64 --decode > /tmp/clankerscape-ui-redesign.tar.gz
+          echo "948e3ff2c33fba8908becd9ea7292fd18f207830921d0dec414079e95a18a00f  /tmp/clankerscape-ui-redesign.tar.gz" | sha256sum --check
+          if tar -tzf /tmp/clankerscape-ui-redesign.tar.gz | grep -Eq '(^/|(^|/)\.\.(/|$))'; then
+            echo "Unsafe archive path" >&2
+            exit 1
+          fi
+          tar -xzf /tmp/clankerscape-ui-redesign.tar.gz -C .
+          rm -rf .ui-redesign .github/workflows/apply-ui-redesign.yml
+      - name: Verify application
+        run: npm run verify
+      - name: Commit redesigned application
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Replace dashboard shell with RuneScape neo-brutalist UI"
+          git push
