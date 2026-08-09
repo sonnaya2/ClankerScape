@@ -10,6 +10,8 @@ const v2Polish = await readFile(new URL('../_site/combat-prototype-v2-polish.css
 const v2Js = await readFile(new URL('../_site/combat-prototype-v2.js', import.meta.url), 'utf8');
 const v3Css = await readFile(new URL('../_site/combat-prototype-v3.css', import.meta.url), 'utf8');
 const v3Js = await readFile(new URL('../_site/combat-prototype-v3.js', import.meta.url), 'utf8');
+const v4Css = await readFile(new URL('../_site/combat-prototype-v4.css', import.meta.url), 'utf8');
+const v4Js = await readFile(new URL('../_site/combat-prototype-v4.js', import.meta.url), 'utf8');
 
 const artRoot = 'https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/';
 
@@ -108,18 +110,65 @@ test('V3 keeps the main Loadout dense rather than duplicating resolved stats', (
   assert.match(v3Css, /\.loadout-effects-module \.buff-category-stage\.buff-direct-grid\s*\{[\s\S]*repeat\(4/i);
 });
 
+test('V4 removes redundant weapon inputs and shows Genesis as resolved state', () => {
+  assert.match(html, /combat-prototype-v4\.css/);
+  assert.match(html, /combat-prototype-v4\.js/);
+  assert.match(v4Js, /=== 'weapon'/);
+  assert.match(v4Js, /weaponSection\?\.remove\(\)/);
+  assert.match(v4Js, /genesis-resolved is-active/);
+  assert.match(v4Js, /Genesis Essence/);
+  assert.match(v4Js, /dataset\.genesisActive = 'true'/);
+  assert.match(v4Js, /<em>T120<\/em>/);
+  assert.match(v4Css, /stats-with-resolved-genesis \.stats-groups[\s\S]*repeat\(3/i);
+});
+
+test('V4 tightens Invention into a compact equipped-gizmo strip', () => {
+  assert.match(v4Js, /invention-compact-strip/);
+  assert.match(v4Css, /\.invention-compact-strip \.gizmo-grid[\s\S]*repeat\(4/i);
+  assert.match(v4Css, /\.invention-compact-strip \.gizmo\s*\{[\s\S]*min-height:\s*0 !important/i);
+  assert.match(v4Css, /\.invention-compact-strip \.placed-perk[\s\S]*min-height:\s*34px/i);
+});
+
+test('V4 restores missing real BuffsPanel families behind one disclosure', () => {
+  assert.match(v4Js, /More buffs &amp; details/);
+  for (const group of [
+    'Skillcape perks',
+    'Account unlocks',
+    'Account enchantments',
+    'Equilibrium blessings',
+    'Defence & life',
+    'Status & sources',
+  ]) assert.ok(v4Js.includes(group), `missing reconciled buff group: ${group}`);
+  for (const buff of [
+    'Attack cape (120)',
+    'Ring of Vigour Passive',
+    'Ensouled spectral lens',
+    'Agony',
+    'Heroism',
+    'Fortitude',
+    'Reaper Crew',
+    'Font of Life',
+    'Boon of Het',
+    'Totem of Vitality',
+    'Powerburst of vitality',
+  ]) assert.ok(v4Js.includes(buff), `missing overflow buff: ${buff}`);
+  assert.match(v4Css, /\.more-effects-disclosure/);
+  assert.doesNotMatch(v4Css, /inset\s+3px\s+0\s+0/i);
+});
+
 test('prototype uses the same pinned Equilibrium RuneScape art source', () => {
   assert.ok(js.includes(artRoot));
+  assert.ok(v4Js.includes(artRoot));
   assert.doesNotMatch(html, /https?:\/\//i);
-  assert.doesNotMatch(css + v2Css + v2Polish + v3Css, /url\(\s*["']?https?:\/\//i);
+  assert.doesNotMatch(css + v2Css + v2Polish + v3Css + v4Css, /url\(\s*["']?https?:\/\//i);
 });
 
 test('prototype remains a presentation prototype rather than engine code', () => {
   assert.match(html, /presentation only · no engine/);
-  assert.doesNotMatch(js + v2Js + v3Js, /damage\s*[+*\/-]=|calculateAbility|simulate\(|worker|fetch\(/i);
+  assert.doesNotMatch(js + v2Js + v3Js + v4Js, /damage\s*[+*\/-]=|calculateAbility|simulate\(|worker|fetch\(/i);
 });
 
 test('new visual layers avoid generic AI dashboard treatment', () => {
   assert.doesNotMatch(html, />\s*(?:dashboard|workspace|KPI|unlock your potential|optimi[sz]e your)\s*</i);
-  assert.doesNotMatch(css + v2Css + v2Polish + v3Css, /backdrop-filter|glassmorphism|radial-gradient|linear-gradient/i);
+  assert.doesNotMatch(css + v2Css + v2Polish + v3Css + v4Css, /backdrop-filter|glassmorphism|radial-gradient|linear-gradient/i);
 });
