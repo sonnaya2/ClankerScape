@@ -5,20 +5,31 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const source = path.join(root, 'prototype');
 const out = path.join(root, '_site');
+const buildRevision = (process.env.GITHUB_SHA || 'local-dev').slice(0, 12);
+const versioned = (asset) => `${asset}?v=${buildRevision}`;
 
 const sourceHtml = await readFile(path.join(source, 'combat-prototype.html'), 'utf8');
-const html = sourceHtml
+let html = sourceHtml
   .replace(
     '</head>',
-    '  <link rel="stylesheet" href="./combat-prototype-v2.css">\n  <link rel="stylesheet" href="./combat-prototype-v2-polish.css">\n  <link rel="stylesheet" href="./combat-prototype-v3.css">\n  <link rel="stylesheet" href="./combat-prototype-v4.css">\n  <link rel="stylesheet" href="./combat-prototype-v5.css">\n</head>',
+    `  <link rel="stylesheet" href="${versioned('./combat-prototype-v2.css')}">\n  <link rel="stylesheet" href="${versioned('./combat-prototype-v2-polish.css')}">\n  <link rel="stylesheet" href="${versioned('./combat-prototype-v3.css')}">\n  <link rel="stylesheet" href="${versioned('./combat-prototype-v4.css')}">\n  <link rel="stylesheet" href="${versioned('./combat-prototype-v5.css')}">\n</head>`,
   )
   .replace(
     '</body>',
-    '  <script src="./combat-prototype-v2.js"></script>\n  <script src="./combat-prototype-v3.js"></script>\n  <script src="./combat-prototype-v4.js"></script>\n  <script src="./combat-prototype-v5.js"></script>\n</body>',
+    `  <script src="${versioned('./combat-prototype-v2.js')}"></script>\n  <script src="${versioned('./combat-prototype-v3.js')}"></script>\n  <script src="${versioned('./combat-prototype-v4.js')}"></script>\n  <script src="${versioned('./combat-prototype-v5.js')}"></script>\n</body>`,
   );
+
+// The base stylesheet/script are authored in the source HTML, so version them too.
+html = html
+  .replace('./combat-prototype.css"', `${versioned('./combat-prototype.css')}"`)
+  .replace('./combat-prototype.js"', `${versioned('./combat-prototype.js')}"`)
+  .replace('</head>', `  <meta name="prototype-build" content="${buildRevision}">\n</head>`);
 
 await Promise.all([
   writeFile(path.join(out, 'combat-prototype.html'), html, 'utf8'),
+  // Stable alternate URL for this visual generation. Useful when a browser has
+  // cached the canonical HTML itself rather than only its CSS/JS assets.
+  writeFile(path.join(out, 'combat-prototype-v5.html'), html, 'utf8'),
   copyFile(path.join(source, 'combat-prototype.css'), path.join(out, 'combat-prototype.css')),
   copyFile(path.join(source, 'combat-prototype.js'), path.join(out, 'combat-prototype.js')),
   copyFile(path.join(source, 'combat-prototype-v2.css'), path.join(out, 'combat-prototype-v2.css')),
@@ -32,4 +43,4 @@ await Promise.all([
   copyFile(path.join(source, 'combat-prototype-v5.js'), path.join(out, 'combat-prototype-v5.js')),
 ]);
 
-console.log('Built Combat UX prototype at /combat-prototype.html');
+console.log(`Built Combat UX prototype at /combat-prototype.html (${buildRevision})`);
