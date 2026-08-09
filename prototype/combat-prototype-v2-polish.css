@@ -1,0 +1,49 @@
+/* Small V2 polish kept separate so the structural experiment is easy to remove. */
+.loadout-state-summary {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 7px 0 8px;
+  border-top: 1px solid var(--brass-dim);
+  border-bottom: 1px solid var(--brass-dim);
+  background: #050d0e;
+}
+.loadout-state-summary > span {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 4px 5px;
+  border-bottom: 1px solid #25302f;
+}
+.loadout-state-summary > span:last-child { border-bottom: 0; }
+.loadout-state-summary small {
+  color: var(--muted);
+  font-size: 8px;
+}
+.loadout-state-summary strong {
+  color: var(--cream-hi);
+  font: 700 8px var(--mono);
+}
+
+/* Keep the picker visually like a temporary tool surface instead of a hero modal. */
+.picker-dialog .section-head h2,
+.picker-dialog .context-note { font-size: 9px; }
+.picker-dialog .equipment-row:hover,
+.picker-dialog .perk-list button:hover,
+.picker-dialog .relic-row:hover {
+  background: #0c1b1b;
+}
+
+@media (max-width: 1100px) {
+  .loadout-state-summary {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+  .loadout-state-summary > span {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-bottom: 0;
+    border-right: 1px solid #25302f;
+  }
+  .loadout-state-summary > span:last-child { border-right: 0; }
+}
