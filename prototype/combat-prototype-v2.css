@@ -1,0 +1,523 @@
+/*
+ * Combat prototype V2 — loadout consolidation experiment.
+ * This layer intentionally overrides the first prototype without changing its
+ * source markup. Gear becomes the loadout hub: equipment and relic catalogues
+ * are contextual dialogs, prayers live beside the paper doll, gizmos are the
+ * main stage, and the monolith is a compact secondary instrument.
+ */
+
+/* Selected means the whole object changed state. Avoid the asymmetric 3px
+   keyline treatment from V1; it reads like decorative chrome rather than state. */
+.context-rail > button.is-active,
+.analysis-pick.is-active,
+.slot.is-selected,
+.mini-context button.is-active {
+  border-color: var(--teal) !important;
+  background: #0a201e !important;
+  box-shadow: inset 0 0 0 1px rgba(109,187,177,.24) !important;
+}
+.equipment-row.is-selected,
+.relic-row.is-selected,
+.ability-list > button.is-selected {
+  position: relative;
+  background: #0d2020 !important;
+  box-shadow: none !important;
+  outline: 1px solid var(--teal);
+  outline-offset: -1px;
+}
+.warning-row {
+  border: 1px solid #6c5631 !important;
+  border-left-width: 1px !important;
+}
+
+/* Arch and Invention are no longer destinations in this experiment. Their
+   editors are folded into Gear and their catalogues become contextual pickers. */
+.context-rail > [data-subtab="arch"],
+.context-rail > [data-subtab="invention"] {
+  display: none !important;
+}
+
+.gear-stage-grid {
+  grid-template-columns: minmax(286px, 310px) minmax(0, 1fr);
+  gap: 14px;
+  min-height: 680px;
+}
+.paper-doll-zone {
+  padding-right: 14px;
+}
+.loadout-attachment-stage {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.attachment-stage-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 38px;
+  padding: 2px 2px 8px;
+  border-bottom: 1px solid var(--brass-mid);
+}
+.attachment-stage-head h2 {
+  margin: 2px 0 0;
+  color: var(--cream-hi);
+  font: 700 16px var(--display);
+}
+.attachment-stage-head p {
+  max-width: 430px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 9px;
+  text-align: right;
+}
+.attachment-block {
+  min-width: 0;
+  margin-top: 10px;
+  padding-top: 2px;
+}
+.attachment-block + .attachment-block {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--brass-mid);
+}
+.attachment-block__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 32px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--brass-dim);
+}
+.attachment-block__head > div {
+  display: grid;
+  gap: 1px;
+}
+.attachment-block__head h3 {
+  margin: 0;
+  color: var(--brass-hi);
+  font: 700 11px var(--display);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.attachment-block__head span {
+  color: var(--faint);
+  font: 700 8px var(--mono);
+}
+.attachment-action {
+  min-height: 28px;
+  padding: 3px 9px;
+  border: 1px solid #51442d;
+  background: #071011;
+  color: #cbc5b9;
+  font-size: 9px;
+  cursor: pointer;
+}
+.attachment-action:hover {
+  border-color: var(--teal);
+  color: var(--teal-hi);
+}
+
+/* Invention: only the equipped gizmos stay on the loadout stage. The library
+   is a tool picker opened for the active gizmo. */
+.loadout-attachment-stage .gizmo-stage {
+  min-width: 0;
+}
+.loadout-attachment-stage .gizmo-stage > .section-head {
+  display: none;
+}
+.loadout-attachment-stage .gizmo-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+.loadout-attachment-stage .gizmo {
+  min-height: 104px;
+  cursor: pointer;
+}
+.loadout-attachment-stage .gizmo:hover {
+  border-color: var(--brass-mid);
+}
+.loadout-attachment-stage .gizmo.is-active {
+  border-color: var(--teal);
+  background: #081716;
+  box-shadow: inset 0 0 0 1px rgba(109,187,177,.14);
+}
+.loadout-attachment-stage .gizmo > header {
+  cursor: pointer;
+}
+.loadout-attachment-stage .empty-gizmo-slot {
+  width: calc(100% - 12px);
+  cursor: pointer;
+}
+
+/* Archaeology is represented as an instrument + three sockets. Full relic
+   browsing happens only after choosing a socket. */
+.monolith-module .arch-energy-rail {
+  margin-top: 8px;
+  border-color: #3b453b;
+}
+.monolith-module .energy-meter {
+  min-width: 0;
+  flex: 1;
+}
+.monolith-slots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 8px;
+}
+.relic-socket {
+  display: grid;
+  grid-template-columns: 34px minmax(0,1fr) auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 1px 7px;
+  min-width: 0;
+  min-height: 58px;
+  padding: 6px 7px;
+  border: 1px solid #403728;
+  background: #071112;
+  color: var(--cream);
+  text-align: left;
+  cursor: pointer;
+}
+.relic-socket:hover,
+.relic-socket:focus-visible {
+  border-color: var(--teal);
+  background: #0a1b1a;
+}
+.relic-socket .game-icon {
+  grid-row: 1 / 3;
+  width: 32px;
+  height: 32px;
+}
+.relic-socket small {
+  color: var(--faint);
+  font: 700 7px var(--mono);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.relic-socket strong {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--cream-hi);
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.relic-socket em {
+  grid-column: 3;
+  grid-row: 1 / 3;
+  color: var(--brass-hi);
+  font: 700 9px var(--mono);
+  font-style: normal;
+}
+
+/* Prayers are loadout state, not a buried Buff category. Same-style choices
+   are directly visible and require no category navigation. */
+.prayer-strip {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--brass-dim);
+}
+.prayer-strip__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.prayer-strip__head h3 {
+  margin: 0;
+  color: var(--brass-hi);
+  font: 700 10px var(--display);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.prayer-strip__head span {
+  color: var(--faint);
+  font: 700 7px var(--mono);
+  text-transform: uppercase;
+}
+.prayer-strip .icon-choice-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  margin: 0;
+}
+.prayer-strip .icon-choice {
+  grid-template-columns: 25px minmax(0,1fr);
+  gap: 5px;
+  min-height: 44px;
+  padding: 4px 5px;
+}
+.prayer-strip .icon-choice .game-icon {
+  width: 24px;
+  height: 24px;
+}
+.prayer-strip .icon-choice strong {
+  font-size: 8px;
+}
+.prayer-strip .icon-choice small {
+  display: none;
+}
+.prayer-strip .icon-choice .status {
+  display: none;
+}
+.prayer-strip .icon-choice.is-on {
+  border-color: var(--teal);
+  background: #0a1d1c;
+  box-shadow: inset 0 0 0 1px rgba(109,187,177,.18);
+}
+.prayer-strip .prayer-none .game-icon {
+  color: var(--faint);
+}
+
+/* Buffs V2: moving prayers away gives enough room to stop forcing category
+   navigation. Common groups are visible together; only rare League state is
+   behind disclosure. */
+.buff-workbench.buff-direct-workbench {
+  display: block;
+  margin-top: 10px;
+}
+.buff-workbench.buff-direct-workbench > .mini-context {
+  display: none !important;
+}
+.buff-category-stage.buff-direct-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 12px;
+}
+.buff-category-stage.buff-direct-grid > .buff-category {
+  display: block !important;
+  min-width: 0;
+  padding-top: 2px;
+  border-top: 1px solid var(--brass-dim);
+}
+.buff-category-stage.buff-direct-grid > .buff-category .icon-choice-grid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.buff-category-stage.buff-direct-grid > .buff-category .icon-choice {
+  min-height: 58px;
+}
+.buff-rare {
+  grid-column: 1 / -1;
+  margin-top: 0;
+}
+.buff-rare > summary {
+  padding-inline: 4px !important;
+}
+.buff-rare .buff-category {
+  display: block !important;
+  padding: 4px 4px 0;
+}
+.active-effects-strip [data-buff-open="prayers"] {
+  display: none !important;
+}
+
+/* Native dialog pickers. They are contextual tools, not second pages. */
+.picker-dialog {
+  width: min(1120px, calc(100vw - 48px));
+  max-width: none;
+  height: min(760px, calc(100vh - 64px));
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--brass);
+  background: #071011;
+  color: var(--cream);
+  box-shadow: 0 18px 48px rgba(0,0,0,.62);
+}
+.picker-dialog::backdrop {
+  background: rgba(1,5,6,.78);
+}
+.picker-dialog__shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+.picker-dialog__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 7px 10px 7px 14px;
+  border-bottom: 1px solid var(--brass-mid);
+  background: #070c0c;
+}
+.picker-dialog__head > div {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+.picker-dialog__head span {
+  color: var(--faint);
+  font: 700 7px var(--mono);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.picker-dialog__head h2 {
+  margin: 0;
+  color: var(--brass-hi);
+  font: 700 14px var(--display);
+}
+.picker-dialog__head p {
+  margin: 0 0 0 auto;
+  color: var(--muted);
+  font-size: 9px;
+}
+.picker-dialog__close {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin-left: 4px;
+  border: 1px solid #51442d;
+  background: #071011;
+  color: var(--cream);
+  font-size: 16px;
+  cursor: pointer;
+}
+.picker-dialog__close:hover {
+  border-color: var(--brass-hi);
+  color: var(--brass-hi);
+}
+.picker-dialog__body {
+  flex: 1;
+  min-height: 0;
+  padding: 10px;
+  overflow: hidden;
+}
+.picker-dialog .equipment-browser {
+  height: 100%;
+  min-height: 0;
+}
+.picker-dialog .equipment-table {
+  min-height: 0;
+}
+.picker-dialog .equipment-filter-rail {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+}
+.picker-dialog .table-footer {
+  flex: 0 0 auto;
+}
+.perk-picker-dialog {
+  width: min(520px, calc(100vw - 36px));
+  height: min(640px, calc(100vh - 56px));
+}
+.perk-picker-dialog .picker-dialog__body {
+  overflow: auto;
+}
+.perk-picker-dialog .perk-library {
+  width: 100%;
+  padding: 0;
+  border-right: 0;
+}
+.perk-picker-dialog .perk-list button {
+  min-height: 46px;
+}
+.relic-picker-dialog {
+  width: min(900px, calc(100vw - 36px));
+  height: min(650px, calc(100vh - 56px));
+}
+.relic-picker-dialog .arch-workbench {
+  display: block;
+  height: 100%;
+  margin: 0;
+}
+.relic-picker-dialog .relic-catalogue {
+  height: 100%;
+  overflow: auto;
+}
+.relic-picker-dialog .selected-inspector {
+  display: none;
+}
+.relic-picker-dialog .relic-row {
+  min-height: 58px;
+}
+body:has(.picker-dialog[open]) {
+  overflow: hidden;
+}
+
+/* The Gear page should no longer reserve visual space for an inline catalogue. */
+.gear-stage-grid > .equipment-browser {
+  display: none !important;
+}
+
+/* Existing alt lenses still work, but the consolidated workbench is the same
+   information architecture in every lens. */
+body.prototype-print .picker-dialog,
+body.prototype-print .relic-socket,
+body.prototype-print .loadout-attachment-stage .gizmo {
+  box-shadow: none;
+}
+body.prototype-compact .gear-stage-grid {
+  grid-template-columns: 280px minmax(0,1fr);
+}
+body.prototype-compact .relic-socket,
+body.prototype-compact .loadout-attachment-stage .gizmo {
+  min-height: 50px;
+}
+
+@media (max-width: 1260px) {
+  .gear-stage-grid {
+    grid-template-columns: 290px minmax(0,1fr);
+  }
+  .monolith-slots {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 1100px) {
+  .loadout-workbench.workspace-grid {
+    grid-template-columns: var(--rail) minmax(0,1fr);
+  }
+  .loadout-workbench > .summary-rail {
+    grid-column: 2;
+  }
+  .gear-stage-grid {
+    grid-template-columns: 280px minmax(0,1fr);
+  }
+  .picker-dialog {
+    width: calc(100vw - 28px);
+  }
+}
+@media (max-width: 900px) {
+  .gear-stage-grid,
+  .buff-category-stage.buff-direct-grid {
+    grid-template-columns: 1fr;
+  }
+  .paper-doll-zone {
+    padding-right: 0;
+    padding-bottom: 12px;
+    border-right: 0;
+    border-bottom: 1px solid var(--brass-dim);
+  }
+  .loadout-attachment-stage .gizmo-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .picker-dialog {
+    width: calc(100vw - 18px);
+    height: calc(100vh - 24px);
+  }
+}
+@media (max-width: 620px) {
+  .loadout-attachment-stage .gizmo-grid,
+  .prayer-strip .icon-choice-grid {
+    grid-template-columns: 1fr;
+  }
+  .attachment-stage-head {
+    align-items: start;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .attachment-stage-head p {
+    text-align: left;
+  }
+  .picker-dialog__head p {
+    display: none;
+  }
+}
