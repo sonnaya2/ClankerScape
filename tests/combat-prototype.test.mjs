@@ -17,9 +17,10 @@ test('combat prototype covers the complete combat IA', () => {
 
 test('prototype implements the design-document disclosure model', () => {
   for (const value of [
-    'Filters', 'Passives', 'Set effects', 'Advanced assumptions', 'Active effects',
-    'Scenario modeling', 'Optimizer dock', 'Damage', 'Timeline', 'Model notes',
+    'Filters', 'Passives', 'Set effects', 'Advanced assumptions', 'Scenario modeling',
+    'Optimizer dock', 'Damage', 'Timeline', 'Model notes',
   ]) assert.ok(html.includes(value), `missing disclosure surface: ${value}`);
+  assert.match(html, /active-effects-strip/);
 });
 
 test('prototype exposes the recommended and alternative design lenses', () => {
