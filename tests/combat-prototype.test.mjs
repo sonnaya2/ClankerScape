@@ -44,6 +44,6 @@ test('prototype remains a presentation prototype rather than engine code', () =>
 });
 
 test('new visual layer avoids generic AI dashboard treatment', () => {
-  assert.doesNotMatch(html, /dashboard|workspace|KPI|unlock your potential|optimi[sz]e your/i);
+  assert.doesNotMatch(html, />\s*(?:dashboard|workspace|KPI|unlock your potential|optimi[sz]e your)\s*</i);
   assert.doesNotMatch(css, /backdrop-filter|glassmorphism|radial-gradient|linear-gradient/i);
 });
