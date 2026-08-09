@@ -10,7 +10,7 @@ const sourceHtml = await readFile(path.join(source, 'combat-prototype.html'), 'u
 const html = sourceHtml
   .replace(
     '</head>',
-    '  <link rel="stylesheet" href="./combat-prototype-v2.css">\n</head>',
+    '  <link rel="stylesheet" href="./combat-prototype-v2.css">\n  <link rel="stylesheet" href="./combat-prototype-v2-polish.css">\n</head>',
   )
   .replace(
     '</body>',
@@ -22,6 +22,7 @@ await Promise.all([
   copyFile(path.join(source, 'combat-prototype.css'), path.join(out, 'combat-prototype.css')),
   copyFile(path.join(source, 'combat-prototype.js'), path.join(out, 'combat-prototype.js')),
   copyFile(path.join(source, 'combat-prototype-v2.css'), path.join(out, 'combat-prototype-v2.css')),
+  copyFile(path.join(source, 'combat-prototype-v2-polish.css'), path.join(out, 'combat-prototype-v2-polish.css')),
   copyFile(path.join(source, 'combat-prototype-v2.js'), path.join(out, 'combat-prototype-v2.js')),
 ]);
 
