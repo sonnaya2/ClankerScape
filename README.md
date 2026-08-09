@@ -2,7 +2,7 @@
 
 ClankerScape is a read-only RuneScape 3 **Leagues II: Equilibrium** route to the 48,000-point Dragon trophy.
 
-The public page shows one working route rather than asking the player to build one:
+The primary public page shows one working route rather than asking the player to build one:
 
 - regions: **Desert → Asgarnia → Anachronia**;
 - relics: **Golden Touch → Animal Wrangler → Voidwalker → Crystal Grace → Production Master → Rejuvenated (+ Devout) → Infernal Fire**;
@@ -13,9 +13,13 @@ The checked-in task snapshot currently contains **533 Easy and Medium tasks wort
 
 ## Public site
 
-GitHub Pages publishes the static route page. There are no public progress controls, save state, forms, calculators, import/export, accounts, analytics, cookies, or remote database.
+GitHub Pages publishes the primary static route page at `/`. That route remains read-only: it has no progress controls, save state, forms, calculators, import/export, accounts, analytics, cookies, or remote database.
 
-The visual system is intentionally shared with the companion Equilibrium project: compact near-black RuneScape tool surfaces, restrained gold and teal, serif display type, hard rules, and real RuneScape region/relic/Blessing art. ClankerScape does **not** use generated art. Public image references are pinned to a specific Equilibrium repository revision so the route cannot silently change underneath a deployment; see [NOTICE.md](NOTICE.md) for attribution.
+A separate **Combat UX prototype** is published at `/combat-prototype.html`. It is a presentation and interaction study for the companion Equilibrium combat interface, not a combat calculator and not a second stateful app. Its controls only switch prototype views and disclosures in the browser; it deliberately performs no combat calculation, persistence, analytics, API writes, accounts, or remote database work.
+
+The prototype tests a focused-workbench design: one dominant stage, a narrow context rail, a concise resolved-summary rail, progressive disclosure for expert mechanics, and selective EverSense-Web-inspired instrument/print treatments. Its top prototype switch also exposes Instrument, Dark print, and Expert compact alternatives for direct visual comparison.
+
+The visual system is intentionally shared with the companion Equilibrium project: compact near-black RuneScape tool surfaces, restrained gold and teal, serif display type, hard rules, and real RuneScape region/relic/Blessing/combat art. ClankerScape does **not** use generated art. Public image references are pinned to a specific Equilibrium repository revision so a deployment cannot silently change underneath the prototype or route; see [NOTICE.md](NOTICE.md) for attribution.
 
 ## Route research
 
@@ -36,6 +40,6 @@ The importer only reads numeric rows from `Equilibrium League/Tasks`; it will no
 npm run verify
 ```
 
-This runs syntax, source/data, parser, route, Blessing, Tier 6, and read-only UI regression checks.
+This runs syntax, source/data, parser, route, Blessing, Tier 6, read-only route UI, and Combat prototype regression checks.
 
 RuneScape Wiki task text and referenced game art keep their source licences and attribution. See [NOTICE.md](NOTICE.md). RuneScape and Jagex are trademarks of Jagex Limited; this is an unofficial fan project.
