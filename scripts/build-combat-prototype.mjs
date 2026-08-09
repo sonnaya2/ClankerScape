@@ -10,11 +10,11 @@ const sourceHtml = await readFile(path.join(source, 'combat-prototype.html'), 'u
 const html = sourceHtml
   .replace(
     '</head>',
-    '  <link rel="stylesheet" href="./combat-prototype-v2.css">\n  <link rel="stylesheet" href="./combat-prototype-v2-polish.css">\n  <link rel="stylesheet" href="./combat-prototype-v3.css">\n</head>',
+    '  <link rel="stylesheet" href="./combat-prototype-v2.css">\n  <link rel="stylesheet" href="./combat-prototype-v2-polish.css">\n  <link rel="stylesheet" href="./combat-prototype-v3.css">\n  <link rel="stylesheet" href="./combat-prototype-v4.css">\n</head>',
   )
   .replace(
     '</body>',
-    '  <script src="./combat-prototype-v2.js"></script>\n  <script src="./combat-prototype-v3.js"></script>\n</body>',
+    '  <script src="./combat-prototype-v2.js"></script>\n  <script src="./combat-prototype-v3.js"></script>\n  <script src="./combat-prototype-v4.js"></script>\n</body>',
   );
 
 await Promise.all([
@@ -26,6 +26,8 @@ await Promise.all([
   copyFile(path.join(source, 'combat-prototype-v2.js'), path.join(out, 'combat-prototype-v2.js')),
   copyFile(path.join(source, 'combat-prototype-v3.css'), path.join(out, 'combat-prototype-v3.css')),
   copyFile(path.join(source, 'combat-prototype-v3.js'), path.join(out, 'combat-prototype-v3.js')),
+  copyFile(path.join(source, 'combat-prototype-v4.css'), path.join(out, 'combat-prototype-v4.css')),
+  copyFile(path.join(source, 'combat-prototype-v4.js'), path.join(out, 'combat-prototype-v4.js')),
 ]);
 
 console.log('Built Combat UX prototype at /combat-prototype.html');
