@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Read-only RS3 Equilibrium League Dragon route with source-locked research tooling.",
   "scripts": {
-    "check": "node --check scripts/build-route-site.mjs && node --check scripts/build-combat-prototype.mjs && node --check prototype/combat-prototype.js && node --check src/domain/perkfection.js && node --check src/domain/blessings.js && node --check src/domain/route.js && node --check scripts/sync-equilibrium-tasks.mjs && node --check scripts/validate-data.mjs",
+    "check": "node --check scripts/build-route-site.mjs && node --check scripts/build-combat-prototype.mjs && node --check prototype/combat-prototype.js && node --check prototype/combat-prototype-v2.js && node --check src/domain/perkfection.js && node --check src/domain/blessings.js && node --check src/domain/route.js && node --check scripts/sync-equilibrium-tasks.mjs && node --check scripts/validate-data.mjs",
     "validate": "node scripts/validate-data.mjs",
     "test": "node --test tests/*.test.mjs",
     "verify": "npm run build:site && npm run check && npm run validate && npm test",
