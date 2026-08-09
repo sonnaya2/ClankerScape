@@ -59,7 +59,8 @@ test('V2 consolidates loadout state instead of adding more destinations', () => 
 test('equipment, perk, and archaeology catalogues are contextual native dialogs', () => {
   assert.match(v2Js, /document\.createElement\('dialog'\)/);
   assert.match(v2Js, /showModal\(\)/);
-  assert.match(v2Css, /\.equipment-picker-dialog/);
+  assert.match(v2Js, /equipment-picker-dialog/);
+  assert.match(v2Css, /\.picker-dialog/);
   assert.match(v2Css, /\.perk-picker-dialog/);
   assert.match(v2Css, /\.relic-picker-dialog/);
   assert.match(v2Css, /::backdrop/);
