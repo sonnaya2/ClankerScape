@@ -18,83 +18,124 @@
   if (statsHead) {
     const title = $('h3', statsHead);
     const note = $('span', statsHead);
-    if (title) title.textContent = 'Stats';
-    if (note) note.textContent = 'Core inputs · buffs & effects live here too';
+    if (title) title.textContent = 'Combat inputs';
+    if (note) note.textContent = 'Levels · life · adrenaline · Herblore';
   }
 
+  const iconFor = (label) => {
+    const key = label.toLowerCase();
+    if (key.includes('herblore')) return ['skills/herblore.webp', 'H'];
+    if (key.includes('attack')) return ['skills/attack.webp', 'A'];
+    if (key.includes('strength')) return ['skills/strength.webp', 'S'];
+    if (key.includes('defence')) return ['skills/defence.webp', 'D'];
+    if (key.includes('constitution') || key.includes('current hp')) return ['skills/constitution.webp', 'HP'];
+    if (key.includes('adrenaline')) return ['combat/melee-abilities.webp', '%'];
+    if (key.includes('ranged')) return ['skills/ranged.webp', 'R'];
+    if (key.includes('magic')) return ['skills/magic.webp', 'M'];
+    if (key.includes('necromancy')) return ['skills/necromancy.webp', 'N'];
+    return ['skills/constitution.webp', '•'];
+  };
+
+  const makeStatTile = (row, labelText) => {
+    const label = labelText || (row.textContent || '').trim();
+    const [path, fallback] = iconFor(label);
+    const tile = document.createElement('div');
+    tile.className = 'stat-tile-v6';
+    tile.dataset.stat = label.toLowerCase().replace(/\s+/g, '-').slice(0, 48);
+
+    const icon = document.createElement('span');
+    icon.className = 'game-icon stat-icon-v6';
+    icon.dataset.fallback = fallback;
+    const img = document.createElement('img');
+    img.alt = '';
+    img.src = ART_ROOT + path;
+    img.addEventListener('error', () => { img.hidden = true; }, { once: true });
+    icon.append(img);
+
+    row.classList.add('stat-row-v6');
+    tile.append(icon, row);
+    return tile;
+  };
+
   /* ---------------------------------------------------------------------
-   * Compact the stat editor into icon-backed tiles. The original form rows
-   * keep their controls/behaviour; only their composition changes.
+   * Stats are a compact, content-sized control strip. Current HP is folded
+   * into Constitution rather than burning an entire tile. Herblore moves here
+   * from Poison because it is a player stat, while Kwuarm potency stays with
+   * the effect it configures.
    * ------------------------------------------------------------------- */
   const groups = $('.stats-groups', statsModule);
-  if (groups && !$('.compact-stat-grid-v6', statsModule)) {
+  let statGrid = $('.compact-stat-grid-v6', statsModule);
+  if (groups && !statGrid) {
     const rows = $$('.input-row, .toggle-row, .auto-row', groups);
     const advanced = $('.advanced-section', groups);
-    const grid = document.createElement('div');
-    grid.className = 'compact-stat-grid-v6';
+    const currentHpRow = rows.find((row) => (row.textContent || '').toLowerCase().includes('current hp'));
 
-    const iconFor = (label) => {
-      const key = label.toLowerCase();
-      if (key.includes('attack')) return ['skills/attack.webp', 'A'];
-      if (key.includes('strength')) return ['skills/strength.webp', 'S'];
-      if (key.includes('defence')) return ['skills/defence.webp', 'D'];
-      if (key.includes('constitution') || key.includes('current hp')) return ['skills/constitution.webp', 'HP'];
-      if (key.includes('adrenaline')) return ['combat/melee-abilities.webp', '%'];
-      if (key.includes('ranged')) return ['skills/ranged.webp', 'R'];
-      if (key.includes('magic')) return ['skills/magic.webp', 'M'];
-      if (key.includes('necromancy')) return ['skills/necromancy.webp', 'N'];
-      return ['skills/constitution.webp', '•'];
-    };
+    statGrid = document.createElement('div');
+    statGrid.className = 'compact-stat-grid-v6';
 
-    rows.forEach((row) => {
-      const label = (row.textContent || '').trim();
-      const [path, fallback] = iconFor(label);
-      const tile = document.createElement('div');
-      tile.className = 'stat-tile-v6';
-      tile.dataset.stat = label.toLowerCase().replace(/\s+/g, '-').slice(0, 48);
-
-      const icon = document.createElement('span');
-      icon.className = 'game-icon stat-icon-v6';
-      icon.dataset.fallback = fallback;
-      const img = document.createElement('img');
-      img.alt = '';
-      img.src = ART_ROOT + path;
-      img.addEventListener('error', () => { img.hidden = true; }, { once: true });
-      icon.append(img);
-
-      row.classList.add('stat-row-v6');
-      tile.append(icon, row);
-      grid.append(tile);
+    rows.filter((row) => row !== currentHpRow).forEach((row) => {
+      statGrid.append(makeStatTile(row));
     });
 
+    if (currentHpRow) {
+      const constitutionTile = $$(':scope > .stat-tile-v6', statGrid).find((tile) =>
+        (tile.dataset.stat || '').includes('constitution'),
+      );
+      if (constitutionTile) {
+        currentHpRow.classList.add('stat-subrow-v6');
+        constitutionTile.classList.add('stat-tile-v6--life');
+        constitutionTile.append(currentHpRow);
+      }
+    }
+
     advanced?.remove();
-    groups.replaceWith(grid);
+    groups.replaceWith(statGrid);
     if (advanced) {
       advanced.classList.add('advanced-stats-v6');
-      grid.after(advanced);
+      statGrid.after(advanced);
     }
   }
 
+  const poisonPanel = $('[data-buff-panel="poison"]', effectsModule);
+  const poisonEditor = $('.inline-editor', poisonPanel);
+  const herbloreRow = poisonEditor
+    ? $$('label', poisonEditor).find((label) => (label.textContent || '').toLowerCase().includes('herblore level'))
+    : null;
+
+  if (statGrid && herbloreRow && !$('.stat-tile-v6[data-stat="herblore-level"]', statGrid)) {
+    herbloreRow.classList.add('input-row', 'herblore-stat-row-v6');
+    const herbloreTile = makeStatTile(herbloreRow, 'Herblore level');
+    herbloreTile.dataset.stat = 'herblore-level';
+
+    const adrenalineTile = $$(':scope > .stat-tile-v6', statGrid).find((tile) =>
+      (tile.dataset.stat || '').includes('starting-adrenaline'),
+    );
+    if (adrenalineTile) statGrid.insertBefore(herbloreTile, adrenalineTile);
+    else statGrid.append(herbloreTile);
+
+    const remainingEditorRows = $$(':scope > label', poisonEditor);
+    if (remainingEditorRows.length === 0) poisonEditor.remove();
+    else poisonEditor.classList.add('poison-potency-only-v6');
+  }
+
   /* ---------------------------------------------------------------------
-   * Effects used to own a whole bottom floor. They are combat configuration,
-   * so keep the same filters/dropdown but make them the second half of Stats.
+   * Buffs stay with combat settings, but they no longer stretch into a fake
+   * dashboard grid. Each category is an intrinsic-width compact control group.
    * ------------------------------------------------------------------- */
   const effectsHead = $('.attachment-block__head', effectsModule);
   if (effectsHead) {
     const title = $('h3', effectsHead);
     const note = $('span', effectsHead);
     if (title) title.textContent = 'Buffs & effects';
-    if (note) note.textContent = 'Common state visible · long tail in More buffs & details';
+    if (note) note.textContent = 'Common state · more in overflow';
   }
 
-  statsModule.append(effectsModule);
+  if (effectsModule.parentElement !== statsModule) statsModule.append(effectsModule);
 
-  /* The filter tabs are enough context now; remove any leftover empty spacer
-     generated by earlier layouts and keep focus on actual controls. */
   $$('.buff-category-stage .section-head', effectsModule).forEach((head) => {
     head.classList.add('effect-section-head-v6');
   });
 
   const readout = $('#loadout-focus-readout');
-  if (readout) readout.textContent = 'Gear · stats/buffs · gizmos · monolith';
+  if (readout) readout.textContent = 'Gear · combat inputs · gizmos · monolith';
 })();
