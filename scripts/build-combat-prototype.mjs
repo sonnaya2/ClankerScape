@@ -12,11 +12,11 @@ const sourceHtml = await readFile(path.join(source, 'combat-prototype.html'), 'u
 let html = sourceHtml
   .replace(
     '</head>',
-    `  <link rel="stylesheet" href="${versioned('./combat-prototype-v2.css')}">\n  <link rel="stylesheet" href="${versioned('./combat-prototype-v2-polish.css')}">\n  <link rel="stylesheet" href="${versioned('./combat-prototype-v3.css')}">\n  <link rel="stylesheet" href="${versioned('./combat-prototype-v4.css')}">\n  <link rel="stylesheet" href="${versioned('./combat-prototype-v5.css')}">\n</head>`,
+    `  <link rel="stylesheet" href="${versioned('./combat-prototype-v2.css')}">\n  <link rel="stylesheet" href="${versioned('./combat-prototype-v2-polish.css')}">\n  <link rel="stylesheet" href="${versioned('./combat-prototype-v3.css')}">\n  <link rel="stylesheet" href="${versioned('./combat-prototype-v4.css')}">\n  <link rel="stylesheet" href="${versioned('./combat-prototype-v5.css')}">\n  <link rel="stylesheet" href="${versioned('./combat-prototype-v6.css')}">\n</head>`,
   )
   .replace(
     '</body>',
-    `  <script src="${versioned('./combat-prototype-v2.js')}"></script>\n  <script src="${versioned('./combat-prototype-v3.js')}"></script>\n  <script src="${versioned('./combat-prototype-v4.js')}"></script>\n  <script src="${versioned('./combat-prototype-v5.js')}"></script>\n</body>`,
+    `  <script src="${versioned('./combat-prototype-v2.js')}"></script>\n  <script src="${versioned('./combat-prototype-v3.js')}"></script>\n  <script src="${versioned('./combat-prototype-v4.js')}"></script>\n  <script src="${versioned('./combat-prototype-v5.js')}"></script>\n  <script src="${versioned('./combat-prototype-v6.js')}"></script>\n</body>`,
   );
 
 // The base stylesheet/script are authored in the source HTML, so version them too.
@@ -27,9 +27,9 @@ html = html
 
 await Promise.all([
   writeFile(path.join(out, 'combat-prototype.html'), html, 'utf8'),
-  // Stable alternate URL for this visual generation. Useful when a browser has
-  // cached the canonical HTML itself rather than only its CSS/JS assets.
+  // Keep previous visual-generation aliases working and publish the newest one.
   writeFile(path.join(out, 'combat-prototype-v5.html'), html, 'utf8'),
+  writeFile(path.join(out, 'combat-prototype-v6.html'), html, 'utf8'),
   copyFile(path.join(source, 'combat-prototype.css'), path.join(out, 'combat-prototype.css')),
   copyFile(path.join(source, 'combat-prototype.js'), path.join(out, 'combat-prototype.js')),
   copyFile(path.join(source, 'combat-prototype-v2.css'), path.join(out, 'combat-prototype-v2.css')),
@@ -41,6 +41,8 @@ await Promise.all([
   copyFile(path.join(source, 'combat-prototype-v4.js'), path.join(out, 'combat-prototype-v4.js')),
   copyFile(path.join(source, 'combat-prototype-v5.css'), path.join(out, 'combat-prototype-v5.css')),
   copyFile(path.join(source, 'combat-prototype-v5.js'), path.join(out, 'combat-prototype-v5.js')),
+  copyFile(path.join(source, 'combat-prototype-v6.css'), path.join(out, 'combat-prototype-v6.css')),
+  copyFile(path.join(source, 'combat-prototype-v6.js'), path.join(out, 'combat-prototype-v6.js')),
 ]);
 
 console.log(`Built Combat UX prototype at /combat-prototype.html (${buildRevision})`);
