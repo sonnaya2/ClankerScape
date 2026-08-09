@@ -8,6 +8,8 @@ const js = await readFile(new URL('../_site/combat-prototype.js', import.meta.ur
 const v2Css = await readFile(new URL('../_site/combat-prototype-v2.css', import.meta.url), 'utf8');
 const v2Polish = await readFile(new URL('../_site/combat-prototype-v2-polish.css', import.meta.url), 'utf8');
 const v2Js = await readFile(new URL('../_site/combat-prototype-v2.js', import.meta.url), 'utf8');
+const v3Css = await readFile(new URL('../_site/combat-prototype-v3.css', import.meta.url), 'utf8');
+const v3Js = await readFile(new URL('../_site/combat-prototype-v3.js', import.meta.url), 'utf8');
 
 const artRoot = 'https://raw.githubusercontent.com/sonnaya2/Equilibrium/f6f4a8f91fa8b0e04373c45173f7089751eca9df/public/game/';
 
@@ -80,18 +82,44 @@ test('Buffs returns common controls to direct access and prayer leaves Buffs', (
   assert.match(v2Css, /buff-category-stage\.buff-direct-grid/);
 });
 
+test('V3 makes Loadout the home for stats and remaining effects', () => {
+  assert.match(html, /combat-prototype-v3\.css/);
+  assert.match(html, /combat-prototype-v3\.js/);
+  assert.match(v3Js, /\[data-subtab="stats"\]\'\)\?\.remove\(\)/);
+  assert.match(v3Js, /\[data-subtab="buffs"\]\'\)\?\.remove\(\)/);
+  assert.match(v3Js, /loadout-stats-module/);
+  assert.match(v3Js, /statsModule\.append\(statsGroups\)/);
+  assert.match(v3Js, /loadout-effects-module/);
+  assert.match(v3Js, /effectsModule\.append\(activeEffects\)/);
+  assert.match(v3Js, /effectsModule\.append\(buffWorkbench\)/);
+});
+
+test('V3 aligns Archaeology vertically beside Invention', () => {
+  assert.match(v3Js, /attachment-core-grid/);
+  assert.match(v3Js, /coreGrid\.append\(inventionBlock, monolithBlock\)/);
+  assert.match(v3Css, /\.attachment-core-grid\s*\{[\s\S]*grid-template-columns:\s*minmax\(0, 1fr\) 276px/i);
+  assert.match(v3Css, /\.monolith-module \.arch-energy-rail\s*\{[\s\S]*flex-direction:\s*column/i);
+  assert.match(v3Css, /\.monolith-module \.monolith-slots\s*\{[\s\S]*grid-template-columns:\s*1fr !important/i);
+});
+
+test('V3 keeps the main Loadout dense rather than duplicating resolved stats', () => {
+  assert.match(v3Css, /\.loadout-stats-module \.derived-row\s*\{[\s\S]*display:\s*none/i);
+  assert.match(v3Js, /resolved output stays in Setup Summary/);
+  assert.match(v3Css, /\.loadout-effects-module \.buff-category-stage\.buff-direct-grid\s*\{[\s\S]*repeat\(4/i);
+});
+
 test('prototype uses the same pinned Equilibrium RuneScape art source', () => {
   assert.ok(js.includes(artRoot));
   assert.doesNotMatch(html, /https?:\/\//i);
-  assert.doesNotMatch(css + v2Css + v2Polish, /url\(\s*["']?https?:\/\//i);
+  assert.doesNotMatch(css + v2Css + v2Polish + v3Css, /url\(\s*["']?https?:\/\//i);
 });
 
 test('prototype remains a presentation prototype rather than engine code', () => {
   assert.match(html, /presentation only · no engine/);
-  assert.doesNotMatch(js + v2Js, /damage\s*[+*\/-]=|calculateAbility|simulate\(|worker|fetch\(/i);
+  assert.doesNotMatch(js + v2Js + v3Js, /damage\s*[+*\/-]=|calculateAbility|simulate\(|worker|fetch\(/i);
 });
 
 test('new visual layers avoid generic AI dashboard treatment', () => {
   assert.doesNotMatch(html, />\s*(?:dashboard|workspace|KPI|unlock your potential|optimi[sz]e your)\s*</i);
-  assert.doesNotMatch(css + v2Css + v2Polish, /backdrop-filter|glassmorphism|radial-gradient|linear-gradient/i);
+  assert.doesNotMatch(css + v2Css + v2Polish + v3Css, /backdrop-filter|glassmorphism|radial-gradient|linear-gradient/i);
 });
